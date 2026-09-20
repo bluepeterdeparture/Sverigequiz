@@ -12,10 +12,15 @@
       <div class="brand">🇸🇪 Sverigequiz</div>
       <p class="subtitle">Träna på Sverige – enkelt och roligt</p>
 
-      <div class="card">
+      <div id="profile-setup" class="card">
         <label for="display-name">Ditt namn</label>
         <input id="display-name" type="text" maxlength="40" placeholder="Till exempel Jularat">
         <button id="save-profile" class="secondary-btn">Spara namn</button>
+      </div>
+
+      <div id="profile-saved" class="profile-saved hidden">
+        <span id="greeting">Hej! 👋</span>
+        <button id="edit-profile" class="text-btn small-link">Byt namn</button>
       </div>
 
       <button id="start-quiz" class="primary-btn">Starta 10 frågor</button>

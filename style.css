@@ -184,3 +184,19 @@ input {
 @media (min-width: 700px) {
   .app-shell { padding-top: 42px; }
 }
+
+
+.profile-saved {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 4px 2px 18px;
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.small-link {
+  font-size: 0.95rem;
+  padding: 4px 0;
+}

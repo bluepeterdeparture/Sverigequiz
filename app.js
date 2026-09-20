@@ -10,6 +10,9 @@
   };
 
   const displayName = document.getElementById("display-name");
+  const profileSetup = document.getElementById("profile-setup");
+  const profileSaved = document.getElementById("profile-saved");
+  const greeting = document.getElementById("greeting");
   const latestResult = document.getElementById("latest-result");
   const progress = document.getElementById("progress");
   const questionText = document.getElementById("question-text");
@@ -37,10 +40,26 @@
     return copy;
   }
 
+  function renderProfile() {
+    const profile = storage.getProfile();
+
+    if (profile) {
+      displayName.value = profile.displayName || "";
+      greeting.textContent = `Hej ${profile.displayName} 👋`;
+      profileSetup.classList.add("hidden");
+      profileSaved.classList.remove("hidden");
+    } else {
+      displayName.value = "";
+      profileSaved.classList.add("hidden");
+      profileSetup.classList.remove("hidden");
+    }
+  }
+
   function ensureProfile() {
     let profile = storage.getProfile();
     if (!profile) {
       profile = storage.saveProfile(displayName.value || "Användare");
+      renderProfile();
     }
     return profile;
   }
@@ -48,6 +67,7 @@
   function startQuiz() {
     const profile = ensureProfile();
     const selected = shuffle(questions).slice(0, Math.min(10, questions.length));
+
     session = {
       sessionId: storage.makeId("s"),
       userId: profile.userId,
@@ -56,46 +76,59 @@
       currentIndex: 0,
       correctCount: 0,
       wrongQuestionIds: [],
-      answered: false
+      answered: false,
+      currentChoices: []
     };
+
     showScreen("quiz");
     renderQuestion();
   }
 
   function renderQuestion() {
     const q = session.questions[session.currentIndex];
+
     progress.textContent = `Fråga ${session.currentIndex + 1} av ${session.questions.length}`;
     questionText.textContent = q.question;
     optionsEl.innerHTML = "";
     feedback.classList.add("hidden");
     session.answered = false;
 
-    q.options.forEach((option, index) => {
+    // Blanda svarsalternativen för varje fråga.
+    session.currentChoices = shuffle(
+      q.options.map((text, originalIndex) => ({
+        text,
+        isCorrect: originalIndex === q.correctIndex
+      }))
+    );
+
+    session.currentChoices.forEach((choice, index) => {
       const button = document.createElement("button");
       button.className = "option-btn";
-      button.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
-      button.addEventListener("click", () => answerQuestion(index, button));
+      button.textContent = `${String.fromCharCode(65 + index)}. ${choice.text}`;
+      button.dataset.correct = choice.isCorrect ? "true" : "false";
+      button.addEventListener("click", () => answerQuestion(choice, button));
       optionsEl.appendChild(button);
     });
   }
 
-  function answerQuestion(index) {
+  function answerQuestion(choice, selectedButton) {
     if (session.answered) return;
     session.answered = true;
+
     const q = session.questions[session.currentIndex];
     const buttons = [...optionsEl.querySelectorAll(".option-btn")];
 
-    buttons.forEach((btn, i) => {
+    buttons.forEach(btn => {
       btn.disabled = true;
-      if (i === q.correctIndex) btn.classList.add("correct");
+      if (btn.dataset.correct === "true") btn.classList.add("correct");
     });
 
-    if (index === q.correctIndex) {
+    if (choice.isCorrect) {
       session.correctCount += 1;
       feedbackTitle.textContent = "✅🥳 Rätt!";
     } else {
       session.wrongQuestionIds.push(q.id);
-      buttons[index].classList.add("wrong");
+      selectedButton.classList.add("wrong");
       feedbackTitle.textContent = "❌🙂 Inte riktigt";
     }
 
@@ -109,14 +142,15 @@
     if (session.currentIndex < session.questions.length - 1) {
       session.currentIndex += 1;
       renderQuestion();
-      return;
+    } else {
+      finishQuiz();
     }
-    finishQuiz();
   }
 
   function finishQuiz() {
     const count = session.questions.length;
     const percentage = Math.round((session.correctCount / count) * 100);
+
     const result = {
       resultId: storage.makeId("r"),
       sessionId: session.sessionId,
@@ -128,6 +162,7 @@
       wrongQuestionIds: session.wrongQuestionIds,
       questionBankVersion: "2026-1"
     };
+
     storage.saveResult(result);
     resultScore.textContent = `${result.correctCount} av ${count} rätt – ${percentage} %`;
     session = null;
@@ -136,14 +171,14 @@
   }
 
   function refreshHome() {
-    const profile = storage.getProfile();
-    if (profile) displayName.value = profile.displayName;
+    renderProfile();
 
     const results = storage.getResults();
     if (!results.length) {
       latestResult.textContent = "Inga resultat ännu.";
       return;
     }
+
     const r = results[0];
     latestResult.textContent = `${r.correctCount}/${r.questionCount} – ${r.percentage} %`;
   }
@@ -151,10 +186,12 @@
   function renderHistory() {
     const results = storage.getResults();
     historyList.innerHTML = "";
+
     if (!results.length) {
       historyList.textContent = "Inga resultat ännu.";
       return;
     }
+
     results.slice(0, 10).forEach(r => {
       const row = document.createElement("div");
       row.className = "history-item";
@@ -167,6 +204,14 @@
   document.getElementById("save-profile").addEventListener("click", () => {
     storage.saveProfile(displayName.value);
     refreshHome();
+  });
+
+  document.getElementById("edit-profile").addEventListener("click", () => {
+    const profile = storage.getProfile();
+    if (profile) displayName.value = profile.displayName || "";
+    profileSaved.classList.add("hidden");
+    profileSetup.classList.remove("hidden");
+    displayName.focus();
   });
 
   document.getElementById("start-quiz").addEventListener("click", startQuiz);
