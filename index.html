@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sverigequiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section id="screen-home" class="screen active">
+      <div class="brand">🇸🇪 Sverigequiz</div>
+      <p class="subtitle">Träna på Sverige – enkelt och roligt</p>
+
+      <div class="card">
+        <label for="display-name">Ditt namn</label>
+        <input id="display-name" type="text" maxlength="40" placeholder="Till exempel Jularat">
+        <button id="save-profile" class="secondary-btn">Spara namn</button>
+      </div>
+
+      <button id="start-quiz" class="primary-btn">Starta 10 frågor</button>
+
+      <div class="card">
+        <h2>Senaste resultat</h2>
+        <p id="latest-result">Inga resultat ännu.</p>
+        <button id="show-history" class="text-btn">Se tidigare resultat</button>
+      </div>
+
+      <p class="source-note">Baserad på <em>Sverige i fokus</em>, UHR/Skolverket.</p>
+    </section>
+
+    <section id="screen-quiz" class="screen">
+      <div class="top-row">
+        <button id="quit-quiz" class="text-btn">Avsluta</button>
+        <span id="progress">Fråga 1 av 10</span>
+      </div>
+
+      <div class="card question-card">
+        <h1 id="question-text"></h1>
+        <div id="options" class="options"></div>
+      </div>
+
+      <div id="feedback" class="feedback hidden">
+        <div id="feedback-title" class="feedback-title"></div>
+        <p id="feedback-text"></p>
+        <button id="source-link" class="text-btn hidden">Läs mer</button>
+        <button id="next-question" class="primary-btn">Nästa fråga</button>
+      </div>
+    </section>
+
+    <section id="screen-result" class="screen">
+      <div class="card result-card">
+        <div class="result-emoji">🎉</div>
+        <h1>Klart!</h1>
+        <p id="result-score" class="result-score"></p>
+        <button id="restart-quiz" class="primary-btn">Gör ett nytt quiz</button>
+        <button id="result-history" class="text-btn">Se tidigare resultat</button>
+      </div>
+    </section>
+
+    <section id="screen-history" class="screen">
+      <div class="top-row">
+        <button id="back-home" class="text-btn">Tillbaka</button>
+        <span>Tidigare resultat</span>
+      </div>
+      <div class="card">
+        <div id="history-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="storage.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
