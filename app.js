@@ -232,7 +232,7 @@
     });
   }
 
- document.getElementById("listen-question").addEventListener("click", () => {
+document.getElementById("listen-question").addEventListener("click", () => {
   if (!session || !("speechSynthesis" in window)) {
     alert("Uppläsning stöds inte av den här webbläsaren.");
     return;
@@ -243,18 +243,16 @@
   const q = session.questions[session.currentIndex];
   const swedishVoice = getSwedishVoice();
 
-  if (!swedishVoice) {
-    alert("Ingen svensk röst hittades på telefonen. Kontrollera att svensk talsyntes är installerad.");
-    return;
-  }
-
   const utterance = new SpeechSynthesisUtterance(q.question);
-  utterance.voice = swedishVoice;
   utterance.lang = "sv-SE";
   utterance.rate = 0.9;
 
+  if (swedishVoice) {
+    utterance.voice = swedishVoice;
+  }
+
   window.speechSynthesis.speak(utterance);
-});
+}); 
   document.getElementById("save-profile").addEventListener("click", () => {
     storage.saveProfile(displayName.value);
     refreshHome();
