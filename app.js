@@ -23,6 +23,8 @@
   const sourceLink = document.getElementById("source-link");
   const resultScore = document.getElementById("result-score");
   const historyList = document.getElementById("history-list");
+  const studyBox = document.getElementById("study-box");
+  const studyReference = document.getElementById("study-reference");
 
   let session = null;
 
@@ -42,7 +44,6 @@
 
   function renderProfile() {
     const profile = storage.getProfile();
-
     if (profile) {
       displayName.value = profile.displayName || "";
       greeting.textContent = `Hej ${profile.displayName} 👋`;
@@ -67,7 +68,6 @@
   function startQuiz() {
     const profile = ensureProfile();
     const selected = shuffle(questions).slice(0, Math.min(10, questions.length));
-
     session = {
       sessionId: storage.makeId("s"),
       userId: profile.userId,
@@ -79,26 +79,23 @@
       answered: false,
       currentChoices: []
     };
-
     showScreen("quiz");
     renderQuestion();
   }
 
   function renderQuestion() {
     const q = session.questions[session.currentIndex];
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
 
     progress.textContent = `Fråga ${session.currentIndex + 1} av ${session.questions.length}`;
     questionText.textContent = q.question;
     optionsEl.innerHTML = "";
     feedback.classList.add("hidden");
+    studyBox.classList.add("hidden");
     session.answered = false;
 
-    // Blanda svarsalternativen för varje fråga.
     session.currentChoices = shuffle(
-      q.options.map((text, originalIndex) => ({
-        text,
-        isCorrect: originalIndex === q.correctIndex
-      }))
+      q.options.map((text, originalIndex) => ({ text, isCorrect: originalIndex === q.correctIndex }))
     );
 
     session.currentChoices.forEach((choice, index) => {
@@ -125,15 +122,17 @@
 
     if (choice.isCorrect) {
       session.correctCount += 1;
-      feedbackTitle.textContent = "✅🥳 Rätt!";
+      feedbackTitle.textContent = "✅ Rätt! Bra jobbat!";
     } else {
       session.wrongQuestionIds.push(q.id);
       selectedButton.classList.add("wrong");
-      feedbackTitle.textContent = "❌🙂 Inte riktigt";
+      feedbackTitle.textContent = "❌ Inte riktigt.";
     }
 
     feedbackText.textContent = q.explanationSv;
-    sourceLink.textContent = `Läs mer: Kapitel ${q.chapter} – ${q.section}`;
+    sourceLink.textContent = q.sourcePage
+      ? `Läs mer: Kapitel ${q.chapter} – ${q.section}, sida ${q.sourcePage}`
+      : `Läs mer: ${q.section}`;
     sourceLink.classList.remove("hidden");
     feedback.classList.remove("hidden");
   }
@@ -150,7 +149,6 @@
   function finishQuiz() {
     const count = session.questions.length;
     const percentage = Math.round((session.correctCount / count) * 100);
-
     const result = {
       resultId: storage.makeId("r"),
       sessionId: session.sessionId,
@@ -160,9 +158,8 @@
       correctCount: session.correctCount,
       percentage,
       wrongQuestionIds: session.wrongQuestionIds,
-      questionBankVersion: "2026-1-corr-2026-08-10"
+      questionBankVersion: "2026-1-corr-2026-08-10-v1.4"
     };
-
     storage.saveResult(result);
     resultScore.textContent = `${result.correctCount} av ${count} rätt – ${percentage} %`;
     session = null;
@@ -172,13 +169,11 @@
 
   function refreshHome() {
     renderProfile();
-
     const results = storage.getResults();
     if (!results.length) {
       latestResult.textContent = "Inga resultat ännu.";
       return;
     }
-
     const r = results[0];
     latestResult.textContent = `${r.correctCount}/${r.questionCount} – ${r.percentage} %`;
   }
@@ -186,12 +181,10 @@
   function renderHistory() {
     const results = storage.getResults();
     historyList.innerHTML = "";
-
     if (!results.length) {
       historyList.textContent = "Inga resultat ännu.";
       return;
     }
-
     results.slice(0, 10).forEach(r => {
       const row = document.createElement("div");
       row.className = "history-item";
@@ -200,6 +193,32 @@
       historyList.appendChild(row);
     });
   }
+
+  document.getElementById("study-first").addEventListener("click", () => {
+    if (!session) return;
+    const q = session.questions[session.currentIndex];
+    studyReference.textContent = q.sourcePage
+      ? `Kapitel ${q.chapter} – ${q.section} · sida ${q.sourcePage}`
+      : `${q.section}`;
+    studyBox.classList.toggle("hidden");
+  });
+
+  document.getElementById("close-study").addEventListener("click", () => {
+    studyBox.classList.add("hidden");
+  });
+
+  document.getElementById("listen-question").addEventListener("click", () => {
+    if (!session || !("speechSynthesis" in window)) {
+      alert("Uppläsning stöds inte av den här webbläsaren.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const q = session.questions[session.currentIndex];
+    const utterance = new SpeechSynthesisUtterance(q.question);
+    utterance.lang = "sv-SE";
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  });
 
   document.getElementById("save-profile").addEventListener("click", () => {
     storage.saveProfile(displayName.value);
@@ -219,27 +238,26 @@
   document.getElementById("next-question").addEventListener("click", nextQuestion);
 
   document.getElementById("show-history").addEventListener("click", () => {
-    renderHistory();
-    showScreen("history");
+    renderHistory(); showScreen("history");
   });
-
   document.getElementById("result-history").addEventListener("click", () => {
-    renderHistory();
-    showScreen("history");
+    renderHistory(); showScreen("history");
   });
-
   document.getElementById("back-home").addEventListener("click", () => {
-    refreshHome();
-    showScreen("home");
+    refreshHome(); showScreen("home");
   });
-
   document.getElementById("quit-quiz").addEventListener("click", () => {
-    session = null;
-    showScreen("home");
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    session = null; showScreen("home");
   });
 
   sourceLink.addEventListener("click", () => {
-    alert("I nästa version kan denna länk öppna rätt avsnitt i UHR:s material.");
+    if (!session) return;
+    const q = session.questions[session.currentIndex];
+    const ref = q.sourcePage
+      ? `Kapitel ${q.chapter} – ${q.section}, sida ${q.sourcePage}`
+      : q.section;
+    alert(`Läs i Sverige i fokus: ${ref}.`);
   });
 
   refreshHome();
