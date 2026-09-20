@@ -160,7 +160,7 @@
       correctCount: session.correctCount,
       percentage,
       wrongQuestionIds: session.wrongQuestionIds,
-      questionBankVersion: "2026-1"
+      questionBankVersion: "2026-1-corr-2026-08-10"
     };
 
     storage.saveResult(result);

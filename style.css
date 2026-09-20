@@ -200,3 +200,5 @@ input {
   font-size: 0.95rem;
   padding: 4px 0;
 }
+
+.version-note{display:inline-block;margin-top:5px;font-size:.78rem;opacity:.85;}

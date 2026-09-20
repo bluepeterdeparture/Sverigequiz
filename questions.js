@@ -15,7 +15,7 @@ window.SVERIGEQUIZ_QUESTIONS = [
     chapter: 5,
     section: "Allemansrätten",
     sourcePage: 17,
-    sourceVersion: "Sverige i fokus 2026-1",
+    sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
     active: true
   },
   {
@@ -29,7 +29,7 @@ window.SVERIGEQUIZ_QUESTIONS = [
     chapter: 3,
     section: "Staten",
     sourcePage: 12,
-    sourceVersion: "Sverige i fokus 2026-1",
+    sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
     active: true
   },
   {
@@ -43,7 +43,7 @@ window.SVERIGEQUIZ_QUESTIONS = [
     chapter: 3,
     section: "Regioner och kommuner",
     sourcePage: 13,
-    sourceVersion: "Sverige i fokus 2026-1",
+    sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
     active: true
   },
   {
@@ -57,7 +57,7 @@ window.SVERIGEQUIZ_QUESTIONS = [
     chapter: 4,
     section: "Val och röstning",
     sourcePage: 14,
-    sourceVersion: "Sverige i fokus 2026-1",
+    sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
     active: true
   },
   {
@@ -76,7 +76,7 @@ window.SVERIGEQUIZ_QUESTIONS = [
     chapter: 4,
     section: "Val och röstning",
     sourcePage: 14,
-    sourceVersion: "Sverige i fokus 2026-1",
+    sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
     active: true
   },
   {
@@ -95,7 +95,7 @@ window.SVERIGEQUIZ_QUESTIONS = [
     chapter: 1,
     section: "Sveriges indelning",
     sourcePage: 6,
-    sourceVersion: "Sverige i fokus 2026-1",
+    sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
     active: true
   },
   {
@@ -114,7 +114,7 @@ window.SVERIGEQUIZ_QUESTIONS = [
     chapter: 1,
     section: "Skogar, sjöar och öar",
     sourcePage: 6,
-    sourceVersion: "Sverige i fokus 2026-1",
+    sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
     active: true
   },
   {
@@ -133,7 +133,7 @@ window.SVERIGEQUIZ_QUESTIONS = [
     chapter: 6,
     section: "Public service",
     sourcePage: 21,
-    sourceVersion: "Sverige i fokus 2026-1",
+    sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
     active: true
   },
   {
@@ -152,7 +152,7 @@ window.SVERIGEQUIZ_QUESTIONS = [
     chapter: 8,
     section: "Arbetsmarknadens parter",
     sourcePage: 28,
-    sourceVersion: "Sverige i fokus 2026-1",
+    sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
     active: true
   },
   {
@@ -166,7 +166,167 @@ window.SVERIGEQUIZ_QUESTIONS = [
     chapter: 9,
     section: "Kommunerna har ett stort ansvar",
     sourcePage: 31,
-    sourceVersion: "Sverige i fokus 2026-1",
+    sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
     active: true
+  },
+  {
+    id:"q0011",category:"geografi",difficulty:"easy",
+    question:"Vilket är det största landet i Norden?",
+    options:["Sverige","Danmark","Island","Finland"],correctIndex:0,
+    explanationSv:"Sverige är det största landet i Norden.",
+    chapter:1,section:"Geografi, klimat och natur",sourcePage:5,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0012",category:"geografi",difficulty:"easy",
+    question:"Vilket hav ligger längs Sveriges östra kust?",
+    options:["Östersjön","Nordsjön","Medelhavet","Norska havet"],correctIndex:0,
+    explanationSv:"Havet vid Sveriges östra kust heter Östersjön.",
+    chapter:1,section:"Geografi, klimat och natur",sourcePage:5,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0013",category:"geografi",difficulty:"easy",
+    question:"Vilka är Sveriges två största öar?",
+    options:["Gotland och Öland","Öland och Orust","Gotland och Hisingen","Tjörn och Orust"],correctIndex:0,
+    explanationSv:"Sveriges två största öar är Gotland och Öland.",
+    chapter:1,section:"Geografi, klimat och natur",sourcePage:5,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0014",category:"geografi",difficulty:"easy",
+    question:"Vad heter Sveriges högsta berg?",
+    options:["Kebnekaise","Åreskutan","Kinnekulle","Omberg"],correctIndex:0,
+    explanationSv:"Sveriges högsta berg är Kebnekaise.",
+    chapter:1,section:"Fjäll",sourcePage:6,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0015",category:"geografi",difficulty:"medium",
+    question:"Hur många kommuner är Sverige indelat i?",
+    options:["290","21","25","349"],correctIndex:0,
+    explanationSv:"Sverige är indelat i 290 kommuner.",
+    chapter:1,section:"Sveriges indelning",sourcePage:6,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0016",category:"geografi",difficulty:"medium",
+    question:"Ungefär hur stor del av Sveriges befolkning bor i städer?",
+    options:["85 procent","25 procent","50 procent","100 procent"],correctIndex:0,
+    explanationSv:"Ungefär 85 procent av Sveriges befolkning bor i städer.",
+    chapter:1,section:"Befolkning",sourcePage:7,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0017",category:"klimat",difficulty:"medium",
+    question:"Vilket år är målet att Sveriges utsläpp av växthusgaser ska vara så nära noll som möjligt?",
+    options:["2045","2030","2055","2100"],correctIndex:0,
+    explanationSv:"Ett klimatpolitiskt mål är att utsläppen ska vara så nära noll som möjligt år 2045.",
+    chapter:1,section:"Sveriges arbete för att minska klimathoten",sourcePage:9,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0018",category:"manskliga_rattigheter",difficulty:"medium",
+    question:"Sedan vilket år är barnkonventionen lag i Sverige?",
+    options:["2020","1995","2000","2010"],correctIndex:0,
+    explanationSv:"Barnkonventionen blev lag i Sverige år 2020.",
+    chapter:7,section:"Barns rättigheter",sourcePage:24,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0019",category:"manskliga_rattigheter",difficulty:"medium",
+    question:"Vad säger svensk lag om köp av sex?",
+    options:["Det är olagligt att köpa sex","Det är alltid lagligt för vuxna","Det är bara olagligt på offentliga platser","Det är kommunen som bestämmer"],correctIndex:0,
+    explanationSv:"I Sverige är det olagligt att köpa sex. Lagen riktar straffet mot köparen.",
+    chapter:7,section:"Sexköpslagen",sourcePage:24,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0020",category:"omvarlden",difficulty:"easy",
+    question:"Sedan vilket år är Sverige medlem i EU?",
+    options:["1995","1989","2001","2010"],correctIndex:0,
+    explanationSv:"Sverige har varit medlem i EU sedan 1995.",
+    chapter:11,section:"EU och Europarådet",sourcePage:39,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0021",category:"omvarlden",difficulty:"medium",
+    question:"Vad arbetar Europarådet bland annat för?",
+    options:["Mänskliga rättigheter, demokrati och rättsstatens principer","Att bestämma Sveriges skatter","Att styra svenska kommuner","Att välja Sveriges regering"],correctIndex:0,
+    explanationSv:"Europarådet arbetar för mänskliga rättigheter, demokrati och rättsstatens principer.",
+    chapter:11,section:"EU och Europarådet",sourcePage:39,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0022",category:"omvarlden",difficulty:"medium",
+    question:"Vad är Sida?",
+    options:["En statlig myndighet som arbetar för att minska fattigdom och förtryck i världen","En svensk domstol","En kommunal skola","En del av Försvarsmakten"],correctIndex:0,
+    explanationSv:"Sida är en statlig myndighet som arbetar för att minska fattigdom och förtryck i världen.",
+    chapter:11,section:"Sveriges samarbete för utveckling i världen",sourcePage:39,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0023",category:"forsvar",difficulty:"medium",
+    question:"Vilka omfattas av den allmänna värnplikten från 18 års ålder?",
+    options:["Både män och kvinnor","Bara män","Bara kvinnor","Bara personer som redan arbetar i Försvarsmakten"],correctIndex:0,
+    explanationSv:"Den allmänna värnplikten omfattar både män och kvinnor som har fyllt 18 år.",
+    chapter:11,section:"Försvars- och säkerhetspolitik",sourcePage:41,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0024",category:"religion",difficulty:"easy",
+    question:"Vad betyder det att Sverige är en sekulär stat?",
+    options:["Staten är religiöst neutral","Alla måste tillhöra Svenska kyrkan","Religion är förbjuden","Bara en religion får finnas"],correctIndex:0,
+    explanationSv:"Att Sverige är en sekulär stat betyder att staten är religiöst neutral.",
+    chapter:12,section:"Religionsfrihet",sourcePage:42,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0025",category:"religion",difficulty:"medium",
+    question:"Vilket år kom religionsfrihetslagen som gjorde det möjligt att fritt välja religion eller ingen religion alls?",
+    options:["1951","1905","1975","2000"],correctIndex:0,
+    explanationSv:"Religionsfrihetslagen från 1951 blev det slutliga genombrottet för religionsfriheten.",
+    chapter:12,section:"Religionsfrihet",sourcePage:42,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0026",category:"traditioner",difficulty:"easy",
+    question:"Vilket datum är Sveriges nationaldag?",
+    options:["6 juni","1 maj","24 december","30 april"],correctIndex:0,
+    explanationSv:"Sveriges nationaldag firas den 6 juni.",
+    chapter:13,section:"Sveriges nationaldag",sourcePage:46,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0027",category:"traditioner",difficulty:"easy",
+    question:"När firas valborgsmässoafton?",
+    options:["30 april","1 maj","6 juni","13 december"],correctIndex:0,
+    explanationSv:"Valborgsmässoafton firas den 30 april och förknippas med att välkomna våren.",
+    chapter:13,section:"Valborgsmässoafton",sourcePage:46,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0028",category:"traditioner",difficulty:"medium",
+    question:"När firas midsommarafton?",
+    options:["På en fredag mellan 19 och 25 juni","Alltid den 6 juni","Alltid den 21 juni","På första söndagen i juli"],correctIndex:0,
+    explanationSv:"Midsommarafton firas alltid på en fredag mellan den 19 och 25 juni.",
+    chapter:13,section:"Midsommar",sourcePage:46,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0029",category:"traditioner",difficulty:"easy",
+    question:"Vilket datum firas Lucia?",
+    options:["13 december","24 december","6 januari","30 november"],correctIndex:0,
+    explanationSv:"Lucia firas den 13 december.",
+    chapter:13,section:"Lucia",sourcePage:47,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
+  },
+  {
+    id:"q0030",category:"traditioner",difficulty:"easy",
+    question:"Vilket datum är julafton i Sverige?",
+    options:["24 december","25 december","13 december","31 december"],correctIndex:0,
+    explanationSv:"Julafton är den 24 december och är en stor familjehögtid i Sverige.",
+    chapter:13,section:"Jul",sourcePage:47,
+    sourceVersion:"Sverige i fokus 2026-1, korrigerad 2026-08-10",active:true
   }
 ];
