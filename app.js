@@ -207,16 +207,50 @@
     studyBox.classList.add("hidden");
   });
 
+  function getSwedishVoice() {
+    if (!("speechSynthesis" in window)) return null;
+
+    const voices = window.speechSynthesis.getVoices();
+
+    // Prioritera en svensk röst för Sverige (sv-SE).
+    let voice = voices.find(v => (v.lang || "").toLowerCase() === "sv-se");
+
+    // Om sv-SE saknas, välj någon annan svensk röst.
+    if (!voice) {
+      voice = voices.find(v => (v.lang || "").toLowerCase().startsWith("sv"));
+    }
+
+    return voice || null;
+  }
+
+  // Android/Chrome laddar ibland röstlistan först efter att sidan har startat.
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.addEventListener("voiceschanged", () => {
+      window.speechSynthesis.getVoices();
+    });
+  }
+
   document.getElementById("listen-question").addEventListener("click", () => {
     if (!session || !("speechSynthesis" in window)) {
       alert("Uppläsning stöds inte av den här webbläsaren.");
       return;
     }
+
     window.speechSynthesis.cancel();
+
     const q = session.questions[session.currentIndex];
     const utterance = new SpeechSynthesisUtterance(q.question);
+    const swedishVoice = getSwedishVoice();
+
     utterance.lang = "sv-SE";
     utterance.rate = 0.9;
+
+    if (swedishVoice) {
+      utterance.voice = swedishVoice;
+      utterance.lang = swedishVoice.lang || "sv-SE";
+    }
+
     window.speechSynthesis.speak(utterance);
   });
 
