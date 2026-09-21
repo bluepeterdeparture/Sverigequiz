@@ -200,14 +200,12 @@
   const q = session.questions[session.currentIndex];
 
   if (q.studyText) {
-    studyReference.innerHTML = `
-      <strong>${q.studyTitle || q.section}</strong><br><br>
-      ${q.studyText}
-      ${q.studyRemember ? `<br><br><strong>Kom ihåg:</strong><br>${q.studyRemember}` : ""}
-      <br><br>
-      <small>Källa: Sverige i fokus – ${q.section}${q.sourcePage ? `, sida ${q.sourcePage}` : ""}</small>
-    `;
-  } else {
+    studyReference.innerHTML =
+      "<strong>" + (q.studyTitle || q.section) + "</strong><br><br>" +
+      q.studyText +
+      (q.studyRemember ? "<br><br><strong>Kom ihåg:</strong><br>" + q.studyRemember : "") +
+      "<br><br><small>Källa: Sverige i fokus – " + q.section +
+      (q.sourcePage ? ", sida " + q.sourcePage : "") + "</small>";  } else {
     studyReference.textContent = q.sourcePage
       ? `Läs i Sverige i fokus: Kapitel ${q.chapter} – ${q.section}, sida ${q.sourcePage}.`
       : `Läs i Sverige i fokus: ${q.section}.`;
