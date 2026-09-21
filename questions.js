@@ -437,6 +437,7 @@ window.SVERIGEQUIZ_QUESTIONS = [
     "active": true
   },
   {
+     {
     "id": "q0024",
     "category": "religion",
     "difficulty": "easy",
@@ -449,6 +450,9 @@ window.SVERIGEQUIZ_QUESTIONS = [
     ],
     "correctIndex": 0,
     "explanationSv": "Att Sverige är en sekulär stat betyder att staten är religiöst neutral.",
+    "studyTitle": "Sekulär stat",
+    "studyText": "Sverige är en sekulär stat. Det betyder att staten är religiöst neutral. Staten ska inte ta ställning för eller diskriminera någon religion. Alla får själva bestämma om de vill tillhöra en religion eller inte.",
+    "studyRemember": "Sekulär stat = staten är religiöst neutral.",
     "chapter": 12,
     "section": "Religionsfrihet",
     "sourcePage": 42,
