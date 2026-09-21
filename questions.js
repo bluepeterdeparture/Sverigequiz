@@ -437,7 +437,6 @@ window.SVERIGEQUIZ_QUESTIONS = [
     "active": true
   },
   {
-     {
     "id": "q0024",
     "category": "religion",
     "difficulty": "easy",
