@@ -294,14 +294,11 @@ document.getElementById("listen-question").addEventListener("click", () => {
     session = null; showScreen("home");
   });
 
-  sourceLink.addEventListener("click", () => {
-    if (!session) return;
-    const q = session.questions[session.currentIndex];
-    const ref = q.sourcePage
-      ? `Kapitel ${q.chapter} – ${q.section}, sida ${q.sourcePage}`
-      : q.section;
-    alert(`Läs i Sverige i fokus: ${ref}.`);
-  });
-
+sourceLink.addEventListener("click", () => {
+  window.open(
+    "https://www.uhr.se/globalassets/_uhr.se/medborgarskapsprovet/utbildningsmaterial/sverige-i-fokus_.pdf",
+    "_blank"
+  );
+});
   refreshHome();
 })();
