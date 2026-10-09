@@ -1,0 +1,402 @@
+// Sverigequiz – kapitel 9
+// Välfärdssamhället
+// Källa: Sverige i fokus 2026-1, korrigerad 2026-08-10
+
+(() => {
+  const replacementChapters = new Set([9]);
+
+  const chapter9Questions = [
+    {
+      id: "ch9-001",
+      chapter: 9,
+      category: "Välfärdssamhället",
+      question: "Vad ska välfärdssamhället ge invånarna?",
+      options: [
+        "Gratis bostad",
+        "Grundläggande ekonomisk och social trygghet",
+        "Samma lön",
+        "Gratis bil"
+      ],
+      correct: 1,
+      explanation: "Välfärdssamhället ska ge invånarna en grundläggande ekonomisk och social trygghet.",
+      studyText: "Välfärdssamhället ska ge alla invånare en grundläggande ekonomisk och social trygghet. Välfärden finansieras genom skatter.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 30",
+      active: true
+    },
+    {
+      id: "ch9-002",
+      chapter: 9,
+      category: "Skatter och välfärd",
+      question: "Hur finansieras en stor del av Sveriges välfärd?",
+      options: [
+        "Genom skatter",
+        "Genom medlemsavgifter",
+        "Bara genom banklån",
+        "Bara genom gåvor"
+      ],
+      correct: 0,
+      explanation: "En stor del av pengarna till välfärden kommer från skatter.",
+      studyText: "Skatterna gör att många viktiga tjänster kan finansieras gemensamt, till exempel skola, sjukvård och vägar.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 30",
+      active: true
+    },
+    {
+      id: "ch9-003",
+      chapter: 9,
+      category: "Skatter och välfärd",
+      question: "Vilket av följande finansieras gemensamt med hjälp av skatter?",
+      options: [
+        "Privata semesterresor",
+        "Skola och sjukvård",
+        "Privata bilar",
+        "Restaurangbesök"
+      ],
+      correct: 1,
+      explanation: "Skatter används bland annat till att finansiera skola och sjukvård.",
+      studyText: "Skatterna gör att många viktiga tjänster kan finansieras gemensamt, till exempel skola, sjukvård och vägar.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 30",
+      active: true
+    },
+    {
+      id: "ch9-004",
+      chapter: 9,
+      category: "Skatter och välfärd",
+      question: "Vilka betalar skatt enligt Sverige i fokus?",
+      options: [
+        "Bara personer som arbetar",
+        "Bara företag",
+        "Både personer och till exempel företag",
+        "Bara pensionärer"
+      ],
+      correct: 2,
+      explanation: "Skatt betalas inte bara av personer som arbetar utan också till exempel av företag.",
+      studyText: "Skatt betalas inte bara av personer som arbetar, utan till exempel också av företag. Det finns även moms på varor och tjänster.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 30",
+      active: true
+    },
+    {
+      id: "ch9-005",
+      chapter: 9,
+      category: "Skatter och välfärd",
+      question: "Vad är moms?",
+      options: [
+        "En skatt på varor och tjänster",
+        "En avgift till facket",
+        "Ett statligt bidrag",
+        "En typ av pension"
+      ],
+      correct: 0,
+      explanation: "Moms, mervärdesskatt, är en skatt som betalas när man köper varor och tjänster.",
+      studyText: "Moms, eller mervärdesskatt, är en skatt som man betalar när man köper varor och tjänster.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 30",
+      active: true
+    },
+    {
+      id: "ch9-006",
+      chapter: 9,
+      category: "Skatter och välfärd",
+      question: "Vad är arbetsgivaravgifter?",
+      options: [
+        "Pengar som arbetstagaren betalar till arbetsgivaren",
+        "Avgifter som arbetsgivare betalar till staten för sina anställda",
+        "En avgift för att söka arbete",
+        "En kommunal bostadsavgift"
+      ],
+      correct: 1,
+      explanation: "Arbetsgivare betalar arbetsgivaravgifter till staten för sina anställda, utöver deras löner.",
+      studyText: "Arbetsgivare betalar avgifter till staten för sina anställda utöver deras löner. Pengarna går bland annat till sjukförsäkring och pensioner.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 30",
+      active: true
+    },
+    {
+      id: "ch9-007",
+      chapter: 9,
+      category: "Statens ansvar",
+      question: "Vilket av följande finansieras av staten?",
+      options: [
+        "Pensioner",
+        "Alla restauranger",
+        "Alla bostäder",
+        "Alla privata företag"
+      ],
+      correct: 0,
+      explanation: "Staten finansierar bland annat pensioner.",
+      studyText: "Staten finansierar bland annat pensioner, sjukförsäkring, föräldraförsäkring, arbetslöshetsförsäkring, studiestöd och barnbidrag.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 30",
+      active: true
+    },
+    {
+      id: "ch9-008",
+      chapter: 9,
+      category: "Statens ansvar",
+      question: "Vem finansierar högre utbildning och forskning inom högskolor och universitet?",
+      options: [
+        "Kommunerna",
+        "Regionerna",
+        "Staten",
+        "Fackförbunden"
+      ],
+      correct: 2,
+      explanation: "Staten finansierar högre utbildning och forskning inom högskolor och universitet.",
+      studyText: "Staten finansierar också högre utbildning och forskning inom högskolor och universitet.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 30",
+      active: true
+    },
+    {
+      id: "ch9-009",
+      chapter: 9,
+      category: "Regionernas ansvar",
+      question: "Vad ansvarar Sveriges regioner bland annat för?",
+      options: [
+        "Försvaret",
+        "Hälso- och sjukvården",
+        "Universiteten",
+        "Polisen"
+      ],
+      correct: 1,
+      explanation: "Regionerna ansvarar bland annat för hälso- och sjukvården.",
+      studyText: "Sveriges 21 regioner ska bland annat erbjuda hälso- och sjukvård till alla. De driver och finansierar sjukhus och vårdcentraler.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 30",
+      active: true
+    },
+    {
+      id: "ch9-010",
+      chapter: 9,
+      category: "Regionernas ansvar",
+      question: "Hur många regioner finns det i Sverige?",
+      options: [
+        "15",
+        "18",
+        "21",
+        "25"
+      ],
+      correct: 2,
+      explanation: "Sverige har 21 regioner.",
+      studyText: "Sveriges 21 regioner tar ut skatt av sina invånare och ska bland annat erbjuda hälso- och sjukvård till alla.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 30",
+      active: true
+    },
+    {
+      id: "ch9-011",
+      chapter: 9,
+      category: "Sjukvård",
+      question: "Vilket är ett exempel på primärvård?",
+      options: [
+        "Vårdcentral",
+        "Riksdagen",
+        "Universitet",
+        "Polisstation"
+      ],
+      correct: 0,
+      explanation: "Vårdcentraler är en del av primärvården.",
+      studyText: "Till primärvården hör vårdcentraler samt barnavårds- och mödravårdscentraler.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-012",
+      chapter: 9,
+      category: "Sjukvård",
+      question: "Var utförs till exempel operationer och avancerad behandling?",
+      options: [
+        "På bibliotek",
+        "Inom sjukhusvården",
+        "På kommunhuset",
+        "På Arbetsförmedlingen"
+      ],
+      correct: 1,
+      explanation: "Operationer och avancerad behandling utförs inom sjukhusvården.",
+      studyText: "Sjukhusvård omfattar akutsjukhus, länssjukhus och universitetssjukhus där till exempel operationer och avancerad behandling utförs.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-013",
+      chapter: 9,
+      category: "Kommunernas ansvar",
+      question: "Vem ansvarar för att det finns tillgång till skolor och utbildning i kommunen?",
+      options: [
+        "Regionen",
+        "Kommunen",
+        "EU",
+        "Fackförbunden"
+      ],
+      correct: 1,
+      explanation: "Kommunen ansvarar för att det finns tillgång till skolor och utbildning.",
+      studyText: "Det är kommunen som ser till att det finns tillgång till skolor och utbildning.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-014",
+      chapter: 9,
+      category: "Kommunernas ansvar",
+      question: "Vilket av följande är ett exempel på kommunalt styrd välfärd?",
+      options: [
+        "Försvaret",
+        "Barnomsorg",
+        "Universitetsforskning",
+        "Polisen"
+      ],
+      correct: 1,
+      explanation: "Barnomsorg är ett exempel på kommunalt styrd välfärd.",
+      studyText: "Exempel på kommunalt styrd välfärd är barnomsorg, skolor och utbildning, äldreomsorg och socialtjänst.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-015",
+      chapter: 9,
+      category: "Kommunernas ansvar",
+      question: "Vilka verksamheter hör till barnomsorgen?",
+      options: [
+        "Sjukhus och vårdcentraler",
+        "Förskolor och fritidshem",
+        "Universitet och högskolor",
+        "Polis och räddningstjänst"
+      ],
+      correct: 1,
+      explanation: "Förskolor och fritidshem hör till barnomsorgen.",
+      studyText: "Barnomsorg omfattar förskolor och fritidshem.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-016",
+      chapter: 9,
+      category: "Kommunernas ansvar",
+      question: "Vilka barn finns det grundskolor för i alla kommuner?",
+      options: [
+        "Barn mellan 3 och 10 år",
+        "Barn mellan 6 och 16 år",
+        "Barn mellan 10 och 18 år",
+        "Barn mellan 12 och 20 år"
+      ],
+      correct: 1,
+      explanation: "I alla kommuner finns grundskolor för barn mellan 6 och 16 år.",
+      studyText: "I alla kommuner finns grundskolor för barn mellan 6 och 16 år. Det finns också gymnasieskolor och kommunal vuxenutbildning.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-017",
+      chapter: 9,
+      category: "Äldreomsorg",
+      question: "Vem ska enligt svensk lag erbjuda äldre stöd och hjälp?",
+      options: [
+        "Kommunen",
+        "Polisen",
+        "Universiteten",
+        "Fackförbunden"
+      ],
+      correct: 0,
+      explanation: "Enligt svensk lag ska kommunerna erbjuda äldre stöd och hjälp.",
+      studyText: "Kommunen kan hjälpa till med vård och service så att äldre kan bo kvar hemma. Om det inte fungerar kan de flytta till ett boende anpassat för äldre personer.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-018",
+      chapter: 9,
+      category: "Äldreomsorg",
+      question: "Vad kan hända om en äldre person inte längre kan bo kvar hemma?",
+      options: [
+        "Personen måste lämna kommunen",
+        "Personen kan flytta till ett boende anpassat för äldre",
+        "Personen måste flytta till ett sjukhus permanent",
+        "Staten tar över bostaden"
+      ],
+      correct: 1,
+      explanation: "Om det inte fungerar att bo kvar hemma kan personen flytta till ett boende anpassat för äldre.",
+      studyText: "Kommunen kan ge vård och service så att äldre kan bo kvar hemma. Om det inte fungerar kan de flytta till ett boende anpassat för äldre personer.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-019",
+      chapter: 9,
+      category: "Socialtjänsten",
+      question: "Var finns socialtjänsten?",
+      options: [
+        "Bara i Stockholm",
+        "I varje kommun",
+        "Bara i regionerna",
+        "Bara på sjukhusen"
+      ],
+      correct: 1,
+      explanation: "I varje kommun finns en socialtjänst.",
+      studyText: "I varje kommun finns en socialtjänst som ansvarar för att de som behöver får stöd och skydd.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-020",
+      chapter: 9,
+      category: "Socialtjänsten",
+      question: "Vad ansvarar socialtjänsten för?",
+      options: [
+        "Att bestämma räntan",
+        "Att ge stöd och skydd till dem som behöver det",
+        "Att sköta Sveriges försvar",
+        "Att driva universitet"
+      ],
+      correct: 1,
+      explanation: "Socialtjänsten ansvarar för att de som behöver får stöd och skydd.",
+      studyText: "Socialtjänsten kan ge omsorg, vård och service, rådgivning, ekonomisk hjälp och annat bistånd.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-021",
+      chapter: 9,
+      category: "Socialtjänsten",
+      question: "Vilka kan få hjälp av socialtjänsten?",
+      options: [
+        "Bara äldre personer",
+        "Bara barn",
+        "Personer och familjer som behöver stöd och skydd",
+        "Bara personer som arbetar"
+      ],
+      correct: 2,
+      explanation: "Socialtjänsten kan hjälpa många olika personer och familjer som behöver stöd och skydd.",
+      studyText: "Socialtjänsten kan bland annat hjälpa familjer som saknar tillräckligt med pengar, personer utan bostad, människor med missbruksproblem eller personer som utsätts för hot och våld.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    },
+    {
+      id: "ch9-022",
+      chapter: 9,
+      category: "Socialtjänsten",
+      question: "Kan socialtjänsten hjälpa personer med funktionsnedsättning?",
+      options: [
+        "Ja",
+        "Nej",
+        "Bara om personen är pensionär",
+        "Bara om personen bor på sjukhus"
+      ],
+      correct: 0,
+      explanation: "Ja. Socialtjänsten kan ge stöd och hjälp till personer med funktionsnedsättning.",
+      studyText: "Socialtjänsten kan ge stöd och hjälp till personer med funktionsnedsättning och ge råd om och hjälp till arbete och studier.",
+      source: "Sverige i fokus 2026-1, kapitel 9, s. 31",
+      active: true
+    }
+  ];
+
+  const existing =
+    Array.isArray(window.quizQuestions) ? window.quizQuestions :
+    Array.isArray(window.questions) ? window.questions :
+    [];
+
+  const cleaned = existing.filter(
+    q => !replacementChapters.has(Number(q.chapter))
+  );
+
+  const merged = [...cleaned, ...chapter9Questions];
+
+  window.quizQuestions = merged;
+  window.questions = merged;
+
+  console.log(
+    `Kapitel 9 laddat: ${chapter9Questions.length} källverifierade frågor. Totalt: ${merged.length}.`
+  );
+})();
