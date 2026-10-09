@@ -1,0 +1,436 @@
+// Sverigequiz – kapitel 11
+// Sverige och omvärlden
+// Källa: Sverige i fokus 2026-1, korrigerad 2026-08-10
+
+(() => {
+  const replacementChapters = new Set([11]);
+
+  const chapter11Questions = [
+    {
+      id: "ch11-001",
+      chapter: 11,
+      category: "Nordiskt samarbete",
+      question: "Vilka länder samarbetar Sverige med inom det nordiska samarbetet?",
+      options: [
+        "Danmark, Finland, Island och Norge",
+        "Tyskland, Frankrike, Norge och Finland",
+        "Danmark, Polen, Island och Tyskland",
+        "Finland, Estland, Lettland och Norge"
+      ],
+      correct: 0,
+      explanation: "Sverige samarbetar med Danmark, Finland, Island och Norge.",
+      studyText: "Sverige samarbetar med de andra nordiska länderna Danmark, Finland, Island och Norge.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-002",
+      chapter: 11,
+      category: "Nordiskt samarbete",
+      question: "Genom vilka organisationer sker det nordiska samarbetet främst?",
+      options: [
+        "EU och Nato",
+        "Nordiska rådet och Nordiska ministerrådet",
+        "FN och Europarådet",
+        "Sida och Europadomstolen"
+      ],
+      correct: 1,
+      explanation: "Det nordiska samarbetet sker främst genom Nordiska rådet och Nordiska ministerrådet.",
+      studyText: "Sverige samarbetar med de andra nordiska länderna främst genom Nordiska rådet och Nordiska ministerrådet.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-003",
+      chapter: 11,
+      category: "EU",
+      question: "Vad är EU?",
+      options: [
+        "En militär organisation",
+        "Ett politiskt och ekonomiskt samarbete mellan europeiska länder",
+        "En organisation bara för nordiska länder",
+        "En svensk myndighet"
+      ],
+      correct: 1,
+      explanation: "EU är ett politiskt och ekonomiskt samarbete mellan flera europeiska länder.",
+      studyText: "Europeiska unionen, EU, är ett politiskt och ekonomiskt samarbete mellan flera europeiska länder.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-004",
+      chapter: 11,
+      category: "EU",
+      question: "Varför startade det europeiska samarbete som blev EU?",
+      options: [
+        "För att skapa fred och stabilitet i Europa",
+        "För att skapa ett gemensamt försvar för hela världen",
+        "För att ersätta FN",
+        "För att avskaffa alla nationella regeringar"
+      ],
+      correct: 0,
+      explanation: "Samarbetet startade efter andra världskriget för att skapa fred och stabilitet i Europa.",
+      studyText: "EU-samarbetet startade efter andra världskriget för att skapa fred och stabilitet i Europa.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-005",
+      chapter: 11,
+      category: "EU",
+      question: "När blev Sverige medlem i EU?",
+      options: [
+        "1945",
+        "1976",
+        "1995",
+        "2024"
+      ],
+      correct: 2,
+      explanation: "Sverige har varit medlem i EU sedan 1995.",
+      studyText: "Sverige blev medlem i Europeiska unionen 1995.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-006",
+      chapter: 11,
+      category: "EU",
+      question: "Vilket av följande samarbetar EU-länderna om?",
+      options: [
+        "Jordbruk, ekonomi, miljö, handel och migration",
+        "Bara militärt försvar",
+        "Bara utbildning",
+        "Bara idrott"
+      ],
+      correct: 0,
+      explanation: "EU-länderna samarbetar bland annat om jordbruk, ekonomi, miljö, handel och migration.",
+      studyText: "EU-länderna samarbetar inom många områden, bland annat jordbruk, ekonomi, miljö, handel och migration.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-007",
+      chapter: 11,
+      category: "EU",
+      question: "Vad innebär EU:s fyra friheter bland annat?",
+      options: [
+        "Att EU-medborgare kan arbeta eller studera i ett annat EU-land",
+        "Att alla EU-länder har samma regering",
+        "Att alla måste använda samma språk",
+        "Att alla EU-länder har samma skatter"
+      ],
+      correct: 0,
+      explanation: "De fyra friheterna innebär bland annat att EU-medborgare kan arbeta eller studera i ett annat EU-land.",
+      studyText: "EU-samarbetet innebär att människor kan studera, flytta, arbeta och sälja varor fritt mellan länderna. Det kallas de fyra friheterna.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-008",
+      chapter: 11,
+      category: "Europarådet",
+      question: "Vad arbetar Europarådet för?",
+      options: [
+        "Mänskliga rättigheter, demokrati och rättsstatens principer",
+        "Gemensamma europeiska skatter",
+        "Ett gemensamt europeiskt försvar",
+        "Att bestämma medlemsländernas löner"
+      ],
+      correct: 0,
+      explanation: "Europarådet arbetar för mänskliga rättigheter, demokrati och rättsstatens principer.",
+      studyText: "Europarådet bildades 1949 och arbetar för mänskliga rättigheter, demokrati och rättsstatens principer.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-009",
+      chapter: 11,
+      category: "Europarådet",
+      question: "Vilken domstol finns inom Europarådet?",
+      options: [
+        "Europeiska domstolen för de mänskliga rättigheterna",
+        "Sveriges Högsta domstol",
+        "Internationella handelsdomstolen",
+        "Nordiska domstolen"
+      ],
+      correct: 0,
+      explanation: "Inom Europarådet finns Europeiska domstolen för de mänskliga rättigheterna, Europadomstolen.",
+      studyText: "I Europarådet finns Europeiska domstolen för de mänskliga rättigheterna, som också kallas Europadomstolen.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-010",
+      chapter: 11,
+      category: "FN",
+      question: "När grundades FN?",
+      options: [
+        "1809",
+        "1918",
+        "1945",
+        "1995"
+      ],
+      correct: 2,
+      explanation: "FN grundades 1945 efter andra världskriget.",
+      studyText: "Nästan alla världens länder är med i FN, som grundades 1945 efter andra världskriget.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-011",
+      chapter: 11,
+      category: "FN",
+      question: "Vilket är ett av FN:s syften?",
+      options: [
+        "Att bevara fred och säkerhet i världen",
+        "Att bestämma alla länders skatter",
+        "Att styra alla medlemsländers regeringar",
+        "Att ersätta nationella parlament"
+      ],
+      correct: 0,
+      explanation: "Ett av FN:s syften är att bevara fred och säkerhet i världen.",
+      studyText: "FN ska bland annat bevara fred och säkerhet, lösa konflikter och stoppa krig samt arbeta för mänskliga rättigheter och friheter.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-012",
+      chapter: 11,
+      category: "Sida",
+      question: "Vad är Sida?",
+      options: [
+        "En svensk statlig myndighet",
+        "En militär organisation",
+        "En domstol",
+        "Ett politiskt parti"
+      ],
+      correct: 0,
+      explanation: "Sida är en svensk statlig myndighet.",
+      studyText: "Styrelsen för internationellt utvecklingssamarbete, Sida, är en statlig myndighet som arbetar för att minska fattigdom och förtryck i världen.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-013",
+      chapter: 11,
+      category: "Sida",
+      question: "Vad arbetar Sida för att minska i världen?",
+      options: [
+        "Fattigdom och förtryck",
+        "Internationell handel",
+        "Utbildning",
+        "Demokrati"
+      ],
+      correct: 0,
+      explanation: "Sida arbetar för att minska fattigdom och förtryck.",
+      studyText: "Genom Sida stödjer Sverige andra länder med att utveckla demokrati, jämställdhet, ekonomi och ett hållbart samhälle.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 39",
+      active: true
+    },
+    {
+      id: "ch11-014",
+      chapter: 11,
+      category: "Sveriges historia",
+      question: "När förde Sverige senast krig mot en annan stat?",
+      options: [
+        "I början av 1800-talet",
+        "Under första världskriget",
+        "Under andra världskriget",
+        "På 1990-talet"
+      ],
+      correct: 0,
+      explanation: "Sverige förde senast krig mot en annan stat i början av 1800-talet.",
+      studyText: "Senast Sverige förde krig mot en annan stat var i början av 1800-talet. Därefter har svensk politik varit inriktad på att undvika nya krig.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 40",
+      active: true
+    },
+    {
+      id: "ch11-015",
+      chapter: 11,
+      category: "Sveriges historia",
+      question: "Vilket område förlorade Sverige i kriget mot Ryssland 1808–1809?",
+      options: [
+        "Norge",
+        "Finland",
+        "Danmark",
+        "Island"
+      ],
+      correct: 1,
+      explanation: "Sverige förlorade Finland i kriget mot Ryssland 1808–1809.",
+      studyText: "I kriget mot Ryssland 1808–1809 förlorade Sverige Finland, som hade varit en del av Sverige under nästan 700 år.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 40",
+      active: true
+    },
+    {
+      id: "ch11-016",
+      chapter: 11,
+      category: "Kalla kriget",
+      question: "Vilken hållning hade Sverige till Nato under kalla kriget?",
+      options: [
+        "Sverige var medlem från början",
+        "Sverige var neutralt och stod utanför Nato",
+        "Sverige ledde Nato",
+        "Sverige lämnade Nato 1991"
+      ],
+      correct: 1,
+      explanation: "Under kalla kriget fortsatte Sverige att vara neutralt och stod utanför Nato.",
+      studyText: "Danmark och Norge anslöt sig till Nato. Sverige fortsatte att vara neutralt och valde att stå utanför Nato.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 40",
+      active: true
+    },
+    {
+      id: "ch11-017",
+      chapter: 11,
+      category: "Nato",
+      question: "Vad bidrog till att Sverige och Finland ansökte om medlemskap i Nato?",
+      options: [
+        "Rysslands angrepp på Ukraina 2022",
+        "Sveriges EU-inträde 1995",
+        "Norges självständighet 1905",
+        "FN:s bildande 1945"
+      ],
+      correct: 0,
+      explanation: "Rysslands angrepp på Ukraina 2022 ökade oron för säkerheten i Norden.",
+      studyText: "När Ryssland angrep Ukraina 2022 ökade oron för säkerheten i Norden. Sverige och Finland valde därför att nästan samtidigt ansöka om medlemskap i Nato.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 40",
+      active: true
+    },
+    {
+      id: "ch11-018",
+      chapter: 11,
+      category: "Nato",
+      question: "När blev Sverige medlem i Nato?",
+      options: [
+        "1991",
+        "1995",
+        "2022",
+        "2024"
+      ],
+      correct: 3,
+      explanation: "Sverige blev medlem i Nato 2024.",
+      studyText: "Nato är en försvarsallians som syftar till att skydda medlemsländerna. Sverige blev medlem år 2024.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 40",
+      active: true
+    },
+    {
+      id: "ch11-019",
+      chapter: 11,
+      category: "Totalförsvar",
+      question: "Vilka kan omfattas av totalförsvarsplikten?",
+      options: [
+        "Alla som bor i Sverige och är mellan 16 och 70 år",
+        "Bara svenska män mellan 18 och 25 år",
+        "Bara militärer",
+        "Bara svenska medborgare över 30 år"
+      ],
+      correct: 0,
+      explanation: "Alla som bor i Sverige och är mellan 16 och 70 år kan bli tvungna att hjälpa till att försvara landet om det behövs.",
+      studyText: "Alla som bor i Sverige och är mellan 16 och 70 år kan bli tvungna att hjälpa till att försvara landet om det behövs. Det kallas totalförsvarsplikt.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 40",
+      active: true
+    },
+    {
+      id: "ch11-020",
+      chapter: 11,
+      category: "Totalförsvar",
+      question: "Vilka två delar ingår i Sveriges totalförsvar?",
+      options: [
+        "Det militära och det civila försvaret",
+        "Polisen och domstolarna",
+        "Armén och polisen",
+        "Nato och EU"
+      ],
+      correct: 0,
+      explanation: "Totalförsvaret omfattar både det militära försvaret och det civila försvaret.",
+      studyText: "Det svenska totalförsvaret omfattar både det militära försvaret och det civila försvaret.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 40",
+      active: true
+    },
+    {
+      id: "ch11-021",
+      chapter: 11,
+      category: "Militärt försvar",
+      question: "Vilka delar består Försvarsmakten av?",
+      options: [
+        "Armén, marinen och flygvapnet",
+        "Polisen, marinen och räddningstjänsten",
+        "Armén, polisen och kustbevakningen",
+        "Flygvapnet, kommunen och regionen"
+      ],
+      correct: 0,
+      explanation: "Försvarsmakten består av armén, marinen och flygvapnet.",
+      studyText: "Det militära försvaret består av Försvarsmakten: armén, marinen och flygvapnet.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 41",
+      active: true
+    },
+    {
+      id: "ch11-022",
+      chapter: 11,
+      category: "Värnplikt",
+      question: "Vilka omfattas av den allmänna värnplikten?",
+      options: [
+        "Alla män och kvinnor som har fyllt 18 år",
+        "Bara män över 20 år",
+        "Bara personer som redan arbetar inom Försvarsmakten",
+        "Alla som är mellan 16 och 70 år"
+      ],
+      correct: 0,
+      explanation: "Den allmänna värnplikten omfattar alla män och kvinnor som har fyllt 18 år.",
+      studyText: "Sverige har allmän värnplikt. Den omfattar alla män och kvinnor som har fyllt 18 år. De får svara på frågor och göra tester.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 41",
+      active: true
+    },
+    {
+      id: "ch11-023",
+      chapter: 11,
+      category: "Värnplikt",
+      question: "Genomför alla som omfattas av värnplikten militär utbildning?",
+      options: [
+        "Ja, alla",
+        "Nej, bara en del går vidare och genomför utbildningen",
+        "Bara kvinnor",
+        "Bara personer över 30 år"
+      ],
+      correct: 1,
+      explanation: "Bara en del går vidare och genomför den grundläggande militära utbildningen.",
+      studyText: "De som omfattas får svara på frågor och göra tester. Sedan beslutas vilka som blir aktuella för grundläggande militär utbildning. Bara en del går vidare.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 41",
+      active: true
+    },
+    {
+      id: "ch11-024",
+      chapter: 11,
+      category: "Civilt försvar",
+      question: "Vad är en uppgift för det civila försvaret?",
+      options: [
+        "Att viktiga verksamheter ska kunna fortsätta fungera vid krig eller kris",
+        "Att bestämma Sveriges lagar",
+        "Att bestämma räntor och skatter",
+        "Att ersätta Försvarsmakten"
+      ],
+      correct: 0,
+      explanation: "Det civila försvaret ska bidra till att viktiga delar av samhället fungerar även vid krig eller kris.",
+      studyText: "I det civila försvaret ingår verksamheter som säkerställer att till exempel skola, arbete och hälso- och sjukvård kan fortsätta fungera vid krig eller kris.",
+      source: "Sverige i fokus 2026-1, kapitel 11, s. 41",
+      active: true
+    }
+  ];
+
+  const existing =
+    Array.isArray(window.quizQuestions) ? window.quizQuestions :
+    Array.isArray(window.questions) ? window.questions :
+    [];
+
+  const cleaned = existing.filter(
+    q => !replacementChapters.has(Number(q.chapter))
+  );
+
+  const merged = [...cleaned, ...chapter11Questions];
+
+  window.quizQuestions = merged;
+  window.questions = merged;
+
+  console.log(
+    `Kapitel 11 laddat: ${chapter11Questions.length} källverifierade frågor. Totalt: ${merged.length}.`
+  );
+})();
