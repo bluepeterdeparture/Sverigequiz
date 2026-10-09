@@ -1,0 +1,403 @@
+// Sverigequiz – kapitel 8
+// Arbetsmarknad och privatekonomi
+// Källa: Sverige i fokus 2026-1, korrigerad 2026-08-10
+
+(() => {
+  const replacementChapters = new Set([8]);
+
+  const chapter8Questions = [
+    {
+      id: "ch8-001",
+      chapter: 8,
+      category: "Arbetsmarknad",
+      question: "Vilka två delar kan arbetsmarknaden delas upp i?",
+      options: [
+        "Statlig och kommunal sektor",
+        "Offentlig och privat sektor",
+        "Svensk och utländsk sektor",
+        "Stor och liten sektor"
+      ],
+      correct: 1,
+      explanation: "Arbetsmarknaden kan delas upp i offentlig och privat sektor.",
+      studyText: "Den offentliga sektorn består av verksamheter som staten, regionerna och kommunerna ansvarar för och som finansieras med skatter. Den privata sektorn består av företag som ägs privat.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 27",
+      active: true
+    },
+    {
+      id: "ch8-002",
+      chapter: 8,
+      category: "Arbetsmarknad",
+      question: "Hur finansieras den offentliga sektorn?",
+      options: [
+        "Med medlemsavgifter",
+        "Med skatter",
+        "Bara med lån",
+        "Bara av privata företag"
+      ],
+      correct: 1,
+      explanation: "Den offentliga sektorn finansieras med skatter.",
+      studyText: "Den offentliga sektorn består av verksamheter som staten, regionerna och kommunerna ansvarar för och som finansieras med skatter.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 27",
+      active: true
+    },
+    {
+      id: "ch8-003",
+      chapter: 8,
+      category: "Arbetsmarknad",
+      question: "Ungefär hur stor del av dem som arbetar i Sverige arbetar i den privata sektorn?",
+      options: [
+        "10 procent",
+        "30 procent",
+        "50 procent",
+        "70 procent"
+      ],
+      correct: 3,
+      explanation: "Omkring 70 procent av alla som jobbar i Sverige arbetar inom den privata sektorn.",
+      studyText: "Den privata sektorn är alla privata företag. Där arbetar omkring 70 procent av alla som jobbar i Sverige.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 27",
+      active: true
+    },
+    {
+      id: "ch8-004",
+      chapter: 8,
+      category: "Arbetsmarknad",
+      question: "Vilket av dessa yrken hör enligt Sverige i fokus till den offentliga sektorn?",
+      options: [
+        "Polis",
+        "Butiksägare",
+        "Restaurangägare",
+        "Företagare inom transport"
+      ],
+      correct: 0,
+      explanation: "Polis är ett av de yrken som nämns som exempel på arbete inom den offentliga sektorn.",
+      studyText: "Sjukvårdspersonal, lärare, barnskötare, polis och brandman är exempel på arbeten som hör till den offentliga sektorn.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 27",
+      active: true
+    },
+    {
+      id: "ch8-005",
+      chapter: 8,
+      category: "Arbetsmarknadens parter",
+      question: "Vad gör en arbetsgivare?",
+      options: [
+        "Anställer och betalar lön till arbetstagare",
+        "Bestämmer skatten i kommunen",
+        "Betalar ut A-kassa",
+        "Bestämmer alla löner i Sverige"
+      ],
+      correct: 0,
+      explanation: "Arbetsgivare anställer och betalar lön till arbetstagare.",
+      studyText: "På arbetsmarknaden finns arbetsgivare och arbetstagare. Arbetsgivare anställer och betalar lön till arbetstagarna.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 28",
+      active: true
+    },
+    {
+      id: "ch8-006",
+      chapter: 8,
+      category: "Arbetsmarknadens parter",
+      question: "Vilken organisation representerar privata företag?",
+      options: [
+        "LO",
+        "TCO",
+        "Svenskt Näringsliv",
+        "SACO"
+      ],
+      correct: 2,
+      explanation: "Svenskt Näringsliv är en arbetsgivarorganisation för privata företag.",
+      studyText: "Arbetsgivarorganisationerna representerar arbetsgivarna. Svenskt Näringsliv representerar privata företag.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 28",
+      active: true
+    },
+    {
+      id: "ch8-007",
+      chapter: 8,
+      category: "Arbetsmarknadens parter",
+      question: "Vilka representerar de fackliga organisationerna?",
+      options: [
+        "Arbetsgivarna",
+        "Arbetstagarna",
+        "Kommunerna",
+        "Bankerna"
+      ],
+      correct: 1,
+      explanation: "Fackliga organisationer representerar arbetstagarna.",
+      studyText: "Fackliga organisationer representerar arbetstagarna. De största fackliga centralorganisationerna är LO, TCO och SACO.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 28",
+      active: true
+    },
+    {
+      id: "ch8-008",
+      chapter: 8,
+      category: "Arbetsmarknadens parter",
+      question: "Vilka är Sveriges tre största fackliga centralorganisationer?",
+      options: [
+        "LO, TCO och SACO",
+        "LO, SKR och Svenskt Näringsliv",
+        "TCO, SKR och Arbetsgivarverket",
+        "SACO, Skatteverket och LO"
+      ],
+      correct: 0,
+      explanation: "De största fackliga centralorganisationerna är LO, TCO och SACO.",
+      studyText: "LO står för Landsorganisationen i Sverige, TCO för Tjänstemännens centralorganisation och SACO för Sveriges akademikers centralorganisation.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 28",
+      active: true
+    },
+    {
+      id: "ch8-009",
+      chapter: 8,
+      category: "Arbetsmarknadens parter",
+      question: "Vad är ett kollektivavtal?",
+      options: [
+        "Ett avtal om skatter",
+        "Ett avtal om löner och arbetsvillkor",
+        "Ett privat banklån",
+        "Ett avtal mellan staten och kommunen"
+      ],
+      correct: 1,
+      explanation: "Fackförbund och arbetsgivarorganisationer tecknar kollektivavtal om löner och arbetsvillkor.",
+      studyText: "Fackförbunden och arbetsgivarorganisationerna förhandlar om och tecknar kollektivavtal om löner och arbetsvillkor.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 28",
+      active: true
+    },
+    {
+      id: "ch8-010",
+      chapter: 8,
+      category: "Arbetsmarknadens parter",
+      question: "Vem bestämmer lönerna i Sverige enligt Sverige i fokus?",
+      options: [
+        "Riksdagen",
+        "Regeringen",
+        "Arbetsmarknadens parter genom förhandlingar",
+        "Skatteverket"
+      ],
+      correct: 2,
+      explanation: "Löner bestäms genom förhandlingar mellan arbetsmarknadens parter, inte av staten.",
+      studyText: "I Sverige bestäms löner genom förhandlingar mellan arbetsmarknadens parter, inte av staten.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 28",
+      active: true
+    },
+    {
+      id: "ch8-011",
+      chapter: 8,
+      category: "Lagar och regler",
+      question: "Varför finns det lagar på arbetsmarknaden?",
+      options: [
+        "För att staten ska bestämma alla löner",
+        "För att skydda de anställdas rättigheter och skapa en trygg arbetsmiljö",
+        "För att alla ska arbeta lika många timmar",
+        "För att företag inte ska kunna anställa"
+      ],
+      correct: 1,
+      explanation: "Lagarna ska bland annat skydda de anställdas rättigheter och skapa en trygg arbetsmiljö.",
+      studyText: "Det finns lagar om bland annat arbetstider, arbetsmiljö och semester för att skydda de anställdas rättigheter och skapa en trygg arbetsmiljö.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-012",
+      chapter: 8,
+      category: "Skatt på arbete",
+      question: "Vem betalar skatt på sin lön?",
+      options: [
+        "Bara offentliganställda",
+        "Bara höginkomsttagare",
+        "Alla som arbetar",
+        "Bara företagare"
+      ],
+      correct: 2,
+      explanation: "Alla som arbetar betalar skatt på sin lön.",
+      studyText: "Alla som arbetar betalar skatt på sin lön. Hur mycket man betalar beror på inkomsten.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-013",
+      chapter: 8,
+      category: "A-kassa",
+      question: "Vad är A-kassans uppgift?",
+      options: [
+        "Att ge bostadslån",
+        "Att betala ut pengar till arbetslösa medlemmar",
+        "Att bestämma löner",
+        "Att betala barnbidrag"
+      ],
+      correct: 1,
+      explanation: "A-kassan betalar ut pengar till arbetslösa medlemmar som uppfyller villkoren.",
+      studyText: "Arbetslöshetskassan, A-kassan, är en ekonomisk förening som betalar ut pengar till arbetslösa medlemmar.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-014",
+      chapter: 8,
+      category: "A-kassa",
+      question: "Vad krävs bland annat för att få ersättning från A-kassan?",
+      options: [
+        "Att man äger en bostad",
+        "Att man är aktivt arbetssökande",
+        "Att man har barn",
+        "Att man arbetar i offentlig sektor"
+      ],
+      correct: 1,
+      explanation: "Man måste bland annat vara aktivt arbetssökande.",
+      studyText: "För att få ersättning måste man ha arbetat tillräckligt många timmar under en bestämd period och vara aktivt arbetssökande.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-015",
+      chapter: 8,
+      category: "Privatekonomi",
+      question: "Vad handlar privatekonomi om?",
+      options: [
+        "Statens inkomster och utgifter",
+        "Företagens skatter",
+        "Människors privata inkomster och utgifter",
+        "Kommunernas budget"
+      ],
+      correct: 2,
+      explanation: "Privatekonomi handlar om människors privata inkomster och utgifter.",
+      studyText: "Inkomster kan vara lön eller bidrag. Utgifter är kostnader för till exempel boende, mat och kläder.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-016",
+      chapter: 8,
+      category: "Privatekonomi",
+      question: "Vad kan påverka hur mycket en person tjänar?",
+      options: [
+        "Yrke, utbildning, erfarenhet och bransch",
+        "Bara personens ålder",
+        "Bara var personen bor",
+        "Bara hur länge personen har bott i Sverige"
+      ],
+      correct: 0,
+      explanation: "Lönen kan bland annat bero på yrke, utbildning, erfarenhet och bransch.",
+      studyText: "Hur mycket man tjänar beror enligt Sverige i fokus på yrke, utbildning, erfarenhet och bransch.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-017",
+      chapter: 8,
+      category: "Privatekonomi",
+      question: "Vilket av följande är ett exempel på en socialförsäkring som nämns i Sverige i fokus?",
+      options: [
+        "Bostadslån",
+        "Kreditkort",
+        "Sjukpenning",
+        "Sparkonto"
+      ],
+      correct: 2,
+      explanation: "Sjukpenning nämns som ett exempel tillsammans med pension och barnbidrag.",
+      studyText: "Staten ger pengar genom socialförsäkringar som till exempel pension, sjukpenning och barnbidrag.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-018",
+      chapter: 8,
+      category: "Privatekonomi",
+      question: "Var kan människor enligt Sverige i fokus spara pengar?",
+      options: [
+        "Bara på bankkonto",
+        "På bankkonton, i fonder eller aktier",
+        "Bara i aktier",
+        "Bara i bostäder"
+      ],
+      correct: 1,
+      explanation: "Människor kan spara pengar på bankkonton, i fonder eller aktier.",
+      studyText: "Sverige i fokus nämner bankkonton, fonder och aktier som sätt att spara pengar.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-019",
+      chapter: 8,
+      category: "Privatekonomi",
+      question: "Varför är bostadslån ofta en stor del av privatekonomin?",
+      options: [
+        "För att alla måste köpa en bostad",
+        "För att bostadspriserna har stigit kraftigt i många delar av Sverige",
+        "För att bostadslån saknar ränta",
+        "För att staten betalar alla bostadslån"
+      ],
+      correct: 1,
+      explanation: "Bostadspriserna har stigit kraftigt i många delar av Sverige, och därför är bostadslån ofta en stor del av privatekonomin.",
+      studyText: "Under de senaste decennierna har bostadspriserna i många delar av Sverige stigit kraftigt. Bostadslån är därför ofta en stor del av privatekonomin.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-020",
+      chapter: 8,
+      category: "Privatekonomi",
+      question: "Vad gör Kronofogdemyndigheten?",
+      options: [
+        "Bestämmer människors löner",
+        "Ser till att skulder blir betalda",
+        "Betalar ut pension",
+        "Bestämmer bankernas räntor"
+      ],
+      correct: 1,
+      explanation: "Kronofogdemyndigheten är en statlig myndighet som ser till att skulder blir betalda.",
+      studyText: "Kronofogdemyndigheten ser till att skulder blir betalda. Myndigheten kan också hjälpa personer med stora skulder att få ordning på ekonomin genom skuldsanering.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-021",
+      chapter: 8,
+      category: "Privatekonomi",
+      question: "Vad kallas det när en person med stora skulder får hjälp att få ordning på ekonomin?",
+      options: [
+        "Kollektivavtal",
+        "Skuldsanering",
+        "Arbetslöshetsförsäkring",
+        "Deklaration"
+      ],
+      correct: 1,
+      explanation: "Det kallas skuldsanering.",
+      studyText: "Kronofogdemyndigheten kan hjälpa personer med stora skulder att få ordning på ekonomin. Det kallas skuldsanering.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    },
+    {
+      id: "ch8-022",
+      chapter: 8,
+      category: "Privatekonomi",
+      question: "Vem ska deklarera sin inkomst till Skatteverket?",
+      options: [
+        "Bara företagare",
+        "Bara personer med hög lön",
+        "Alla som har haft en inkomst under året",
+        "Bara offentliganställda"
+      ],
+      correct: 2,
+      explanation: "Alla som har haft en inkomst under året ska deklarera sin inkomst till Skatteverket.",
+      studyText: "Alla som har haft en inkomst under året ska deklarera sin inkomst till Skatteverket.",
+      source: "Sverige i fokus 2026-1, kapitel 8, s. 29",
+      active: true
+    }
+  ];
+
+  const existing =
+    Array.isArray(window.quizQuestions) ? window.quizQuestions :
+    Array.isArray(window.questions) ? window.questions :
+    [];
+
+  const cleaned = existing.filter(
+    q => !replacementChapters.has(Number(q.chapter))
+  );
+
+  const merged = [...cleaned, ...chapter8Questions];
+
+  // Stöd för båda variabelnamnen som kan användas i appen.
+  window.quizQuestions = merged;
+  window.questions = merged;
+
+  console.log(
+    `Kapitel 8 laddat: ${chapter8Questions.length} källverifierade frågor. Totalt: ${merged.length}.`
+  );
+})();
