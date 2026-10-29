@@ -5,11 +5,18 @@
 (() => {
   const replacementChapters = new Set([10]);
 
-  const chapter10Questions = [
+  window.SVERIGEQUIZ_QUESTIONS =
+    window.SVERIGEQUIZ_QUESTIONS.filter(
+      q => !replacementChapters.has(q.chapter)
+    );
+
+  const chapterQuestions = [
     {
-      id: "ch10-001",
+      id: "ch10-01",
       chapter: 10,
-      category: "Jordbrukssamhället",
+      category: "sveriges_moderna_historia",
+      topic: "jordbrukssamhalle",
+      difficulty: "easy",
       question: "Hur såg Sverige ut för ungefär 200 år sedan?",
       options: [
         "Det var ett högteknologiskt samhälle",
@@ -17,16 +24,22 @@
         "Det var ett rikt industriland",
         "De flesta bodde i stora städer"
       ],
-      correct: 1,
-      explanation: "För ungefär 200 år sedan var Sverige ett typiskt jordbruksland.",
-      studyText: "Nästan hela befolkningen bodde på landet och arbetade med att odla jorden och sköta djur. Sverige var då ett fattigt land.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 32",
+      correctIndex: 1,
+      explanationSv: "För ungefär 200 år sedan var Sverige ett typiskt jordbruksland.",
+      studyTitle: "Sverige som jordbruksland",
+      studyText: "För ungefär 200 år sedan var Sverige ett typiskt jordbruksland. Nästan hela befolkningen bodde på landet och arbetade med att odla jorden och sköta djur.",
+      studyRemember: "För 200 år sedan var Sverige ett fattigt jordbruksland.",
+      section: "Från jordbrukssamhälle till industrisamhälle",
+      sourcePage: 32,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-002",
+      id: "ch10-02",
       chapter: 10,
-      category: "Industrialisering",
+      category: "sveriges_moderna_historia",
+      topic: "industrialisering",
+      difficulty: "easy",
       question: "Vad hände i Sverige under 1800-talet?",
       options: [
         "Sverige började utvecklas till ett industrisamhälle",
@@ -34,16 +47,22 @@
         "Människor flyttade från städerna till landsbygden",
         "Industrin försvann"
       ],
-      correct: 0,
-      explanation: "Under 1800-talet började Sverige utvecklas till ett industrisamhälle.",
-      studyText: "Effektiva maskiner uppfanns och industrier växte fram. Många människor flyttade till städerna och började arbeta i fabriker.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 32",
+      correctIndex: 0,
+      explanationSv: "Under 1800-talet började Sverige utvecklas till ett industrisamhälle.",
+      studyTitle: "Industrialiseringen",
+      studyText: "Under 1800-talet uppfanns effektiva maskiner och industrier växte fram. Sverige började utvecklas till ett industrisamhälle och många människor flyttade till städerna för att arbeta i fabriker.",
+      studyRemember: "1800-talet förändrade Sverige från jordbruksland mot industrisamhälle.",
+      section: "Från jordbrukssamhälle till industrisamhälle",
+      sourcePage: 32,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-003",
+      id: "ch10-03",
       chapter: 10,
-      category: "Befolkning",
+      category: "sveriges_moderna_historia",
+      topic: "befolkning",
+      difficulty: "medium",
       question: "Ungefär hur många människor bodde i Sverige i början av 1800-talet?",
       options: [
         "1 miljon",
@@ -51,16 +70,22 @@
         "5 miljoner",
         "10 miljoner"
       ],
-      correct: 1,
-      explanation: "I början av 1800-talet hade Sverige omkring 2,5 miljoner invånare.",
-      studyText: "I början av 1800-talet fanns omkring 2,5 miljoner invånare. Hundra år senare var befolkningen dubbelt så stor.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 32",
+      correctIndex: 1,
+      explanationSv: "I början av 1800-talet hade Sverige omkring 2,5 miljoner invånare.",
+      studyTitle: "Befolkningen växer",
+      studyText: "I början av 1800-talet fanns omkring 2,5 miljoner invånare i Sverige. Hundra år senare var befolkningen dubbelt så stor.",
+      studyRemember: "Cirka 2,5 miljoner invånare i början av 1800-talet.",
+      section: "Befolkningsökning",
+      sourcePage: 32,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-004",
+      id: "ch10-04",
       chapter: 10,
-      category: "Utvandring",
+      category: "sveriges_moderna_historia",
+      topic: "utvandring",
+      difficulty: "easy",
       question: "Vart utvandrade över en miljon svenskar mellan 1850 och 1920?",
       options: [
         "Frankrike",
@@ -68,16 +93,22 @@
         "Japan",
         "Australien"
       ],
-      correct: 1,
-      explanation: "Över en miljon svenskar utvandrade till USA.",
-      studyText: "Sverige var fortfarande fattigt och många hade svårt att få arbete. Över en miljon svenskar utvandrade därför till USA mellan 1850 och 1920 i hopp om ett bättre liv.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 32",
+      correctIndex: 1,
+      explanationSv: "Över en miljon svenskar utvandrade till USA.",
+      studyTitle: "Utvandringen till USA",
+      studyText: "Sverige var fortfarande fattigt och många hade svårt att få arbete. Över en miljon svenskar utvandrade till USA mellan 1850 och 1920 i hopp om ett bättre liv.",
+      studyRemember: "Över en miljon svenskar utvandrade till USA 1850–1920.",
+      section: "Befolkningsökning",
+      sourcePage: 32,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-005",
+      id: "ch10-05",
       chapter: 10,
-      category: "Industrialisering",
+      category: "sveriges_moderna_historia",
+      topic: "industrialisering",
+      difficulty: "medium",
       question: "Vilka var några av Sveriges första större industrier?",
       options: [
         "Sågverk och stålindustrier",
@@ -85,16 +116,22 @@
         "Datorföretag",
         "Mobiltelefonfabriker"
       ],
-      correct: 0,
-      explanation: "De första större industrierna var bland annat sågverk och industrier som tillverkade stål.",
+      correctIndex: 0,
+      explanationSv: "De första större industrierna var bland annat sågverk och industrier som tillverkade stål.",
+      studyTitle: "De första industrierna",
       studyText: "De första större industrierna startades i mitten av 1800-talet. Det var bland annat sågverk som producerade trävaror och industrier som tillverkade stål.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 32",
+      studyRemember: "Sågverk och stålindustrier hörde till de första större industrierna.",
+      section: "Industrialisering",
+      sourcePage: 32,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-006",
+      id: "ch10-06",
       chapter: 10,
-      category: "Demokrati",
+      category: "sveriges_moderna_historia",
+      topic: "demokrati",
+      difficulty: "easy",
       question: "Vad hände med kungens makt genom den nya grundlagen 1809?",
       options: [
         "Den ökade",
@@ -102,16 +139,22 @@
         "Kungen fick all politisk makt",
         "Ingen förändring skedde"
       ],
-      correct: 1,
-      explanation: "Grundlagen 1809 innebar att kungens makt begränsades.",
+      correctIndex: 1,
+      explanationSv: "Grundlagen 1809 innebar att kungens makt begränsades.",
+      studyTitle: "Grundlagen 1809",
       studyText: "År 1809 antog riksdagen en ny grundlag som innebar att kungens makt blev begränsad.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 33",
+      studyRemember: "1809 begränsades kungens makt.",
+      section: "Sveriges väg till demokrati",
+      sourcePage: 33,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-007",
+      id: "ch10-07",
       chapter: 10,
-      category: "Folkrörelser",
+      category: "sveriges_moderna_historia",
+      topic: "folkrorelser",
+      difficulty: "easy",
       question: "Vilken av dessa var en av Sveriges stora folkrörelser?",
       options: [
         "Arbetarrörelsen",
@@ -119,16 +162,22 @@
         "Industrirörelsen",
         "Militärrörelsen"
       ],
-      correct: 0,
-      explanation: "Arbetarrörelsen var en av de stora folkrörelserna.",
+      correctIndex: 0,
+      explanationSv: "Arbetarrörelsen var en av de stora folkrörelserna.",
+      studyTitle: "Folkrörelserna",
       studyText: "Fyra av de största folkrörelserna var arbetarrörelsen, frikyrkorörelsen, kvinnorörelsen och nykterhetsrörelsen.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 33",
+      studyRemember: "Arbetarrörelsen, frikyrkorörelsen, kvinnorörelsen och nykterhetsrörelsen.",
+      section: "Folkrörelserna",
+      sourcePage: 33,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-008",
+      id: "ch10-08",
       chapter: 10,
-      category: "Folkrörelser",
+      category: "sveriges_moderna_historia",
+      topic: "folkrorelser",
+      difficulty: "medium",
       question: "Vad krävde människor genom folkrörelserna?",
       options: [
         "Bland annat rösträtt och religionsfrihet",
@@ -136,16 +185,22 @@
         "Att fabriker skulle förbjudas",
         "Att skolan skulle avskaffas"
       ],
-      correct: 0,
-      explanation: "Folkrörelserna krävde bland annat rösträtt, religionsfrihet och åtta timmars arbetsdag.",
+      correctIndex: 0,
+      explanationSv: "Folkrörelserna krävde bland annat rösträtt, religionsfrihet och åtta timmars arbetsdag.",
+      studyTitle: "Folkrörelsernas krav",
       studyText: "Människor organiserade sig i folkrörelser för att kräva sina rättigheter, till exempel åtta timmars arbetsdag, rösträtt och religionsfrihet.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 33",
+      studyRemember: "Folkrörelserna drev krav på rättigheter och demokratiska reformer.",
+      section: "Folkrörelserna",
+      sourcePage: 33,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-009",
+      id: "ch10-09",
       chapter: 10,
-      category: "Demokrati",
+      category: "sveriges_moderna_historia",
+      topic: "rostratt",
+      difficulty: "medium",
       question: "Vad hände år 1909?",
       options: [
         "Nästan alla män fick rösträtt",
@@ -153,16 +208,22 @@
         "Sverige blev medlem i EU",
         "Kvinnor fick ensam rösträtt"
       ],
-      correct: 0,
-      explanation: "År 1909 fick nästan alla män rätt att rösta.",
+      correctIndex: 0,
+      explanationSv: "År 1909 fick nästan alla män rätt att rösta.",
+      studyTitle: "Rösträtten 1909",
       studyText: "1909 genomförde riksdagen en lagförändring som gjorde att nästan alla män fick rätt att rösta.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 33",
+      studyRemember: "1909 fick nästan alla män rösträtt.",
+      section: "Demokratins genombrott",
+      sourcePage: 33,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-010",
+      id: "ch10-10",
       chapter: 10,
-      category: "Demokrati",
+      category: "sveriges_moderna_historia",
+      topic: "rostratt",
+      difficulty: "easy",
       question: "När hölls det första riksdagsvalet där både män och kvinnor fick rösta?",
       options: [
         "1809",
@@ -170,16 +231,22 @@
         "1921",
         "1945"
       ],
-      correct: 2,
-      explanation: "Det första riksdagsvalet där både män och kvinnor fick rösta hölls 1921.",
-      studyText: "1921 genomfördes det första riksdagsvalet där både män och kvinnor fick rösta och där kvinnor kunde bli riksdagsledamöter.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 34",
+      correctIndex: 2,
+      explanationSv: "Det första riksdagsvalet där både män och kvinnor fick rösta hölls 1921.",
+      studyTitle: "Demokratins genombrott",
+      studyText: "1921 genomfördes det första riksdagsvalet där både män och kvinnor fick rösta och där kvinnor kunde bli riksdagsledamöter. Därmed hade Sverige blivit en demokrati.",
+      studyRemember: "1921 fick både män och kvinnor rösta i riksdagsvalet.",
+      section: "Demokratins genombrott",
+      sourcePage: 34,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-011",
+      id: "ch10-11",
       chapter: 10,
-      category: "Första världskriget",
+      category: "sveriges_moderna_historia",
+      topic: "forsta_varldskriget",
+      difficulty: "easy",
       question: "Vilken hållning hade Sverige under första världskriget?",
       options: [
         "Sverige deltog på Tysklands sida",
@@ -187,16 +254,22 @@
         "Sverige förklarade sig neutralt",
         "Sverige deltog på Rysslands sida"
       ],
-      correct: 2,
-      explanation: "Sverige förklarade sig neutralt under första världskriget.",
+      correctIndex: 2,
+      explanationSv: "Sverige förklarade sig neutralt under första världskriget.",
+      studyTitle: "Första världskriget",
       studyText: "Under första världskriget 1914–1918 förklarade sig Sverige neutralt. Landet drabbades ändå av brist på mat och andra viktiga varor.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 34",
+      studyRemember: "Sverige var neutralt under första världskriget.",
+      section: "Första världskriget",
+      sourcePage: 34,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-012",
+      id: "ch10-12",
       chapter: 10,
-      category: "Arbetsmarknad",
+      category: "sveriges_moderna_historia",
+      topic: "adalen",
+      difficulty: "medium",
       question: "Vad hände i Ådalen 1931?",
       options: [
         "Militären sköt mot demonstrerande arbetare",
@@ -204,16 +277,22 @@
         "Sverige gick med i ett krig",
         "Saltsjöbadsavtalet undertecknades"
       ],
-      correct: 0,
-      explanation: "Militären sköt mot demonstrerande arbetare i Ådalen 1931 och flera människor dödades.",
+      correctIndex: 0,
+      explanationSv: "Militären sköt mot demonstrerande arbetare i Ådalen 1931 och flera människor dödades.",
+      studyTitle: "Ådalen 1931",
       studyText: "År 1931 sköt militären mot arbetare som demonstrerade i Ådalen. Flera personer dödades och händelsen visade hur djupa konflikterna var.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 35",
+      studyRemember: "Ådalen 1931: militären sköt mot demonstrerande arbetare.",
+      section: "Modernisering och folkhem",
+      sourcePage: 35,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-013",
+      id: "ch10-13",
       chapter: 10,
-      category: "Den svenska modellen",
+      category: "sveriges_moderna_historia",
+      topic: "svenska_modellen",
+      difficulty: "easy",
       question: "Vad var Saltsjöbadsavtalet 1938?",
       options: [
         "Ett avtal mellan arbetsgivare och fackförbund",
@@ -221,16 +300,22 @@
         "Ett avtal om kvinnlig rösträtt",
         "Ett avtal om medlemskap i EU"
       ],
-      correct: 0,
-      explanation: "Saltsjöbadsavtalet slöts mellan arbetsgivare och fackförbund.",
-      studyText: "År 1938 slöts ett avtal mellan arbetsgivare och fackförbund i Saltsjöbaden. Det lade grunden för den så kallade svenska modellen.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 35",
+      correctIndex: 0,
+      explanationSv: "Saltsjöbadsavtalet slöts mellan arbetsgivare och fackförbund.",
+      studyTitle: "Saltsjöbadsavtalet",
+      studyText: "År 1938 slöts ett avtal mellan arbetsgivare och fackförbund i Saltsjöbaden. Avtalet lade grunden för den så kallade svenska modellen.",
+      studyRemember: "Saltsjöbadsavtalet 1938 lade grunden för den svenska modellen.",
+      section: "Den svenska modellen",
+      sourcePage: 35,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-014",
+      id: "ch10-14",
       chapter: 10,
-      category: "Den svenska modellen",
+      category: "sveriges_moderna_historia",
+      topic: "svenska_modellen",
+      difficulty: "medium",
       question: "Vad innebär den svenska modellen på arbetsmarknaden?",
       options: [
         "Politiker bestämmer alla löner",
@@ -238,16 +323,22 @@
         "Kungen bestämmer arbetsvillkoren",
         "EU bestämmer alla svenska löner"
       ],
-      correct: 1,
-      explanation: "Arbetsgivare och fackförbund kommer överens om arbetsmarknadens villkor i kollektivavtal.",
+      correctIndex: 1,
+      explanationSv: "Arbetsgivare och fackförbund kommer överens om arbetsmarknadens villkor i kollektivavtal.",
+      studyTitle: "Den svenska modellen",
       studyText: "Den svenska modellen innebär att arbetsgivare och fackförbund, inte politikerna, kommer överens om villkoren på arbetsmarknaden i kollektivavtal.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 35",
+      studyRemember: "Arbetsgivare och fackförbund förhandlar – inte politikerna.",
+      section: "Den svenska modellen",
+      sourcePage: 35,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-015",
+      id: "ch10-15",
       chapter: 10,
-      category: "Folkhemmet",
+      category: "sveriges_moderna_historia",
+      topic: "folkhemmet",
+      difficulty: "easy",
       question: "Vem formulerade idén om folkhemmet 1928?",
       options: [
         "Raoul Wallenberg",
@@ -255,16 +346,22 @@
         "Olof Palme",
         "Gustav Vasa"
       ],
-      correct: 1,
-      explanation: "Socialdemokraternas partiledare Per Albin Hansson formulerade idén om folkhemmet 1928.",
-      studyText: "Per Albin Hansson beskrev folkhemmet som ett samhälle där alla skulle kunna känna trygghet och gemenskap oavsett bakgrund.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 35",
+      correctIndex: 1,
+      explanationSv: "Socialdemokraternas partiledare Per Albin Hansson formulerade idén om folkhemmet 1928.",
+      studyTitle: "Idén om folkhemmet",
+      studyText: "1928 formulerade Socialdemokraternas partiledare Per Albin Hansson idén om folkhemmet. Han beskrev ett samhälle där alla skulle kunna känna trygghet och gemenskap oavsett bakgrund.",
+      studyRemember: "Per Albin Hansson – folkhemmet – 1928.",
+      section: "Idén om folkhemmet",
+      sourcePage: 35,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-016",
+      id: "ch10-16",
       chapter: 10,
-      category: "Andra världskriget",
+      category: "sveriges_moderna_historia",
+      topic: "andra_varldskriget",
+      difficulty: "easy",
       question: "Vilken hållning hade Sverige under andra världskriget?",
       options: [
         "Sverige höll sig neutralt och utanför striderna",
@@ -272,16 +369,22 @@
         "Sverige deltog på Sovjetunionens sida",
         "Sverige deltog på Storbritanniens sida"
       ],
-      correct: 0,
-      explanation: "Sverige höll sig neutralt och utanför striderna.",
-      studyText: "Även under andra världskriget 1939–1945 höll sig Sverige neutralt och utanför striderna, men landet hamnade flera gånger i svåra situationer.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 35",
+      correctIndex: 0,
+      explanationSv: "Sverige höll sig neutralt och utanför striderna.",
+      studyTitle: "Andra världskriget",
+      studyText: "Under andra världskriget 1939–1945 höll sig Sverige neutralt och utanför striderna. Landet hamnade ändå flera gånger i svåra situationer.",
+      studyRemember: "Sverige höll sig neutralt under andra världskriget.",
+      section: "Andra världskriget",
+      sourcePage: 35,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-017",
+      id: "ch10-17",
       chapter: 10,
-      category: "Förintelsen",
+      category: "sveriges_moderna_historia",
+      topic: "forintelsen",
+      difficulty: "easy",
       question: "Vad gjorde Raoul Wallenberg för att hjälpa judar under Förintelsen?",
       options: [
         "Han gav dem svenska skyddspass",
@@ -289,16 +392,22 @@
         "Han organiserade riksdagsval",
         "Han ledde Röda Korset"
       ],
-      correct: 0,
-      explanation: "Raoul Wallenberg gav judar skyddspass.",
+      correctIndex: 0,
+      explanationSv: "Raoul Wallenberg gav judar skyddspass.",
+      studyTitle: "Raoul Wallenberg",
       studyText: "Den svenska diplomaten Raoul Wallenberg gav judar skyddspass som visade att de var under svenskt skydd och inte kunde skickas till koncentrationsläger.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 35",
+      studyRemember: "Raoul Wallenberg hjälpte judar med svenska skyddspass.",
+      section: "Andra världskriget",
+      sourcePage: 35,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-018",
+      id: "ch10-18",
       chapter: 10,
-      category: "Förintelsen",
+      category: "sveriges_moderna_historia",
+      topic: "forintelsen",
+      difficulty: "medium",
       question: "Ungefär hur många danska judar flydde till Sverige genom en dansk-svensk räddningsaktion?",
       options: [
         "700",
@@ -306,16 +415,22 @@
         "7 000",
         "70 000"
       ],
-      correct: 2,
-      explanation: "Omkring 7 000 danska judar flydde till Sverige.",
+      correctIndex: 2,
+      explanationSv: "Omkring 7 000 danska judar flydde till Sverige.",
+      studyTitle: "Danska judar räddas",
       studyText: "Omkring 7 000 danska judar flydde till Sverige med hjälp av en dansk-svensk räddningsaktion.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 35",
+      studyRemember: "Omkring 7 000 danska judar flydde till Sverige.",
+      section: "Andra världskriget",
+      sourcePage: 35,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-019",
+      id: "ch10-19",
       chapter: 10,
-      category: "Rekordåren",
+      category: "sveriges_moderna_historia",
+      topic: "rekordaren",
+      difficulty: "medium",
       question: "Varför kallas tiden efter andra världskriget för de svenska rekordåren?",
       options: [
         "Sverige vann många idrottstävlingar",
@@ -323,16 +438,22 @@
         "Befolkningen minskade snabbt",
         "Alla industrier stängdes"
       ],
-      correct: 1,
-      explanation: "Den starka ekonomin gjorde att stora och omfattande reformer kunde genomföras.",
-      studyText: "Efter andra världskriget hade Sverige stark ekonomisk tillväxt, mycket låg arbetslöshet och stigande levnadsstandard. Den goda ekonomin gjorde stora reformer möjliga.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 36",
+      correctIndex: 1,
+      explanationSv: "Den starka ekonomin gjorde att stora och omfattande reformer kunde genomföras.",
+      studyTitle: "Rekordåren",
+      studyText: "Efter andra världskriget hade Sverige stark ekonomisk tillväxt, mycket låg arbetslöshet och snabbt stigande levnadsstandard. Den goda ekonomin gjorde stora reformer möjliga.",
+      studyRemember: "Stark ekonomi och stora reformer gav namnet rekordåren.",
+      section: "Rekordåren",
+      sourcePage: 36,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-020",
+      id: "ch10-20",
       chapter: 10,
-      category: "Välfärdssamhället",
+      category: "sveriges_moderna_historia",
+      topic: "valfard",
+      difficulty: "easy",
       question: "Vilken rättighet fick anställda under utbyggnaden av välfärdssamhället?",
       options: [
         "Fem veckors semester med full betalning",
@@ -340,16 +461,22 @@
         "Gratis bostad",
         "Ingen arbetstid på fredagar"
       ],
-      correct: 0,
-      explanation: "Anställda fick bland annat fem veckors semester med full betalning.",
+      correctIndex: 0,
+      explanationSv: "Anställda fick bland annat fem veckors semester med full betalning.",
+      studyTitle: "Välfärdssamhället byggs ut",
       studyText: "De som arbetade fick bland annat rätt till 40 timmars arbetsvecka med lediga lördagar och fem veckors semester med full betalning.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 36",
+      studyRemember: "40-timmarsvecka och fem veckors betald semester.",
+      section: "Välfärdssamhället",
+      sourcePage: 36,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-021",
+      id: "ch10-21",
       chapter: 10,
-      category: "Invandring",
+      category: "sveriges_moderna_historia",
+      topic: "invandring",
+      difficulty: "easy",
       question: "Vad blev Sverige under rekordåren?",
       options: [
         "Ett land utan migration",
@@ -357,16 +484,22 @@
         "Ett jordbrukssamhälle igen",
         "Ett land utan industrier"
       ],
-      correct: 1,
-      explanation: "Sverige gick från att ha varit ett utvandrarland till att bli ett invandrarland.",
-      studyText: "Många människor från bland annat Finland, Grekland, Jugoslavien och Turkiet invandrade till Sverige för att arbeta.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 36",
+      correctIndex: 1,
+      explanationSv: "Sverige gick från att ha varit ett utvandrarland till att bli ett invandrarland.",
+      studyTitle: "Sverige blir ett invandrarland",
+      studyText: "Många människor från bland annat Finland, Grekland, Jugoslavien och Turkiet invandrade till Sverige för att arbeta. Sverige gick från att ha varit ett utvandrarland till att bli ett invandrarland.",
+      studyRemember: "Under rekordåren blev Sverige ett invandrarland.",
+      section: "Sverige blir ett invandrarland",
+      sourcePage: 36,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-022",
+      id: "ch10-22",
       chapter: 10,
-      category: "Miljonprogrammet",
+      category: "sveriges_moderna_historia",
+      topic: "miljonprogrammet",
+      difficulty: "easy",
       question: "Vad var målet med miljonprogrammet?",
       options: [
         "Att bygga en miljon bostäder på tio år",
@@ -374,16 +507,22 @@
         "Att bygga en miljon skolor",
         "Att få en miljon människor att flytta utomlands"
       ],
-      correct: 0,
-      explanation: "Målet var att bygga en miljon bostäder på tio år.",
+      correctIndex: 0,
+      explanationSv: "Målet var att bygga en miljon bostäder på tio år.",
+      studyTitle: "Miljonprogrammet",
       studyText: "Den snabba inflyttningen till städerna skapade bostadsbrist. Under 1960-talet startade staten miljonprogrammet med målet att bygga en miljon bostäder på tio år.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 36",
+      studyRemember: "Miljonprogrammet = en miljon bostäder på tio år.",
+      section: "Sverige blir ett invandrarland",
+      sourcePage: 36,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-023",
+      id: "ch10-23",
       chapter: 10,
-      category: "Jämställdhet",
+      category: "sveriges_moderna_historia",
+      topic: "jamstalldhet",
+      difficulty: "easy",
       question: "Vad hände med kvinnors arbetsliv under rekordåren?",
       options: [
         "Allt fler kvinnor började arbeta utanför hemmet",
@@ -391,16 +530,22 @@
         "Färre kvinnor arbetade",
         "Kvinnor fick bara arbeta i hemmet"
       ],
-      correct: 0,
-      explanation: "Allt fler kvinnor började arbeta utanför hemmet.",
-      studyText: "Under rekordåren minskade löneskillnaderna mellan män och kvinnor. Allt fler kvinnor började arbeta utanför hemmet och daghem byggdes ut.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 37",
+      correctIndex: 0,
+      explanationSv: "Allt fler kvinnor började arbeta utanför hemmet.",
+      studyTitle: "Jämställdhet",
+      studyText: "Under rekordåren minskade löneskillnaderna mellan män och kvinnor. Allt fler kvinnor började arbeta utanför hemmet och daghem för barnen byggdes ut.",
+      studyRemember: "Fler kvinnor började arbeta utanför hemmet.",
+      section: "Jämställdhet och kulturförändringar",
+      sourcePage: 37,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-024",
+      id: "ch10-24",
       chapter: 10,
-      category: "Kulturförändringar",
+      category: "sveriges_moderna_historia",
+      topic: "du_reformen",
+      difficulty: "easy",
       question: "Vad innebar du-reformen på 1960-talet?",
       options: [
         "Människor började säga 'du' till varandra i stället för titlar eller 'ni'",
@@ -408,16 +553,22 @@
         "Skolan blev frivillig",
         "Arbetsveckan blev längre"
       ],
-      correct: 0,
-      explanation: "Du-reformen innebar att människor började säga 'du' till varandra.",
+      correctIndex: 0,
+      explanationSv: "Du-reformen innebar att människor började säga 'du' till varandra.",
+      studyTitle: "Du-reformen",
       studyText: "På 1960-talet började människor säga 'du' till varandra i stället för att använda titlar eller 'ni'. Det speglade ett mer jämlikt samhälle.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 37",
+      studyRemember: "Du-reformen speglade ett mer jämlikt samhälle.",
+      section: "Jämställdhet och kulturförändringar",
+      sourcePage: 37,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-025",
+      id: "ch10-25",
       chapter: 10,
-      category: "Informationssamhället",
+      category: "sveriges_moderna_historia",
+      topic: "informationssamhallet",
+      difficulty: "medium",
       question: "Vilken stor samhällsförändring började från mitten av 1970-talet?",
       options: [
         "Industrisamhället förändrades till ett informations- och kunskapssamhälle",
@@ -425,16 +576,22 @@
         "Universiteten stängdes",
         "Den tekniska utvecklingen upphörde"
       ],
-      correct: 0,
-      explanation: "Industrisamhället började förändras till ett informations- och kunskapssamhälle.",
+      correctIndex: 0,
+      explanationSv: "Industrisamhället började förändras till ett informations- och kunskapssamhälle.",
+      studyTitle: "Informations- och kunskapssamhället",
       studyText: "Från mitten av 1970-talet gick Sverige igenom en stor samhällsförändring där industrisamhället förändrades till ett informations- och kunskapssamhälle.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 37",
+      studyRemember: "Från mitten av 1970-talet förändrades industrisamhället.",
+      section: "Informationssamhället och globalisering",
+      sourcePage: 37,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-026",
+      id: "ch10-26",
       chapter: 10,
-      category: "Informationssamhället",
+      category: "sveriges_moderna_historia",
+      topic: "utbildning",
+      difficulty: "medium",
       question: "Varför ökade behovet av utbildning i informationssamhället?",
       options: [
         "Det högteknologiska samhället krävde mer kunskap",
@@ -442,16 +599,22 @@
         "Tekniken slutade utvecklas",
         "Färre yrken krävde kunskap"
       ],
-      correct: 0,
-      explanation: "Det nya högteknologiska samhället gjorde att människor behövde mer utbildning.",
-      studyText: "Universitet och högskolor byggdes ut och fler studerade längre. Behovet av livslångt lärande ökade när kunskap snabbt blev gammal genom den tekniska utvecklingen.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 37",
+      correctIndex: 0,
+      explanationSv: "Det nya högteknologiska samhället gjorde att människor behövde mer utbildning.",
+      studyTitle: "Mer utbildning",
+      studyText: "I det nya informationssamhället behövde människor mer utbildning. Universitet och högskolor byggdes ut och fler studerade längre. Behovet av livslångt lärande ökade.",
+      studyRemember: "Informationssamhället ökade behovet av utbildning och livslångt lärande.",
+      section: "Informationssamhället",
+      sourcePage: 37,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-027",
+      id: "ch10-27",
       chapter: 10,
-      category: "Migration",
+      category: "sveriges_moderna_historia",
+      topic: "migration",
+      difficulty: "medium",
       question: "Hur förändrades invandringen till Sverige under 1990-talet?",
       options: [
         "Många kom som flyktingar från diktaturer och krigsdrabbade länder",
@@ -459,16 +622,22 @@
         "Endast människor från Norden fick komma",
         "Nästan alla kom för att arbeta inom jordbruk"
       ],
-      correct: 0,
-      explanation: "Under 1990-talet kom många som flyktingar från diktaturer eller krigsdrabbade länder.",
-      studyText: "Under 1990-talet började invandringen öka igen. Många kom som flyktingar från diktaturer eller från krigsdrabbade länder i olika delar av världen.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 38",
+      correctIndex: 0,
+      explanationSv: "Under 1990-talet kom många som flyktingar från diktaturer eller krigsdrabbade länder.",
+      studyTitle: "Ett mångkulturellt samhälle",
+      studyText: "Under 1990-talet började invandringen till Sverige öka igen. Många kom som flyktingar från diktaturer eller från krigsdrabbade länder i olika delar av världen.",
+      studyRemember: "På 1990-talet kom många flyktingar till Sverige.",
+      section: "Ett mångkulturellt samhälle",
+      sourcePage: 38,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-028",
+      id: "ch10-28",
       chapter: 10,
-      category: "Individens rättigheter",
+      category: "sveriges_moderna_historia",
+      topic: "individens_rattigheter",
+      difficulty: "medium",
       question: "Vad fick större betydelse i Sverige från 1980-talet?",
       options: [
         "Individens rättigheter",
@@ -476,16 +645,22 @@
         "Adelns rättigheter",
         "Kyrkans politiska makt"
       ],
-      correct: 0,
-      explanation: "Från 1980-talet fick individens rättigheter större betydelse.",
-      studyText: "Allt fler människor ville själva kunna välja till exempel skola och vård. Samtidigt stärktes rättigheterna för barn och olika minoriteter.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 38",
+      correctIndex: 0,
+      explanationSv: "Från 1980-talet fick individens rättigheter större betydelse.",
+      studyTitle: "Individens rättigheter",
+      studyText: "Från 1980-talet fick individens rättigheter större betydelse. Fler ville själva kunna välja till exempel skola och vård. Rättigheterna för barn och olika minoriteter stärktes också.",
+      studyRemember: "Från 1980-talet fick individens rättigheter större betydelse.",
+      section: "Individens rättigheter",
+      sourcePage: 38,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-029",
+      id: "ch10-29",
       chapter: 10,
-      category: "Digitalisering",
+      category: "sveriges_moderna_historia",
+      topic: "digitalisering",
+      difficulty: "easy",
       question: "När blev den digitala revolutionen en stor samhällsförändring enligt Sverige i fokus?",
       options: [
         "Från och med 1850-talet",
@@ -493,16 +668,22 @@
         "Från och med 1990-talet",
         "Från och med 1920-talet"
       ],
-      correct: 2,
-      explanation: "Den digitala revolutionen beskrivs som en stor förändring från och med 1990-talet.",
+      correctIndex: 2,
+      explanationSv: "Den digitala revolutionen beskrivs som en stor förändring från och med 1990-talet.",
+      studyTitle: "Den digitala revolutionen",
       studyText: "Från och med 1990-talet förändrade den digitala revolutionen samhället genom datorer, internet, smarta telefoner och senare även artificiell intelligens.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 38",
+      studyRemember: "Den digitala revolutionen tog fart från 1990-talet.",
+      section: "Digital revolution och globalisering",
+      sourcePage: 38,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch10-030",
+      id: "ch10-30",
       chapter: 10,
-      category: "Digitalisering",
+      category: "sveriges_moderna_historia",
+      topic: "digitalisering",
+      difficulty: "easy",
       question: "Vad har digitaliseringen förändrat?",
       options: [
         "Hur människor arbetar, studerar, kommunicerar och tar del av information",
@@ -510,29 +691,17 @@
         "Bara hur banker arbetar",
         "Bara hur skolor fungerar"
       ],
-      correct: 0,
-      explanation: "Digitaliseringen har förändrat många delar av människors vardag.",
+      correctIndex: 0,
+      explanationSv: "Digitaliseringen har förändrat hur människor arbetar, studerar, kommunicerar och tar del av information.",
+      studyTitle: "Digitaliseringens påverkan",
       studyText: "Datorer, internet, smarta telefoner och artificiell intelligens har förändrat hur människor arbetar, studerar, kommunicerar och tar del av information.",
-      source: "Sverige i fokus 2026-1, kapitel 10, s. 38",
+      studyRemember: "Digitaliseringen påverkar många delar av vardagen.",
+      section: "Digital revolution och globalisering",
+      sourcePage: 38,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     }
   ];
 
-  const existing =
-    Array.isArray(window.quizQuestions) ? window.quizQuestions :
-    Array.isArray(window.questions) ? window.questions :
-    [];
-
-  const cleaned = existing.filter(
-    q => !replacementChapters.has(Number(q.chapter))
-  );
-
-  const merged = [...cleaned, ...chapter10Questions];
-
-  window.quizQuestions = merged;
-  window.questions = merged;
-
-  console.log(
-    `Kapitel 10 laddat: ${chapter10Questions.length} källverifierade frågor. Totalt: ${merged.length}.`
-  );
+  window.SVERIGEQUIZ_QUESTIONS.push(...chapterQuestions);
 })();
