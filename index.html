@@ -4,10 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sverigequiz</title>
-  <link rel="stylesheet" href="style.css?v=1.4">
+
+  <link rel="stylesheet" href="style.css?v=2.0">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
+
 <body>
   <main class="app-shell">
 
@@ -17,39 +19,61 @@
 
       <div id="profile-setup" class="card">
         <label for="display-name">Ditt namn</label>
-        <input id="display-name" type="text" maxlength="40" placeholder="Skriv ditt namn">
-        <button id="save-profile" class="secondary-btn">Spara namn</button>
+        <input
+          id="display-name"
+          type="text"
+          maxlength="40"
+          placeholder="Skriv ditt namn"
+        >
+        <button id="save-profile" class="secondary-btn">
+          Spara namn
+        </button>
       </div>
 
       <div id="profile-saved" class="profile-saved hidden">
         <span id="greeting">Hej! 👋</span>
-        <button id="edit-profile" class="text-btn small-link">Byt namn</button>
+        <button id="edit-profile" class="text-btn small-link">
+          Byt namn
+        </button>
       </div>
 
-      <button id="start-quiz" class="primary-btn">Träna – 10 frågor</button>
+      <button id="start-quiz" class="primary-btn">
+        Träna – 10 frågor
+      </button>
 
       <div class="card">
         <h2>Skarpt prov</h2>
-        <p>40 frågor utan hjälpmedel. Resultatet visas när hela provet är klart.</p>
-        <button id="start-exam" class="secondary-btn">Starta skarpt prov</button>
+        <p>
+          40 frågor utan hjälpmedel.
+          Resultatet visas när hela provet är klart.
+        </p>
+        <button id="start-exam" class="secondary-btn">
+          Starta skarpt prov
+        </button>
       </div>
 
       <div class="card">
         <h2>Senaste träningsresultat</h2>
         <p id="latest-result">Inga resultat ännu.</p>
-        <button id="show-history" class="text-btn">Se tidigare resultat</button>
+        <button id="show-history" class="text-btn">
+          Se tidigare resultat
+        </button>
       </div>
 
       <p class="source-note">
         Baserad på <em>Sverige i fokus</em>, UHR/Skolverket.
         <br>
-        <span class="version-note">Sverigequiz v1.4 · uppdaterad 2026-09-20</span>
+        <span class="version-note">
+          Sverigequiz v2.0 · uppdaterad 2026-10-29
+        </span>
       </p>
     </section>
 
     <section id="screen-quiz" class="screen">
       <div class="top-row">
-        <button id="quit-quiz" class="text-btn">Avsluta</button>
+        <button id="quit-quiz" class="text-btn">
+          Avsluta
+        </button>
         <span id="progress">Fråga 1 av 10</span>
       </div>
 
@@ -57,15 +81,28 @@
         <h1 id="question-text"></h1>
 
         <div id="study-actions" class="study-actions">
-          <button id="study-first" class="study-btn">📖 Läs på först</button>
-          <button id="listen-question" class="study-btn">🔊 Lyssna</button>
+          <button id="study-first" class="study-btn">
+            📖 Läs på först
+          </button>
+          <button id="listen-question" class="study-btn">
+            🔊 Lyssna
+          </button>
         </div>
 
         <div id="study-box" class="study-box hidden">
-          <div class="study-title">📖 Sverige i fokus</div>
+          <div class="study-title">
+            📖 Sverige i fokus
+          </div>
+
           <p id="study-reference"></p>
-          <p class="study-hint">Läs avsnittet i UHR:s material och svara sedan på frågan.</p>
-          <button id="close-study" class="text-btn">Stäng</button>
+
+          <p class="study-hint">
+            Läs avsnittet i UHR:s material och svara sedan på frågan.
+          </p>
+
+          <button id="close-study" class="text-btn">
+            Stäng
+          </button>
         </div>
 
         <div id="options" class="options"></div>
@@ -74,41 +111,80 @@
       <div id="feedback" class="feedback hidden">
         <div id="feedback-title" class="feedback-title"></div>
         <p id="feedback-text"></p>
-        <button id="source-link" class="text-btn hidden">Läs mer</button>
-        <button id="next-question" class="primary-btn">Nästa fråga</button>
+
+        <button id="source-link" class="text-btn hidden">
+          Läs mer
+        </button>
+
+        <button id="next-question" class="primary-btn">
+          Nästa fråga
+        </button>
       </div>
 
-      <button id="exam-next-question" class="primary-btn hidden">Nästa fråga</button>
+      <button
+        id="exam-next-question"
+        class="primary-btn hidden"
+      >
+        Nästa fråga
+      </button>
     </section>
 
     <section id="screen-result" class="screen">
       <div class="card result-card">
         <div class="result-emoji">🎉</div>
         <h1>Klart!</h1>
+
         <p id="result-score" class="result-score"></p>
-        <button id="restart-quiz" class="primary-btn">Gör ett nytt quiz</button>
-        <button id="result-history" class="text-btn">Se tidigare resultat</button>
+
+        <button id="restart-quiz" class="primary-btn">
+          Gör ett nytt quiz
+        </button>
+
+        <button id="result-history" class="text-btn">
+          Se tidigare resultat
+        </button>
       </div>
     </section>
 
     <section id="screen-exam-result" class="screen">
       <div class="card result-card">
-        <div id="exam-result-emoji" class="result-emoji">🇸🇪</div>
-        <h1 id="exam-result-title">Skarpt prov klart</h1>
-        <p id="exam-result-score" class="result-score"></p>
+        <div id="exam-result-emoji" class="result-emoji">
+          🇸🇪
+        </div>
+
+        <h1 id="exam-result-title">
+          Skarpt prov klart
+        </h1>
+
+        <p
+          id="exam-result-score"
+          class="result-score"
+        ></p>
+
         <p id="exam-result-message"></p>
 
-        <button id="new-exam" class="primary-btn">Nytt skarpt prov</button>
-        <button id="practice-exam-errors" class="secondary-btn">
+        <button id="new-exam" class="primary-btn">
+          Nytt skarpt prov
+        </button>
+
+        <button
+          id="practice-exam-errors"
+          class="secondary-btn"
+        >
           Träna på mina fel
         </button>
-        <button id="exam-home" class="text-btn">Till startsidan</button>
+
+        <button id="exam-home" class="text-btn">
+          Till startsidan
+        </button>
       </div>
     </section>
 
     <section id="screen-history" class="screen">
       <div class="top-row">
-        <button id="back-home" class="text-btn">Tillbaka</button>
+        <button id="back-home" class="text-btn">
+          Tillbaka
+        </button>
         <span>Tidigare resultat</span>
       </div>
 
@@ -133,7 +209,8 @@
   <script src="questions-ch11.js?v=1.0"></script>
   <script src="questions-ch12.js?v=1.0"></script>
   <script src="questions-ch13.js?v=1.0"></script>
+
   <script src="storage.js?v=1.1"></script>
-  <script src="app.js?v=1.5"></script>
+  <script src="app.js?v=2.0"></script>
 </body>
 </html>
