@@ -39,6 +39,7 @@ input { width:100%; padding:14px 16px; border:1px solid var(--border); border-ra
 .option-btn:hover,.option-btn:focus { border-color:var(--navy); outline:none; }
 .option-btn.correct { border-color:var(--success); background:#eef8f1; }
 .option-btn.wrong { border-color:var(--danger); background:#fff1f1; }
+.option-btn.selected { border-color:var(--navy); background:#f1f5f9; }
 .feedback { background:#fff; border-radius:var(--radius); border:1px solid var(--border); padding:20px; }
 .feedback-title { font-size:1.3rem; font-weight:800; margin-bottom:8px; }
 .hidden { display:none !important; }
