@@ -2,10 +2,15 @@
   const questions = window.SVERIGEQUIZ_QUESTIONS.filter(q => q.active);
   const storage = window.SverigeQuizStorage;
 
+  const TRAINING_COUNT = 10;
+  const EXAM_COUNT = 40;
+  const EXAM_PASS_SCORE = 28;
+
   const screens = {
     home: document.getElementById("screen-home"),
     quiz: document.getElementById("screen-quiz"),
     result: document.getElementById("screen-result"),
+    examResult: document.getElementById("screen-exam-result"),
     history: document.getElementById("screen-history")
   };
 
@@ -14,22 +19,52 @@
   const profileSaved = document.getElementById("profile-saved");
   const greeting = document.getElementById("greeting");
   const latestResult = document.getElementById("latest-result");
+
   const progress = document.getElementById("progress");
   const questionText = document.getElementById("question-text");
   const optionsEl = document.getElementById("options");
+
+  const studyActions = document.getElementById("study-actions");
+  const studyBox = document.getElementById("study-box");
+  const studyReference = document.getElementById("study-reference");
+
   const feedback = document.getElementById("feedback");
   const feedbackTitle = document.getElementById("feedback-title");
   const feedbackText = document.getElementById("feedback-text");
   const sourceLink = document.getElementById("source-link");
+
+  const nextQuestionButton =
+    document.getElementById("next-question");
+
+  const examNextQuestionButton =
+    document.getElementById("exam-next-question");
+
   const resultScore = document.getElementById("result-score");
   const historyList = document.getElementById("history-list");
-  const studyBox = document.getElementById("study-box");
-  const studyReference = document.getElementById("study-reference");
+
+  const examResultEmoji =
+    document.getElementById("exam-result-emoji");
+
+  const examResultTitle =
+    document.getElementById("exam-result-title");
+
+  const examResultScore =
+    document.getElementById("exam-result-score");
+
+  const examResultMessage =
+    document.getElementById("exam-result-message");
+
+  const practiceExamErrorsButton =
+    document.getElementById("practice-exam-errors");
 
   let session = null;
+  let lastExamWrongQuestionIds = [];
 
   function showScreen(name) {
-    Object.values(screens).forEach(s => s.classList.remove("active"));
+    Object.values(screens).forEach(
+      screen => screen.classList.remove("active")
+    );
+
     screens[name].classList.add("active");
   }
 
@@ -66,15 +101,14 @@
       profile = storage.saveProfile(
         displayName.value || "Användare"
       );
+
       renderProfile();
     }
 
     return profile;
   }
 
-  function startQuiz() {
-    const profile = ensureProfile();
-
+  function selectTrainingQuestions() {
     const reviewIds = new Set(
       storage.getReviewQuestionIds()
     );
@@ -96,7 +130,7 @@
     );
 
     const ordinaryCount = Math.min(
-      10 - selectedReviewQuestions.length,
+      TRAINING_COUNT - selectedReviewQuestions.length,
       ordinaryQuestions.length
     );
 
@@ -104,23 +138,146 @@
       ordinaryQuestions
     ).slice(0, ordinaryCount);
 
-    const selected = shuffle([
-      ...selectedReviewQuestions,
-      ...selectedOrdinaryQuestions
-    ]);
+    return {
+      questions: shuffle([
+        ...selectedReviewQuestions,
+        ...selectedOrdinaryQuestions
+      ]),
+      reviewQuestionIds: [...selectedReviewIds]
+    };
+  }
+
+  function startQuiz() {
+    const profile = ensureProfile();
+    const selection = selectTrainingQuestions();
 
     session = {
+      mode: "training",
       sessionId: storage.makeId("s"),
       userId: profile.userId,
       startedAt: new Date().toISOString(),
-      questions: selected,
-      reviewQuestionIds: [...selectedReviewIds],
+      questions: selection.questions,
+      reviewQuestionIds: selection.reviewQuestionIds,
       currentIndex: 0,
       correctCount: 0,
       wrongQuestionIds: [],
       answered: false,
       currentChoices: []
     };
+
+    studyActions.classList.remove("hidden");
+    examNextQuestionButton.classList.add("hidden");
+
+    showScreen("quiz");
+    renderQuestion();
+  }
+
+  function buildBalancedExamPool(availableQuestions) {
+    const byChapter = new Map();
+
+    availableQuestions.forEach(q => {
+      if (!byChapter.has(q.chapter)) {
+        byChapter.set(q.chapter, []);
+      }
+
+      byChapter.get(q.chapter).push(q);
+    });
+
+    const selected = [];
+    const selectedIds = new Set();
+
+    const chapters = [...byChapter.keys()].sort(
+      (a, b) => a - b
+    );
+
+    const basePerChapter = Math.floor(
+      EXAM_COUNT / chapters.length
+    );
+
+    chapters.forEach(chapter => {
+      const chapterQuestions = shuffle(
+        byChapter.get(chapter)
+      );
+
+      chapterQuestions
+        .slice(0, basePerChapter)
+        .forEach(q => {
+          selected.push(q);
+          selectedIds.add(q.id);
+        });
+    });
+
+    const remainingCount =
+      EXAM_COUNT - selected.length;
+
+    if (remainingCount > 0) {
+      const remaining = shuffle(
+        availableQuestions.filter(
+          q => !selectedIds.has(q.id)
+        )
+      );
+
+      remaining
+        .slice(0, remainingCount)
+        .forEach(q => {
+          selected.push(q);
+          selectedIds.add(q.id);
+        });
+    }
+
+    return shuffle(selected);
+  }
+
+  function selectExamQuestions() {
+    let usedIds = new Set(
+      storage.getExamUsedQuestionIds()
+    );
+
+    let available = questions.filter(
+      q => !usedIds.has(q.id)
+    );
+
+    if (available.length < EXAM_COUNT) {
+      storage.resetExamUsedQuestionIds();
+      usedIds = new Set();
+      available = [...questions];
+    }
+
+    const selected = buildBalancedExamPool(available);
+
+    const updatedUsedIds = [
+      ...usedIds,
+      ...selected.map(q => q.id)
+    ];
+
+    storage.saveExamUsedQuestionIds(
+      updatedUsedIds
+    );
+
+    return selected;
+  }
+
+  function startExam() {
+    const profile = ensureProfile();
+    const selected = selectExamQuestions();
+
+    session = {
+      mode: "exam",
+      sessionId: storage.makeId("e"),
+      userId: profile.userId,
+      startedAt: new Date().toISOString(),
+      questions: selected,
+      reviewQuestionIds: [],
+      currentIndex: 0,
+      correctCount: 0,
+      wrongQuestionIds: [],
+      answered: false,
+      currentChoices: []
+    };
+
+    studyActions.classList.add("hidden");
+    studyBox.classList.add("hidden");
+    feedback.classList.add("hidden");
 
     showScreen("quiz");
     renderQuestion();
@@ -133,17 +290,24 @@
       window.speechSynthesis.cancel();
     }
 
+    const isExam = session.mode === "exam";
+
     const isReviewQuestion =
+      !isExam &&
       session.reviewQuestionIds.includes(q.id);
 
-    progress.textContent =
-      `Fråga ${session.currentIndex + 1} av ${session.questions.length}` +
-      (isReviewQuestion ? " · 🔁 Repetition" : "");
+    progress.textContent = isExam
+      ? `Skarpt prov · Fråga ${session.currentIndex + 1} av ${session.questions.length}`
+      : `Fråga ${session.currentIndex + 1} av ${session.questions.length}` +
+        (isReviewQuestion ? " · 🔁 Repetition" : "");
 
     questionText.textContent = q.question;
+
     optionsEl.innerHTML = "";
     feedback.classList.add("hidden");
     studyBox.classList.add("hidden");
+    examNextQuestionButton.classList.add("hidden");
+
     session.answered = false;
 
     session.currentChoices = shuffle(
@@ -155,7 +319,9 @@
 
     session.currentChoices.forEach((choice, index) => {
       const button = document.createElement("button");
+
       button.className = "option-btn";
+
       button.textContent =
         `${String.fromCharCode(65 + index)}. ${choice.text}`;
 
@@ -176,33 +342,41 @@
 
     session.answered = true;
 
-    const q = session.questions[session.currentIndex];
+    const q =
+      session.questions[session.currentIndex];
+
     const buttons = [
       ...optionsEl.querySelectorAll(".option-btn")
     ];
 
     buttons.forEach(btn => {
       btn.disabled = true;
+    });
 
+    if (choice.isCorrect) {
+      session.correctCount += 1;
+    } else {
+      session.wrongQuestionIds.push(q.id);
+    }
+
+    if (session.mode === "exam") {
+      selectedButton.classList.add("correct");
+      examNextQuestionButton.classList.remove("hidden");
+      return;
+    }
+
+    buttons.forEach(btn => {
       if (btn.dataset.correct === "true") {
         btn.classList.add("correct");
       }
     });
 
     if (choice.isCorrect) {
-      session.correctCount += 1;
-
-      // Ett rätt svar betyder att frågan inte längre
-      // behöver ligga kvar för särskild repetition.
       storage.removeReviewQuestion(q.id);
 
       feedbackTitle.textContent =
         "✅ Rätt! Bra jobbat!";
     } else {
-      session.wrongQuestionIds.push(q.id);
-
-      // Ett felaktigt svar lägger frågan i
-      // repetitionslistan.
       storage.addReviewQuestion(q.id);
 
       selectedButton.classList.add("wrong");
@@ -211,7 +385,8 @@
         "❌ Inte riktigt.";
     }
 
-    feedbackText.textContent = q.explanationSv;
+    feedbackText.textContent =
+      q.explanationSv;
 
     sourceLink.textContent = q.sourcePage
       ? `Läs mer: Kapitel ${q.chapter} – ${q.section}, sida ${q.sourcePage}`
@@ -221,7 +396,11 @@
     feedback.classList.remove("hidden");
   }
 
-  function nextQuestion() {
+  function nextTrainingQuestion() {
+    if (!session || session.mode !== "training") {
+      return;
+    }
+
     if (
       session.currentIndex <
       session.questions.length - 1
@@ -233,8 +412,25 @@
     }
   }
 
+  function nextExamQuestion() {
+    if (!session || session.mode !== "exam") {
+      return;
+    }
+
+    if (
+      session.currentIndex <
+      session.questions.length - 1
+    ) {
+      session.currentIndex += 1;
+      renderQuestion();
+    } else {
+      finishExam();
+    }
+  }
+
   function finishQuiz() {
     const count = session.questions.length;
+
     const percentage = Math.round(
       (session.correctCount / count) * 100
     );
@@ -258,8 +454,86 @@
       `${result.correctCount} av ${count} rätt – ${percentage} %`;
 
     session = null;
+
     refreshHome();
     showScreen("result");
+  }
+
+  function finishExam() {
+    const count = session.questions.length;
+
+    const percentage = Math.round(
+      (session.correctCount / count) * 100
+    );
+
+    const passed =
+      session.correctCount >= EXAM_PASS_SCORE;
+
+    lastExamWrongQuestionIds = [
+      ...session.wrongQuestionIds
+    ];
+
+    const result = {
+      resultId: storage.makeId("er"),
+      sessionId: session.sessionId,
+      userId: session.userId,
+      date: new Date().toISOString(),
+      questionCount: count,
+      correctCount: session.correctCount,
+      percentage,
+      passed,
+      passScore: EXAM_PASS_SCORE,
+      wrongQuestionIds: [
+        ...session.wrongQuestionIds
+      ],
+      questionIds: session.questions.map(
+        q => q.id
+      ),
+      questionBankVersion:
+        "2026-1-corr-2026-08-10-v1.4"
+    };
+
+    storage.saveExamResult(result);
+
+    examResultScore.textContent =
+      `${result.correctCount} av ${count} rätt – ${percentage} %`;
+
+    if (passed) {
+      examResultEmoji.textContent = "🎉";
+      examResultTitle.textContent = "Godkänt";
+      examResultMessage.textContent =
+        `Du nådde träningsgränsen ${EXAM_PASS_SCORE} av ${EXAM_COUNT}.`;
+    } else {
+      examResultEmoji.textContent = "📚";
+      examResultTitle.textContent =
+        "Inte godkänt den här gången";
+
+      examResultMessage.textContent =
+        `Träningsgränsen är ${EXAM_PASS_SCORE} av ${EXAM_COUNT}. Träna gärna på frågorna du hade fel på och försök igen.`;
+    }
+
+    if (lastExamWrongQuestionIds.length) {
+      practiceExamErrorsButton.classList.remove(
+        "hidden"
+      );
+    } else {
+      practiceExamErrorsButton.classList.add(
+        "hidden"
+      );
+    }
+
+    session = null;
+
+    refreshHome();
+    showScreen("examResult");
+  }
+
+  function addExamErrorsToReview() {
+    lastExamWrongQuestionIds.forEach(
+      id => storage.addReviewQuestion(id)
+    );
+
+    startQuiz();
   }
 
   function refreshHome() {
@@ -291,7 +565,9 @@
     }
 
     results.slice(0, 10).forEach(r => {
-      const row = document.createElement("div");
+      const row =
+        document.createElement("div");
+
       row.className = "history-item";
 
       const date = new Date(
@@ -309,7 +585,9 @@
   document
     .getElementById("study-first")
     .addEventListener("click", () => {
-      if (!session) return;
+      if (!session || session.mode !== "training") {
+        return;
+      }
 
       const q =
         session.questions[session.currentIndex];
@@ -375,8 +653,6 @@
     );
   }
 
-  // Android/Chrome laddar ibland röstlistan
-  // först efter att sidan har startat.
   if ("speechSynthesis" in window) {
     window.speechSynthesis.getVoices();
 
@@ -393,11 +669,9 @@
     .addEventListener("click", () => {
       if (
         !session ||
+        session.mode !== "training" ||
         !("speechSynthesis" in window)
       ) {
-        alert(
-          "Uppläsning stöds inte av den här webbläsaren."
-        );
         return;
       }
 
@@ -406,10 +680,13 @@
       const q =
         session.questions[session.currentIndex];
 
-      const swedishVoice = getSwedishVoice();
+      const swedishVoice =
+        getSwedishVoice();
 
       const utterance =
-        new SpeechSynthesisUtterance(q.question);
+        new SpeechSynthesisUtterance(
+          q.question
+        );
 
       utterance.lang = "sv-SE";
       utterance.rate = 0.9;
@@ -418,20 +695,26 @@
         utterance.voice = swedishVoice;
       }
 
-      window.speechSynthesis.speak(utterance);
+      window.speechSynthesis.speak(
+        utterance
+      );
     });
 
   document
     .getElementById("save-profile")
     .addEventListener("click", () => {
-      storage.saveProfile(displayName.value);
+      storage.saveProfile(
+        displayName.value
+      );
+
       refreshHome();
     });
 
   document
     .getElementById("edit-profile")
     .addEventListener("click", () => {
-      const profile = storage.getProfile();
+      const profile =
+        storage.getProfile();
 
       if (profile) {
         displayName.value =
@@ -448,12 +731,38 @@
     .addEventListener("click", startQuiz);
 
   document
+    .getElementById("start-exam")
+    .addEventListener("click", startExam);
+
+  document
     .getElementById("restart-quiz")
     .addEventListener("click", startQuiz);
 
+  nextQuestionButton.addEventListener(
+    "click",
+    nextTrainingQuestion
+  );
+
+  examNextQuestionButton.addEventListener(
+    "click",
+    nextExamQuestion
+  );
+
   document
-    .getElementById("next-question")
-    .addEventListener("click", nextQuestion);
+    .getElementById("new-exam")
+    .addEventListener("click", startExam);
+
+  practiceExamErrorsButton.addEventListener(
+    "click",
+    addExamErrorsToReview
+  );
+
+  document
+    .getElementById("exam-home")
+    .addEventListener("click", () => {
+      refreshHome();
+      showScreen("home");
+    });
 
   document
     .getElementById("show-history")
@@ -484,15 +793,19 @@
       }
 
       session = null;
+      refreshHome();
       showScreen("home");
     });
 
-  sourceLink.addEventListener("click", () => {
-    window.open(
-      "https://www.uhr.se/globalassets/_uhr.se/medborgarskapsprovet/utbildningsmaterial/sverige-i-fokus_.pdf",
-      "_blank"
-    );
-  });
+  sourceLink.addEventListener(
+    "click",
+    () => {
+      window.open(
+        "https://www.uhr.se/globalassets/_uhr.se/medborgarskapsprovet/utbildningsmaterial/sverige-i-fokus_.pdf",
+        "_blank"
+      );
+    }
+  );
 
   refreshHome();
 })();
