@@ -5,11 +5,18 @@
 (() => {
   const replacementChapters = new Set([12]);
 
-  const chapter12Questions = [
+  window.SVERIGEQUIZ_QUESTIONS =
+    window.SVERIGEQUIZ_QUESTIONS.filter(
+      q => !replacementChapters.has(q.chapter)
+    );
+
+  const chapterQuestions = [
     {
-      id: "ch12-001",
+      id: "ch12-01",
       chapter: 12,
-      category: "Religionsfrihet",
+      category: "religion",
+      topic: "sekular_stat",
+      difficulty: "easy",
       question: "Vad innebär det att Sverige är en sekulär stat?",
       options: [
         "Att staten är religiöst neutral",
@@ -17,16 +24,22 @@
         "Att alla måste tillhöra Svenska kyrkan",
         "Att staten bestämmer vilken religion människor ska ha"
       ],
-      correct: 0,
-      explanation: "En sekulär stat är religiöst neutral.",
+      correctIndex: 0,
+      explanationSv: "En sekulär stat är religiöst neutral.",
+      studyTitle: "En sekulär stat",
       studyText: "Sverige är en sekulär stat. Det innebär att staten är religiöst neutral och inte tar ställning för eller diskriminerar någon religion.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      studyRemember: "Sekulär stat = staten är religiöst neutral.",
+      section: "Religionsfrihet",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-002",
+      id: "ch12-02",
       chapter: 12,
-      category: "Religionsfrihet",
+      category: "religion",
+      topic: "religionsfrihet",
+      difficulty: "easy",
       question: "Vad innebär religionsfriheten i Sverige?",
       options: [
         "Att alla måste vara religiösa",
@@ -34,16 +47,22 @@
         "Att bara kristna religioner är tillåtna",
         "Att staten väljer religion åt invånarna"
       ],
-      correct: 1,
-      explanation: "Människor kan själva välja sin tro eller att inte tillhöra någon religion.",
+      correctIndex: 1,
+      explanationSv: "Människor kan själva välja sin tro eller att inte tillhöra någon religion.",
+      studyTitle: "Religionsfrihet",
       studyText: "Staten garanterar alla rätten att själva bestämma om de vill eller inte vill tillhöra en specifik religion.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      studyRemember: "Man får välja religion – eller att inte tro.",
+      section: "Religionsfrihet",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-003",
+      id: "ch12-03",
       chapter: 12,
-      category: "Religionsfrihet",
+      category: "religion",
+      topic: "religionsfrihet",
+      difficulty: "medium",
       question: "Vilken religion var länge den enda tillåtna i Sverige?",
       options: [
         "Katolicismen",
@@ -51,16 +70,22 @@
         "Judendomen",
         "Islam"
       ],
-      correct: 1,
-      explanation: "Den protestantiska lutherska kyrkan var länge den enda tillåtna religionen.",
+      correctIndex: 1,
+      explanationSv: "Den protestantiska lutherska kyrkan var länge den enda tillåtna religionen.",
+      studyTitle: "Religionsfrihetens historia",
       studyText: "Religionsfrihet har inte alltid varit självklar. Länge var den protestantiska lutherska kyrkan den enda tillåtna religionen.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      studyRemember: "Länge var den protestantiska lutherska kyrkan den enda tillåtna.",
+      section: "Religionsfrihet",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-004",
+      id: "ch12-04",
       chapter: 12,
-      category: "Religionsfrihet",
+      category: "religion",
+      topic: "religionsfrihet",
+      difficulty: "medium",
       question: "Vad blev tillåtet för svenskar år 1860?",
       options: [
         "Att lämna Svenska kyrkan om de gick med i ett annat kristet samfund",
@@ -68,50 +93,58 @@
         "Att staten förbjöd Svenska kyrkan",
         "Att alla religioner blev statskyrkor"
       ],
-      correct: 0,
-      explanation: "År 1860 blev det möjligt att lämna Svenska kyrkan om man gick med i ett annat kristet samfund.",
+      correctIndex: 0,
+      explanationSv: "År 1860 blev det möjligt att lämna Svenska kyrkan om man gick med i ett annat kristet samfund.",
+      studyTitle: "År 1860",
       studyText: "Först år 1860 blev det tillåtet för svenskar att lämna Svenska kyrkan, men bara om man gick med i ett annat kristet samfund.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      studyRemember: "1860: lämna Svenska kyrkan – men gå med i ett annat kristet samfund.",
+      section: "Religionsfrihet",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-005",
+      id: "ch12-05",
       chapter: 12,
-      category: "Religionsfrihet",
+      category: "religion",
+      topic: "religionsfrihet",
+      difficulty: "easy",
       question: "När kom det slutliga genombrottet för religionsfriheten i Sverige?",
-      options: [
-        "1860",
-        "1870",
-        "1951",
-        "2000"
-      ],
-      correct: 2,
-      explanation: "Det slutliga genombrottet kom med religionsfrihetslagen 1951.",
+      options: ["1860", "1870", "1951", "2000"],
+      correctIndex: 2,
+      explanationSv: "Det slutliga genombrottet kom med religionsfrihetslagen 1951.",
+      studyTitle: "Religionsfrihetslagen",
       studyText: "Religionsfrihetslagen 1951 gjorde det möjligt för människor att helt fritt välja religion eller att inte tillhöra någon religion alls.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      studyRemember: "1951: religionsfrihetslagen.",
+      section: "Religionsfrihet",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-006",
+      id: "ch12-06",
       chapter: 12,
-      category: "Svenska kyrkan",
+      category: "religion",
+      topic: "svenska_kyrkan",
+      difficulty: "easy",
       question: "När skildes staten och Svenska kyrkan åt?",
-      options: [
-        "1951",
-        "1970",
-        "1995",
-        "2000"
-      ],
-      correct: 3,
-      explanation: "Staten och Svenska kyrkan skildes åt år 2000.",
+      options: ["1951", "1970", "1995", "2000"],
+      correctIndex: 3,
+      explanationSv: "Staten och Svenska kyrkan skildes åt år 2000.",
+      studyTitle: "Staten och Svenska kyrkan",
       studyText: "När staten och Svenska kyrkan skildes åt år 2000 blev Svenska kyrkan ett av flera trossamfund i samhället.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      studyRemember: "Staten och Svenska kyrkan skildes åt år 2000.",
+      section: "Religionsfrihet",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-007",
+      id: "ch12-07",
       chapter: 12,
-      category: "Svenska kyrkan",
+      category: "religion",
+      topic: "svenska_kyrkan",
+      difficulty: "medium",
       question: "Vilken ställning har Svenska kyrkan i dag enligt Sverige i fokus?",
       options: [
         "Den är Sveriges enda tillåtna kyrka",
@@ -119,16 +152,22 @@
         "Den är en statlig myndighet",
         "Den har inga medlemmar"
       ],
-      correct: 1,
-      explanation: "Svenska kyrkan är ett av flera trossamfund och fortfarande Sveriges största kristna samfund.",
+      correctIndex: 1,
+      explanationSv: "Svenska kyrkan är ett av flera trossamfund och fortfarande Sveriges största kristna samfund.",
+      studyTitle: "Svenska kyrkan i dag",
       studyText: "Efter skilsmässan från staten blev Svenska kyrkan ett av flera trossamfund. Den är fortfarande det största kristna samfundet i Sverige.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      studyRemember: "Svenska kyrkan är ett av flera trossamfund.",
+      section: "Religionsfrihet",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-008",
+      id: "ch12-08",
       chapter: 12,
-      category: "Grundlagen",
+      category: "religion",
+      topic: "grundlagen",
+      difficulty: "easy",
       question: "Vad säger regeringsformen om religion?",
       options: [
         "Alla har rätt att utöva sin religion",
@@ -136,16 +175,22 @@
         "Religion får bara utövas hemma",
         "Staten bestämmer vilka religioner som får finnas"
       ],
-      correct: 0,
-      explanation: "Enligt regeringsformen har alla rätt att utöva sin religion.",
+      correctIndex: 0,
+      explanationSv: "Enligt regeringsformen har alla rätt att utöva sin religion.",
+      studyTitle: "Religion och grundlagen",
       studyText: "Regeringsformen är en av Sveriges grundlagar. Enligt den har alla rätt att utöva sin religion och ingen får diskrimineras på grund av sin tro eller religiösa uppfattning.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      studyRemember: "Alla har rätt att utöva sin religion.",
+      section: "Religionsfrihet",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-009",
+      id: "ch12-09",
       chapter: 12,
-      category: "Skolan",
+      category: "religion",
+      topic: "skolan",
+      difficulty: "medium",
       question: "Vad är ett mål med undervisningen i religionskunskap i svensk skola?",
       options: [
         "Att alla elever ska välja samma religion",
@@ -153,33 +198,40 @@
         "Att bara undervisa om kristendom",
         "Att elever ska bli medlemmar i ett trossamfund"
       ],
-      correct: 1,
-      explanation: "Undervisningen ska bland annat främja förståelse, tolerans och respekt för olikheter.",
+      correctIndex: 1,
+      explanationSv: "Undervisningen ska bland annat främja förståelse, tolerans och respekt för olikheter.",
+      studyTitle: "Religionskunskap i skolan",
       studyText: "Religionskunskapen ska ge elever en bred förståelse för olika religioner, trosuppfattningar och livsåskådningar från hela världen.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      studyRemember: "Förståelse, tolerans och respekt för olikheter.",
+      section: "Religionsfrihet",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-010",
+      id: "ch12-10",
       chapter: 12,
-      category: "Religionens roll",
+      category: "religion",
+      topic: "religionens_roll",
+      difficulty: "easy",
       question: "Vilken religion har präglat Sverige genom århundradena?",
-      options: [
-        "Hinduismen",
-        "Islam",
-        "Kristendomen",
-        "Buddhismen"
-      ],
-      correct: 2,
-      explanation: "Kristendomen har präglat Sverige genom århundradena.",
+      options: ["Hinduismen", "Islam", "Kristendomen", "Buddhismen"],
+      correctIndex: 2,
+      explanationSv: "Kristendomen har präglat Sverige genom århundradena.",
+      studyTitle: "Kristendomens kulturella spår",
       studyText: "Kristendomen har satt många kulturella spår i Sverige. Många firar till exempel jul och påsk även om de inte ser sig själva som religiösa.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      studyRemember: "Kristendomen har präglat Sverige genom århundradena.",
+      section: "Religionens roll",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-011",
+      id: "ch12-11",
       chapter: 12,
-      category: "Religionens roll",
+      category: "religion",
+      topic: "religionens_roll",
+      difficulty: "medium",
       question: "Vad har hänt med religionens roll i det svenska samhället?",
       options: [
         "Den har minskat",
@@ -187,16 +239,22 @@
         "Alla har blivit religiösa",
         "Staten har infört en ny statsreligion"
       ],
-      correct: 0,
-      explanation: "Religionens roll i samhället har minskat.",
-      studyText: "Religionens roll i samhället har minskat. Samtidigt har religion och religiösa frågor fått större uppmärksamhet på senare tid.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42",
+      correctIndex: 0,
+      explanationSv: "Religionens roll i samhället har minskat.",
+      studyTitle: "Religionens roll",
+      studyText: "Religionens roll i samhället har minskat. Samtidigt har religion och religiösa frågor fått större uppmärksamhet i samhället på senare tid.",
+      studyRemember: "Religionens roll har minskat, men religiösa frågor uppmärksammas fortfarande.",
+      section: "Religionens roll",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-012",
+      id: "ch12-12",
       chapter: 12,
-      category: "Mångreligiositet",
+      category: "religion",
+      topic: "mangreligiositet",
+      difficulty: "medium",
       question: "Vad har hänt med mängden religioner som utövas i Sverige när invandringen har ökat?",
       options: [
         "Den har minskat",
@@ -204,16 +262,22 @@
         "Den har varit helt oförändrad",
         "Alla religioner utom kristendomen har försvunnit"
       ],
-      correct: 1,
-      explanation: "Mängden religioner som utövas i Sverige har ökat.",
+      correctIndex: 1,
+      explanationSv: "Mängden religioner som utövas i Sverige har ökat.",
+      studyTitle: "Ett mångreligiöst land",
       studyText: "I takt med att invandringen har ökat har också mängden religioner som utövas i Sverige ökat. I dag finns så gott som alla världens religioner representerade.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 42–43",
+      studyRemember: "Sverige har blivit mer mångreligiöst.",
+      section: "Religionens roll",
+      sourcePage: 42,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-013",
+      id: "ch12-13",
       chapter: 12,
-      category: "Kristendom",
+      category: "religion",
+      topic: "kristendom",
+      difficulty: "medium",
       question: "Vilka är kristendomens tre huvudinriktningar som nämns i Sverige i fokus?",
       options: [
         "Ortodoxa, katolska och protestantiska kyrkor",
@@ -221,33 +285,40 @@
         "Katolicism, judendom och buddhism",
         "Lutherdom, islam och hinduism"
       ],
-      correct: 0,
-      explanation: "De tre huvudinriktningarna är ortodoxa kyrkor, den katolska kyrkan och protestantiska kyrkor.",
+      correctIndex: 0,
+      explanationSv: "De tre huvudinriktningarna är ortodoxa kyrkor, den katolska kyrkan och protestantiska kyrkor.",
+      studyTitle: "Kristendom",
       studyText: "I Sverige finns många kristna samfund. De tre huvudinriktningarna som nämns är ortodoxa kyrkor, den katolska kyrkan och olika protestantiska kyrkor.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 43",
+      studyRemember: "Ortodox, katolsk och protestantisk kristendom.",
+      section: "Kristendom",
+      sourcePage: 43,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-014",
+      id: "ch12-14",
       chapter: 12,
-      category: "Kristendom",
+      category: "religion",
+      topic: "svenska_kyrkan",
+      difficulty: "easy",
       question: "Ungefär hur många medlemmar har Svenska kyrkan enligt Sverige i fokus?",
-      options: [
-        "500 000",
-        "2 miljoner",
-        "5 miljoner",
-        "10 miljoner"
-      ],
-      correct: 2,
-      explanation: "Svenska kyrkan har omkring fem miljoner medlemmar.",
+      options: ["500 000", "2 miljoner", "5 miljoner", "10 miljoner"],
+      correctIndex: 2,
+      explanationSv: "Svenska kyrkan har omkring fem miljoner medlemmar.",
+      studyTitle: "Svenska kyrkan",
       studyText: "Svenska kyrkan har omkring fem miljoner medlemmar och har historiska rötter i den lutherska, protestantiska traditionen.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 43",
+      studyRemember: "Omkring fem miljoner medlemmar.",
+      section: "Kristendom",
+      sourcePage: 43,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-015",
+      id: "ch12-15",
       chapter: 12,
-      category: "Kristendom",
+      category: "religion",
+      topic: "kristendom",
+      difficulty: "medium",
       question: "Vilken kristen tradition tillhörde Sverige under medeltiden?",
       options: [
         "Den katolska",
@@ -255,16 +326,22 @@
         "Den ortodoxa",
         "Ingen kristen tradition"
       ],
-      correct: 0,
-      explanation: "Under medeltiden var Sverige ett katolskt land.",
+      correctIndex: 0,
+      explanationSv: "Under medeltiden var Sverige ett katolskt land.",
+      studyTitle: "Kristendomens historia i Sverige",
       studyText: "Svenska kyrkans lutherska, protestantiska tradition grundades på 1500-talet. Innan dess, under medeltiden, var Sverige ett katolskt land.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 43",
+      studyRemember: "Under medeltiden var Sverige katolskt.",
+      section: "Kristendom",
+      sourcePage: 43,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-016",
+      id: "ch12-16",
       chapter: 12,
-      category: "Judendom",
+      category: "religion",
+      topic: "judendom",
+      difficulty: "medium",
       question: "Hur långt tillbaka kan judendomens historia i Sverige spåras?",
       options: [
         "Till 1500-talet",
@@ -272,33 +349,40 @@
         "Till 1900-talet",
         "Till 2000-talet"
       ],
-      correct: 1,
-      explanation: "Judendomens historia i Sverige kan spåras tillbaka till 1700-talet.",
+      correctIndex: 1,
+      explanationSv: "Judendomens historia i Sverige kan spåras tillbaka till 1700-talet.",
+      studyTitle: "Judendom i Sverige",
       studyText: "På 1700-talet fick judar rätt att bo och utöva sin religion i Sverige.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 43",
+      studyRemember: "Judendomens historia i Sverige kan spåras till 1700-talet.",
+      section: "Judendom",
+      sourcePage: 43,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-017",
+      id: "ch12-17",
       chapter: 12,
-      category: "Judendom",
+      category: "religion",
+      topic: "judendom",
+      difficulty: "medium",
       question: "När fick judar fullständiga medborgerliga rättigheter i Sverige?",
-      options: [
-        "1700",
-        "1809",
-        "1870",
-        "1951"
-      ],
-      correct: 2,
-      explanation: "Judar fick fullständiga medborgerliga rättigheter i Sverige 1870.",
+      options: ["1700", "1809", "1870", "1951"],
+      correctIndex: 2,
+      explanationSv: "Judar fick fullständiga medborgerliga rättigheter i Sverige 1870.",
+      studyTitle: "Judars rättigheter",
       studyText: "Antisemitismen var länge mycket spridd i Europa. Först 1870 fick judar fullständiga medborgerliga rättigheter i Sverige.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 43",
+      studyRemember: "1870: fullständiga medborgerliga rättigheter.",
+      section: "Judendom",
+      sourcePage: 43,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-018",
+      id: "ch12-18",
       chapter: 12,
-      category: "Hinduism och buddhism",
+      category: "religion",
+      topic: "hinduism_buddhism",
+      difficulty: "medium",
       question: "När började kontakterna med hinduer och buddhister i Sverige främst?",
       options: [
         "Under medeltiden",
@@ -306,16 +390,22 @@
         "Under 1900-talet",
         "Efter år 2000"
       ],
-      correct: 2,
-      explanation: "Kontakterna började främst under 1900-talet.",
+      correctIndex: 2,
+      explanationSv: "Kontakterna började främst under 1900-talet.",
+      studyTitle: "Hinduism och buddhism",
       studyText: "Kontakterna med hinduer och buddhister i Sverige började främst under 1900-talet, bland annat genom resor till Asien och ett ökat intresse för meditation och yoga.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 43",
+      studyRemember: "Kontakterna började främst under 1900-talet.",
+      section: "Hinduism och buddhism",
+      sourcePage: 43,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-019",
+      id: "ch12-19",
       chapter: 12,
-      category: "Hinduism och buddhism",
+      category: "religion",
+      topic: "hinduism_buddhism",
+      difficulty: "easy",
       question: "Vad finns på olika platser i Sverige för buddhister och hinduer?",
       options: [
         "Församlingar och tempel",
@@ -323,16 +413,22 @@
         "Inga religiösa lokaler",
         "Bara skolor"
       ],
-      correct: 0,
-      explanation: "Det finns både buddhistiska och hinduiska församlingar och tempel.",
+      correctIndex: 0,
+      explanationSv: "Det finns både buddhistiska och hinduiska församlingar och tempel.",
+      studyTitle: "Församlingar och tempel",
       studyText: "På olika platser i Sverige finns buddhistiska och hinduiska församlingar och tempel där böner, ritualer och religiösa fester genomförs.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 43",
+      studyRemember: "Det finns buddhistiska och hinduiska församlingar och tempel.",
+      section: "Hinduism och buddhism",
+      sourcePage: 43,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-020",
+      id: "ch12-20",
       chapter: 12,
-      category: "Islam",
+      category: "religion",
+      topic: "islam",
+      difficulty: "medium",
       question: "När började antalet muslimer i Sverige öka genom invandring?",
       options: [
         "På 1700-talet",
@@ -340,16 +436,22 @@
         "Efter år 2000",
         "Under medeltiden"
       ],
-      correct: 1,
-      explanation: "Antalet muslimer ökade genom invandring efter andra världskriget.",
+      correctIndex: 1,
+      explanationSv: "Antalet muslimer ökade genom invandring efter andra världskriget.",
+      studyTitle: "Islam i Sverige",
       studyText: "I början av 1900-talet fanns bara ett fåtal muslimer i Sverige. Efter andra världskriget ökade antalet genom invandring.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 44",
+      studyRemember: "Antalet ökade efter andra världskriget.",
+      section: "Islam",
+      sourcePage: 44,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-021",
+      id: "ch12-21",
       chapter: 12,
-      category: "Islam",
+      category: "religion",
+      topic: "islam",
+      difficulty: "easy",
       question: "När byggdes Sveriges första moskéer enligt Sverige i fokus?",
       options: [
         "På 1800-talet",
@@ -357,16 +459,22 @@
         "På 1970-talet",
         "Efter 2010"
       ],
-      correct: 2,
-      explanation: "Sveriges första moskéer byggdes under 1970-talet.",
+      correctIndex: 2,
+      explanationSv: "Sveriges första moskéer byggdes under 1970-talet.",
+      studyTitle: "Moskéer i Sverige",
       studyText: "Under 1970-talet byggdes Sveriges första moskéer. Numera finns moskéer och bönelokaler över hela Sverige.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 44",
+      studyRemember: "De första moskéerna byggdes under 1970-talet.",
+      section: "Islam",
+      sourcePage: 44,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch12-022",
+      id: "ch12-22",
       chapter: 12,
-      category: "Islam",
+      category: "religion",
+      topic: "islam",
+      difficulty: "easy",
       question: "Vilken ställning har islam i Sverige enligt Sverige i fokus?",
       options: [
         "Det är landets största religion",
@@ -374,29 +482,17 @@
         "Det finns bara ett fåtal muslimer",
         "Religionen utövas inte i Sverige"
       ],
-      correct: 1,
-      explanation: "Islam är numera den näst största religionen i Sverige.",
+      correctIndex: 1,
+      explanationSv: "Islam är numera den näst största religionen i Sverige.",
+      studyTitle: "Islam i dagens Sverige",
       studyText: "Islam är numera den näst största religionen i landet. Svenska muslimska församlingar speglar olika riktningar och traditioner, till exempel sunni och shia.",
-      source: "Sverige i fokus 2026-1, kapitel 12, s. 44",
+      studyRemember: "Enligt Sverige i fokus är islam Sveriges näst största religion.",
+      section: "Islam",
+      sourcePage: 44,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     }
   ];
 
-  const existing =
-    Array.isArray(window.quizQuestions) ? window.quizQuestions :
-    Array.isArray(window.questions) ? window.questions :
-    [];
-
-  const cleaned = existing.filter(
-    q => !replacementChapters.has(Number(q.chapter))
-  );
-
-  const merged = [...cleaned, ...chapter12Questions];
-
-  window.quizQuestions = merged;
-  window.questions = merged;
-
-  console.log(
-    `Kapitel 12 laddat: ${chapter12Questions.length} källverifierade frågor. Totalt: ${merged.length}.`
-  );
+  window.SVERIGEQUIZ_QUESTIONS.push(...chapterQuestions);
 })();
