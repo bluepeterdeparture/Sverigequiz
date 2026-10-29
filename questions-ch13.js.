@@ -5,11 +5,18 @@
 (() => {
   const replacementChapters = new Set([13]);
 
-  const chapter13Questions = [
+  window.SVERIGEQUIZ_QUESTIONS =
+    window.SVERIGEQUIZ_QUESTIONS.filter(
+      q => !replacementChapters.has(q.chapter)
+    );
+
+  const chapterQuestions = [
     {
-      id: "ch13-001",
+      id: "ch13-01",
       chapter: 13,
-      category: "Traditioner",
+      category: "traditioner_hogtider",
+      topic: "traditioner",
+      difficulty: "easy",
       question: "Vad är traditioner bland annat ett sätt att göra?",
       options: [
         "Fira tillsammans och markera viktiga tidpunkter under året",
@@ -17,16 +24,22 @@
         "Välja politiska partier",
         "Bestämma vilka dagar människor ska arbeta"
       ],
-      correct: 0,
-      explanation: "Traditioner är ett sätt att fira tillsammans och markera viktiga tidpunkter under året.",
+      correctIndex: 0,
+      explanationSv: "Traditioner är ett sätt att fira tillsammans och markera viktiga tidpunkter under året.",
+      studyTitle: "Traditioner",
       studyText: "Traditioner är ett sätt för människor att fira tillsammans och att markera viktiga tidpunkter under året. Traditionerna förändras också i takt med samhället.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 45",
+      studyRemember: "Traditioner hjälper människor att fira tillsammans och markera viktiga tidpunkter.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 45,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-002",
+      id: "ch13-02",
       chapter: 13,
-      category: "Traditioner",
+      category: "traditioner_hogtider",
+      topic: "traditioner",
+      difficulty: "easy",
       question: "Varifrån kommer många traditioner i Sverige?",
       options: [
         "Från kristendomen eller ännu äldre traditioner",
@@ -34,16 +47,22 @@
         "Bara från andra länder",
         "Bara från politiska beslut"
       ],
-      correct: 0,
-      explanation: "Många svenska traditioner har rötter i kristendomen eller ännu längre tillbaka.",
+      correctIndex: 0,
+      explanationSv: "Många svenska traditioner har rötter i kristendomen eller ännu längre tillbaka.",
+      studyTitle: "Traditionernas ursprung",
       studyText: "Många traditioner i Sverige har rötter i den kristna religionen, eller ännu tidigare. Andra grundar sig i viktiga händelser i Sveriges historia.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 45",
+      studyRemember: "Många traditioner har kristna eller ännu äldre rötter.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 45,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-003",
+      id: "ch13-03",
       chapter: 13,
-      category: "Traditioner",
+      category: "traditioner_hogtider",
+      topic: "kristna_hogtider",
+      difficulty: "easy",
       question: "Vilka av dessa helgdagar kommer ur kristna traditioner?",
       options: [
         "Jul, påsk och pingst",
@@ -51,16 +70,22 @@
         "Nyår och valborg",
         "Midsommar och första maj"
       ],
-      correct: 0,
-      explanation: "Jul, påsk och pingst kommer ur kristna traditioner.",
+      correctIndex: 0,
+      explanationSv: "Jul, påsk och pingst kommer ur kristna traditioner.",
+      studyTitle: "Kristna helgdagar",
       studyText: "En hel del av årets helgdagar, som jul, påsk och pingst, kommer ur de kristna traditionerna.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 45",
+      studyRemember: "Jul, påsk och pingst har kristna rötter.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 45,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-004",
+      id: "ch13-04",
       chapter: 13,
-      category: "Nyår",
+      category: "traditioner_hogtider",
+      topic: "nyar",
+      difficulty: "easy",
       question: "När är nyårsafton?",
       options: [
         "24 december",
@@ -68,16 +93,22 @@
         "31 december",
         "1 januari"
       ],
-      correct: 2,
-      explanation: "Nyårsafton är den 31 december.",
+      correctIndex: 2,
+      explanationSv: "Nyårsafton är den 31 december.",
+      studyTitle: "Nyår",
       studyText: "Nyårsafton den 31 december firas ofta med fester och middagar med vänner och familj. Det nya årets ankomst firas på natten med fyrverkerier.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 45",
+      studyRemember: "Nyårsafton är den 31 december.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 45,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-005",
+      id: "ch13-05",
       chapter: 13,
-      category: "Påsk",
+      category: "traditioner_hogtider",
+      topic: "pask",
+      difficulty: "easy",
       question: "Vad är påsken?",
       options: [
         "En kristen högtid",
@@ -85,16 +116,22 @@
         "Arbetarnas dag",
         "En högtid som firar hösten"
       ],
-      correct: 0,
-      explanation: "Påsken är en kristen högtid.",
+      correctIndex: 0,
+      explanationSv: "Påsken är en kristen högtid.",
+      studyTitle: "Påsk",
       studyText: "Påsken är en kristen högtid som firas någon gång i mars eller april.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 45",
+      studyRemember: "Påsken är en kristen högtid.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 45,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-006",
+      id: "ch13-06",
       chapter: 13,
-      category: "Påsk",
+      category: "traditioner_hogtider",
+      topic: "pask",
+      difficulty: "easy",
       question: "Vad minns kristna under påsken?",
       options: [
         "Jesu död och uppståndelse",
@@ -102,16 +139,22 @@
         "Sveriges självständighet",
         "Vårens ankomst"
       ],
-      correct: 0,
-      explanation: "Påsken handlar om Jesu död och uppståndelse.",
+      correctIndex: 0,
+      explanationSv: "Påsken handlar om Jesu död och uppståndelse.",
+      studyTitle: "Påskens betydelse",
       studyText: "Påsken firas för att minnas Jesu död under långfredagen och hans uppståndelse under påskdagen.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 45",
+      studyRemember: "Långfredagen: Jesu död. Påskdagen: Jesu uppståndelse.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 45,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-007",
+      id: "ch13-07",
       chapter: 13,
-      category: "Påsk",
+      category: "traditioner_hogtider",
+      topic: "pask",
+      difficulty: "easy",
       question: "Vad är vanligt att barn får under påsken?",
       options: [
         "Godis i påskägg",
@@ -119,16 +162,22 @@
         "Midsommarkransar",
         "Adventskalendrar"
       ],
-      correct: 0,
-      explanation: "Det är vanligt att barn får godis i påskägg.",
+      correctIndex: 0,
+      explanationSv: "Det är vanligt att barn får godis i påskägg.",
+      studyTitle: "Påsktraditioner",
       studyText: "På påskafton är det vanligt att äta ägg, lamm, lax och sill. Barn får ofta godis i påskägg och kan ibland klä ut sig till påskkärringar.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 45",
+      studyRemember: "Barn får ofta godis i påskägg.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 45,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-008",
+      id: "ch13-08",
       chapter: 13,
-      category: "Valborg",
+      category: "traditioner_hogtider",
+      topic: "valborg",
+      difficulty: "easy",
       question: "När firas valborgsmässoafton?",
       options: [
         "30 april",
@@ -136,16 +185,22 @@
         "6 juni",
         "21 juni"
       ],
-      correct: 0,
-      explanation: "Valborgsmässoafton firas den 30 april.",
+      correctIndex: 0,
+      explanationSv: "Valborgsmässoafton firas den 30 april.",
+      studyTitle: "Valborg",
       studyText: "Valborgsmässoafton den 30 april firas för att välkomna våren.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "Valborgsmässoafton är den 30 april.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-009",
+      id: "ch13-09",
       chapter: 13,
-      category: "Valborg",
+      category: "traditioner_hogtider",
+      topic: "valborg",
+      difficulty: "easy",
       question: "Vad är vanligt vid valborgsfirandet?",
       options: [
         "Att tända stora brasor och sjunga vårsånger",
@@ -153,16 +208,22 @@
         "Att ge varandra julklappar",
         "Att tända ljus på gravar"
       ],
-      correct: 0,
-      explanation: "På valborg tänds stora brasor och det sjungs ofta traditionella vårsånger.",
+      correctIndex: 0,
+      explanationSv: "På valborg tänds stora brasor och det sjungs ofta traditionella vårsånger.",
+      studyTitle: "Valborgsfirande",
       studyText: "Stora brasor tänds på kvällen. Vid brasan sjunger man ofta traditionella vårsånger och ibland hålls ett tal till våren.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "Valborg: brasor och vårsånger.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-010",
+      id: "ch13-10",
       chapter: 13,
-      category: "Första maj",
+      category: "traditioner_hogtider",
+      topic: "forsta_maj",
+      difficulty: "easy",
       question: "Vad firas internationellt den första maj?",
       options: [
         "Arbetarnas dag",
@@ -170,16 +231,22 @@
         "Nyår",
         "Midsommar"
       ],
-      correct: 0,
-      explanation: "Första maj firas internationellt som arbetarnas dag.",
+      correctIndex: 0,
+      explanationSv: "Första maj firas internationellt som arbetarnas dag.",
+      studyTitle: "Första maj",
       studyText: "På första maj firas arbetarnas dag internationellt. I Sverige är det också en helgdag.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "Första maj är arbetarnas dag.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-011",
+      id: "ch13-11",
       chapter: 13,
-      category: "Första maj",
+      category: "traditioner_hogtider",
+      topic: "forsta_maj",
+      difficulty: "medium",
       question: "Hur uppmärksammar arbetarrörelsen första maj?",
       options: [
         "Genom demonstrationer och tal",
@@ -187,16 +254,22 @@
         "Genom att tända valborgsbrasor",
         "Genom luciatåg"
       ],
-      correct: 0,
-      explanation: "Arbetarrörelsen arrangerar demonstrationer och det hålls tal om sociala och politiska frågor.",
+      correctIndex: 0,
+      explanationSv: "Arbetarrörelsen arrangerar demonstrationer och det hålls tal om sociala och politiska frågor.",
+      studyTitle: "Första maj",
       studyText: "Arbetarrörelsen arrangerar demonstrationer runt om i landet. Personer från fackförbund, politiska partier och andra grupper håller tal om sociala och politiska frågor.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "Första maj uppmärksammas bland annat med demonstrationer och tal.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-012",
+      id: "ch13-12",
       chapter: 13,
-      category: "Nationaldagen",
+      category: "traditioner_hogtider",
+      topic: "nationaldagen",
+      difficulty: "easy",
       question: "När är Sveriges nationaldag?",
       options: [
         "1 maj",
@@ -204,16 +277,22 @@
         "24 juni",
         "6 december"
       ],
-      correct: 1,
-      explanation: "Sveriges nationaldag är den 6 juni.",
+      correctIndex: 1,
+      explanationSv: "Sveriges nationaldag är den 6 juni.",
+      studyTitle: "Sveriges nationaldag",
       studyText: "Den 6 juni är Sveriges nationaldag. Dagen gjordes till helgdag genom ett riksdagsbeslut 2005.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "Nationaldagen är den 6 juni.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-013",
+      id: "ch13-13",
       chapter: 13,
-      category: "Nationaldagen",
+      category: "traditioner_hogtider",
+      topic: "nationaldagen",
+      difficulty: "medium",
       question: "Vad hände den 6 juni 1523?",
       options: [
         "Gustav Vasa valdes till svensk kung",
@@ -221,16 +300,22 @@
         "Den nya regeringsformen antogs",
         "Sverige blev medlem i Nato"
       ],
-      correct: 0,
-      explanation: "Gustav Vasa valdes till svensk kung den 6 juni 1523.",
+      correctIndex: 0,
+      explanationSv: "Gustav Vasa valdes till svensk kung den 6 juni 1523.",
+      studyTitle: "6 juni 1523",
       studyText: "Gustav Vasa valdes till svensk kung den 6 juni 1523. Det har uppfattats som inledningen på den svenska statens självständighet.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "6 juni 1523: Gustav Vasa valdes till kung.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-014",
+      id: "ch13-14",
       chapter: 13,
-      category: "Nationaldagen",
+      category: "traditioner_hogtider",
+      topic: "nationaldagen",
+      difficulty: "medium",
       question: "Vad hände den 6 juni 1809?",
       options: [
         "En ny regeringsform antogs",
@@ -238,16 +323,22 @@
         "Gustav Vasa blev kung",
         "Allmän rösträtt infördes"
       ],
-      correct: 0,
-      explanation: "Den 6 juni 1809 antogs en ny regeringsform.",
+      correctIndex: 0,
+      explanationSv: "Den 6 juni 1809 antogs en ny regeringsform.",
+      studyTitle: "6 juni 1809",
       studyText: "Den 6 juni 1809 antogs en ny regeringsform som tvingade kungen att fortsättningsvis dela makten med riksdagen.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "6 juni 1809: en ny regeringsform antogs.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-015",
+      id: "ch13-15",
       chapter: 13,
-      category: "Nationaldagen",
+      category: "traditioner_hogtider",
+      topic: "nationaldagen",
+      difficulty: "easy",
       question: "Vad ordnar många kommuner på nationaldagen?",
       options: [
         "Ceremonier för att välkomna nya medborgare",
@@ -255,16 +346,22 @@
         "Påskfirande",
         "Valborgsbrasor"
       ],
-      correct: 0,
-      explanation: "Många kommuner ordnar ceremonier för att välkomna nya medborgare.",
+      correctIndex: 0,
+      explanationSv: "Många kommuner ordnar ceremonier för att välkomna nya medborgare.",
+      studyTitle: "Nationaldagsfirande",
       studyText: "På nationaldagen hissas flaggan och det hålls tal. Många kommuner ordnar också speciella ceremonier för att välkomna nya medborgare.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "Många kommuner välkomnar nya medborgare på nationaldagen.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-016",
+      id: "ch13-16",
       chapter: 13,
-      category: "Midsommar",
+      category: "traditioner_hogtider",
+      topic: "midsommar",
+      difficulty: "easy",
       question: "När firas midsommarafton?",
       options: [
         "Alltid den 21 juni",
@@ -272,16 +369,22 @@
         "Första lördagen i juli",
         "Den 6 juni"
       ],
-      correct: 1,
-      explanation: "Midsommarafton firas alltid på en fredag mellan den 19 och 25 juni.",
+      correctIndex: 1,
+      explanationSv: "Midsommarafton firas alltid på en fredag mellan den 19 och 25 juni.",
+      studyTitle: "Midsommar",
       studyText: "Midsommarafton firas alltid på en fredag mellan 19 juni och 25 juni. Firandet handlar om att välkomna sommaren och ljuset.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "Midsommarafton: fredag mellan 19 och 25 juni.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-017",
+      id: "ch13-17",
       chapter: 13,
-      category: "Midsommar",
+      category: "traditioner_hogtider",
+      topic: "midsommar",
+      difficulty: "medium",
       question: "Hur gammal är midsommartraditionen i Sverige?",
       options: [
         "Den kommer från tiden före kristendomen",
@@ -289,16 +392,22 @@
         "Den började när Sverige gick med i EU",
         "Den skapades på 1900-talet"
       ],
-      correct: 0,
-      explanation: "Midsommarfirandet är en gammal tradition från tiden före kristendomen.",
+      correctIndex: 0,
+      explanationSv: "Midsommarfirandet är en gammal tradition från tiden före kristendomen.",
+      studyTitle: "Midsommarens historia",
       studyText: "I Sverige är midsommarfirandet en gammal tradition som kommer från tiden före kristendomen.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "Midsommartraditionen är äldre än kristendomen i Sverige.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-018",
+      id: "ch13-18",
       chapter: 13,
-      category: "Midsommar",
+      category: "traditioner_hogtider",
+      topic: "midsommar",
+      difficulty: "easy",
       question: "Vilken mat är typisk vid midsommar?",
       options: [
         "Sill, färskpotatis och jordgubbar",
@@ -306,16 +415,22 @@
         "Ägg, lamm och påskgodis",
         "Risgrynsgröt och julskinka"
       ],
-      correct: 0,
-      explanation: "Sill, färskpotatis och jordgubbar är typisk midsommarmat.",
+      correctIndex: 0,
+      explanationSv: "Sill, färskpotatis och jordgubbar är typisk midsommarmat.",
+      studyTitle: "Midsommarfirande",
       studyText: "Under midsommaraftonen ordnar många fester utomhus, binder blomsterkransar och dansar runt en midsommarstång. Vanlig mat är sill, färskpotatis och jordgubbar.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "Midsommar: sill, färskpotatis och jordgubbar.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-019",
+      id: "ch13-19",
       chapter: 13,
-      category: "Alla helgons dag",
+      category: "traditioner_hogtider",
+      topic: "alla_helgons_dag",
+      difficulty: "easy",
       question: "Vad gör många på alla helgons dag?",
       options: [
         "Tänder ljus på gravar för att minnas de döda",
@@ -323,16 +438,22 @@
         "Dansar runt midsommarstången",
         "Ger varandra julklappar"
       ],
-      correct: 0,
-      explanation: "Många går till kyrkogården och tänder ljus på gravar.",
+      correctIndex: 0,
+      explanationSv: "Många går till kyrkogården och tänder ljus på gravar.",
+      studyTitle: "Alla helgons dag",
       studyText: "Alla helgons dag är en kristen helgdag. Många går till kyrkogården för att tända ljus på släktingars och vänners gravar och minnas och hedra dem som har dött.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 46",
+      studyRemember: "Alla helgons dag: minnas de döda och tända ljus på gravar.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 46,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-020",
+      id: "ch13-20",
       chapter: 13,
-      category: "Advent",
+      category: "traditioner_hogtider",
+      topic: "advent",
+      difficulty: "easy",
       question: "När infaller advent?",
       options: [
         "De fyra söndagarna före juldagen",
@@ -340,16 +461,22 @@
         "Hela december",
         "Bara på julafton"
       ],
-      correct: 0,
-      explanation: "Advent infaller de fyra söndagarna före juldagen.",
+      correctIndex: 0,
+      explanationSv: "Advent infaller de fyra söndagarna före juldagen.",
+      studyTitle: "Advent",
       studyText: "Advent infaller de fyra söndagarna före juldagen den 25 december. Ett ljus i adventsljusstaken tänds varje söndag fram till jul.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 47",
+      studyRemember: "Advent: fyra söndagar före juldagen.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 47,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-021",
+      id: "ch13-21",
       chapter: 13,
-      category: "Lucia",
+      category: "traditioner_hogtider",
+      topic: "lucia",
+      difficulty: "easy",
       question: "När firas Lucia?",
       options: [
         "6 december",
@@ -357,16 +484,22 @@
         "24 december",
         "25 december"
       ],
-      correct: 1,
-      explanation: "Lucia firas den 13 december.",
+      correctIndex: 1,
+      explanationSv: "Lucia firas den 13 december.",
+      studyTitle: "Lucia",
       studyText: "Under katolsk tid firades helgonet Lucia den 13 december. Firandet handlar mycket om att sprida ljus när det är som mörkast på året.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 47",
+      studyRemember: "Lucia firas den 13 december.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 47,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-022",
+      id: "ch13-22",
       chapter: 13,
-      category: "Lucia",
+      category: "traditioner_hogtider",
+      topic: "lucia",
+      difficulty: "easy",
       question: "Vad brukar man bjuda på vid Lucia enligt Sverige i fokus?",
       options: [
         "Lussebullar med saffran",
@@ -374,16 +507,22 @@
         "Påskägg",
         "Sill och färskpotatis"
       ],
-      correct: 0,
-      explanation: "På Lucia brukar man bjuda på lussebullar med saffran.",
+      correctIndex: 0,
+      explanationSv: "På Lucia brukar man bjuda på lussebullar med saffran.",
+      studyTitle: "Luciafirande",
       studyText: "Luciatåg arrangeras i skolor och på många andra ställen. Den här dagen brukar man bjuda på särskilda lussebullar med saffran.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 47",
+      studyRemember: "Lucia: luciatåg och lussebullar med saffran.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 47,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-023",
+      id: "ch13-23",
       chapter: 13,
-      category: "Jul",
+      category: "traditioner_hogtider",
+      topic: "jul",
+      difficulty: "easy",
       question: "Vad firar julen traditionellt inom kristendomen?",
       options: [
         "Jesu födelse",
@@ -391,16 +530,22 @@
         "Vårens ankomst",
         "Det nya året"
       ],
-      correct: 0,
-      explanation: "Julen är traditionellt en kristen högtid för att fira Jesu födelse.",
+      correctIndex: 0,
+      explanationSv: "Julen är traditionellt en kristen högtid för att fira Jesu födelse.",
+      studyTitle: "Jul",
       studyText: "Julen är traditionellt en kristen högtid för att fira Jesu födelse. I Sverige är julen också en stor familjehögtid och många firar den utan religiös betydelse.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 47",
+      studyRemember: "Julen firar traditionellt Jesu födelse.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 47,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     },
     {
-      id: "ch13-024",
+      id: "ch13-24",
       chapter: 13,
-      category: "Nya traditioner",
+      category: "traditioner_hogtider",
+      topic: "nya_traditioner",
+      difficulty: "medium",
       question: "Vilka är exempel på traditioner som har kommit till Sverige med invandrare?",
       options: [
         "Id al-fitr, Nouruz och Newroz",
@@ -408,29 +553,17 @@
         "Lucia och advent",
         "Nationaldagen och första maj"
       ],
-      correct: 0,
-      explanation: "Id al-fitr, Nouruz och Newroz nämns som exempel på traditioner som kommit till Sverige med invandrare.",
+      correctIndex: 0,
+      explanationSv: "Id al-fitr, Nouruz och Newroz nämns som exempel på traditioner som kommit till Sverige med invandrare.",
+      studyTitle: "Nya traditioner i Sverige",
       studyText: "När människor flyttar till andra länder tar de med sig traditioner. Sverige i fokus nämner id al-fitr, som avslutar fastemånaden ramadan, samt det persiska nyåret Nouruz och det kurdiska nyåret Newroz.",
-      source: "Sverige i fokus 2026-1, kapitel 13, s. 47",
+      studyRemember: "Id al-fitr, Nouruz och Newroz är exempel på traditioner som kommit till Sverige genom invandring.",
+      section: "Några traditionella högtider under året",
+      sourcePage: 47,
+      sourceVersion: "Sverige i fokus 2026-1, korrigerad 2026-08-10",
       active: true
     }
   ];
 
-  const existing =
-    Array.isArray(window.quizQuestions) ? window.quizQuestions :
-    Array.isArray(window.questions) ? window.questions :
-    [];
-
-  const cleaned = existing.filter(
-    q => !replacementChapters.has(Number(q.chapter))
-  );
-
-  const merged = [...cleaned, ...chapter13Questions];
-
-  window.quizQuestions = merged;
-  window.questions = merged;
-
-  console.log(
-    `Kapitel 13 laddat: ${chapter13Questions.length} källverifierade frågor. Totalt: ${merged.length}.`
-  );
+  window.SVERIGEQUIZ_QUESTIONS.push(...chapterQuestions);
 })();
