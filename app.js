@@ -360,7 +360,7 @@
     }
 
     if (session.mode === "exam") {
-      selectedButton.classList.add("correct");
+      selectedButton.classList.add("selected");
       examNextQuestionButton.classList.remove("hidden");
       return;
     }
@@ -490,7 +490,7 @@
         q => q.id
       ),
       questionBankVersion:
-        "2026-1-corr-2026-08-10-v1.4"
+        ""2026-1-corr-2026-08-10-v2.0""
     };
 
     storage.saveExamResult(result);
