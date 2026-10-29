@@ -65,9 +65,46 @@
     return profile;
   }
 
-  function startQuiz() {
+    function startQuiz() {
     const profile = ensureProfile();
-    const selected = shuffle(questions).slice(0, Math.min(10, questions.length));
+
+    // Samla frågor som tidigare har besvarats fel.
+    // Nyare resultat går först eftersom getResults() sparar nyast först.
+    const results = storage.getResults();
+    const wrongIds = [];
+    const seenWrongIds = new Set();
+
+    results.forEach(result => {
+      (result.wrongQuestionIds || []).forEach(id => {
+        if (!seenWrongIds.has(id)) {
+          seenWrongIds.add(id);
+          wrongIds.push(id);
+        }
+      });
+    });
+
+    // Hitta de tidigare felbesvarade frågor som fortfarande finns
+    // och är aktiva i den aktuella frågebanken.
+    const wrongQuestions = wrongIds
+      .map(id => questions.find(q => q.id === id))
+      .filter(Boolean);
+
+    // Upp till tre repetitionsfrågor per omgång.
+    const reviewQuestions = shuffle(wrongQuestions).slice(0, 3);
+    const reviewIds = new Set(reviewQuestions.map(q => q.id));
+
+    // Resten väljs slumpmässigt bland övriga frågor.
+    const remainingQuestions = questions.filter(q => !reviewIds.has(q.id));
+    const ordinaryCount = Math.min(
+      10 - reviewQuestions.length,
+      remainingQuestions.length
+    );
+
+    const selected = shuffle([
+      ...reviewQuestions,
+      ...shuffle(remainingQuestions).slice(0, ordinaryCount)
+    ]);
+
     session = {
       sessionId: storage.makeId("s"),
       userId: profile.userId,
@@ -79,6 +116,7 @@
       answered: false,
       currentChoices: []
     };
+
     showScreen("quiz");
     renderQuestion();
   }
