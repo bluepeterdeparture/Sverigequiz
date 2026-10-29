@@ -1,6 +1,7 @@
 window.SverigeQuizStorage = (() => {
   const PROFILE_KEY = "sverigequiz_profile_v1";
   const RESULTS_KEY = "sverigequiz_results_v1";
+  const REVIEW_KEY = "sverigequiz_review_v1";
 
   function makeId(prefix) {
     if (window.crypto && crypto.randomUUID) {
@@ -20,6 +21,7 @@ window.SverigeQuizStorage = (() => {
       userId: makeId("u"),
       createdAt: new Date().toISOString()
     };
+
     profile.displayName = displayName.trim() || "Användare";
     localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
     return profile;
@@ -33,8 +35,50 @@ window.SverigeQuizStorage = (() => {
   function saveResult(result) {
     const results = getResults();
     results.unshift(result);
-    localStorage.setItem(RESULTS_KEY, JSON.stringify(results.slice(0, 50)));
+    localStorage.setItem(
+      RESULTS_KEY,
+      JSON.stringify(results.slice(0, 50))
+    );
   }
 
-  return { makeId, getProfile, saveProfile, getResults, saveResult };
+  function getReviewQuestionIds() {
+    const raw = localStorage.getItem(REVIEW_KEY);
+    return raw ? JSON.parse(raw) : [];
+  }
+
+  function saveReviewQuestionIds(ids) {
+    const uniqueIds = [...new Set(ids)];
+    localStorage.setItem(
+      REVIEW_KEY,
+      JSON.stringify(uniqueIds)
+    );
+  }
+
+  function addReviewQuestion(questionId) {
+    const ids = getReviewQuestionIds();
+
+    if (!ids.includes(questionId)) {
+      ids.push(questionId);
+      saveReviewQuestionIds(ids);
+    }
+  }
+
+  function removeReviewQuestion(questionId) {
+    const ids = getReviewQuestionIds().filter(
+      id => id !== questionId
+    );
+
+    saveReviewQuestionIds(ids);
+  }
+
+  return {
+    makeId,
+    getProfile,
+    saveProfile,
+    getResults,
+    saveResult,
+    getReviewQuestionIds,
+    addReviewQuestion,
+    removeReviewQuestion
+  };
 })();
