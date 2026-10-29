@@ -2,6 +2,8 @@ window.SverigeQuizStorage = (() => {
   const PROFILE_KEY = "sverigequiz_profile_v1";
   const RESULTS_KEY = "sverigequiz_results_v1";
   const REVIEW_KEY = "sverigequiz_review_v1";
+  const EXAM_RESULTS_KEY = "sverigequiz_exam_results_v1";
+  const EXAM_USED_KEY = "sverigequiz_exam_used_v1";
 
   function makeId(prefix) {
     if (window.crypto && crypto.randomUUID) {
@@ -71,6 +73,42 @@ window.SverigeQuizStorage = (() => {
     saveReviewQuestionIds(ids);
   }
 
+  function getExamResults() {
+    const raw = localStorage.getItem(EXAM_RESULTS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  }
+
+  function saveExamResult(result) {
+    const results = getExamResults();
+    results.unshift(result);
+
+    localStorage.setItem(
+      EXAM_RESULTS_KEY,
+      JSON.stringify(results.slice(0, 50))
+    );
+  }
+
+  function getExamUsedQuestionIds() {
+    const raw = localStorage.getItem(EXAM_USED_KEY);
+    return raw ? JSON.parse(raw) : [];
+  }
+
+  function saveExamUsedQuestionIds(ids) {
+    const uniqueIds = [...new Set(ids)];
+
+    localStorage.setItem(
+      EXAM_USED_KEY,
+      JSON.stringify(uniqueIds)
+    );
+  }
+
+  function resetExamUsedQuestionIds() {
+    localStorage.setItem(
+      EXAM_USED_KEY,
+      JSON.stringify([])
+    );
+  }
+
   return {
     makeId,
     getProfile,
@@ -79,6 +117,11 @@ window.SverigeQuizStorage = (() => {
     saveResult,
     getReviewQuestionIds,
     addReviewQuestion,
-    removeReviewQuestion
+    removeReviewQuestion,
+    getExamResults,
+    saveExamResult,
+    getExamUsedQuestionIds,
+    saveExamUsedQuestionIds,
+    resetExamUsedQuestionIds
   };
 })();
