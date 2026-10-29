@@ -445,7 +445,7 @@
       percentage,
       wrongQuestionIds: session.wrongQuestionIds,
       questionBankVersion:
-        "2026-1-corr-2026-08-10-v1.4"
+        "2026-1-corr-2026-08-10-v2.0"
     };
 
     storage.saveResult(result);
@@ -490,7 +490,7 @@
         q => q.id
       ),
       questionBankVersion:
-        ""2026-1-corr-2026-08-10-v2.0""
+        "2026-1-corr-2026-08-10-v2.0"
     };
 
     storage.saveExamResult(result);
