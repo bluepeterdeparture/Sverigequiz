@@ -114,6 +114,7 @@
       userId: profile.userId,
       startedAt: new Date().toISOString(),
       questions: selected,
+      reviewQuestionIds: [...selectedReviewIds],
       currentIndex: 0,
       correctCount: 0,
       wrongQuestionIds: [],
@@ -132,8 +133,12 @@
       window.speechSynthesis.cancel();
     }
 
+    const isReviewQuestion =
+      session.reviewQuestionIds.includes(q.id);
+
     progress.textContent =
-      `Fråga ${session.currentIndex + 1} av ${session.questions.length}`;
+      `Fråga ${session.currentIndex + 1} av ${session.questions.length}` +
+      (isReviewQuestion ? " · 🔁 Repetition" : "");
 
     questionText.textContent = q.question;
     optionsEl.innerHTML = "";
