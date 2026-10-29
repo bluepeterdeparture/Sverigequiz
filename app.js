@@ -35,15 +35,18 @@
 
   function shuffle(items) {
     const copy = [...items];
+
     for (let i = copy.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [copy[i], copy[j]] = [copy[j], copy[i]];
     }
+
     return copy;
   }
 
   function renderProfile() {
     const profile = storage.getProfile();
+
     if (profile) {
       displayName.value = profile.displayName || "";
       greeting.textContent = `Hej ${profile.displayName} 👋`;
@@ -58,51 +61,52 @@
 
   function ensureProfile() {
     let profile = storage.getProfile();
+
     if (!profile) {
-      profile = storage.saveProfile(displayName.value || "Användare");
+      profile = storage.saveProfile(
+        displayName.value || "Användare"
+      );
       renderProfile();
     }
+
     return profile;
   }
 
-    function startQuiz() {
+  function startQuiz() {
     const profile = ensureProfile();
 
-    // Samla frågor som tidigare har besvarats fel.
-    // Nyare resultat går först eftersom getResults() sparar nyast först.
-    const results = storage.getResults();
-    const wrongIds = [];
-    const seenWrongIds = new Set();
-
-    results.forEach(result => {
-      (result.wrongQuestionIds || []).forEach(id => {
-        if (!seenWrongIds.has(id)) {
-          seenWrongIds.add(id);
-          wrongIds.push(id);
-        }
-      });
-    });
-
-    // Hitta de tidigare felbesvarade frågor som fortfarande finns
-    // och är aktiva i den aktuella frågebanken.
-    const wrongQuestions = wrongIds
-      .map(id => questions.find(q => q.id === id))
-      .filter(Boolean);
-
-    // Upp till tre repetitionsfrågor per omgång.
-    const reviewQuestions = shuffle(wrongQuestions).slice(0, 3);
-    const reviewIds = new Set(reviewQuestions.map(q => q.id));
-
-    // Resten väljs slumpmässigt bland övriga frågor.
-    const remainingQuestions = questions.filter(q => !reviewIds.has(q.id));
-    const ordinaryCount = Math.min(
-      10 - reviewQuestions.length,
-      remainingQuestions.length
+    const reviewIds = new Set(
+      storage.getReviewQuestionIds()
     );
 
+    const reviewQuestions = questions.filter(
+      q => reviewIds.has(q.id)
+    );
+
+    const selectedReviewQuestions = shuffle(
+      reviewQuestions
+    ).slice(0, 3);
+
+    const selectedReviewIds = new Set(
+      selectedReviewQuestions.map(q => q.id)
+    );
+
+    const ordinaryQuestions = questions.filter(
+      q => !selectedReviewIds.has(q.id)
+    );
+
+    const ordinaryCount = Math.min(
+      10 - selectedReviewQuestions.length,
+      ordinaryQuestions.length
+    );
+
+    const selectedOrdinaryQuestions = shuffle(
+      ordinaryQuestions
+    ).slice(0, ordinaryCount);
+
     const selected = shuffle([
-      ...reviewQuestions,
-      ...shuffle(remainingQuestions).slice(0, ordinaryCount)
+      ...selectedReviewQuestions,
+      ...selectedOrdinaryQuestions
     ]);
 
     session = {
@@ -123,9 +127,14 @@
 
   function renderQuestion() {
     const q = session.questions[session.currentIndex];
-    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
 
-    progress.textContent = `Fråga ${session.currentIndex + 1} av ${session.questions.length}`;
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+
+    progress.textContent =
+      `Fråga ${session.currentIndex + 1} av ${session.questions.length}`;
+
     questionText.textContent = q.question;
     optionsEl.innerHTML = "";
     feedback.classList.add("hidden");
@@ -133,50 +142,85 @@
     session.answered = false;
 
     session.currentChoices = shuffle(
-      q.options.map((text, originalIndex) => ({ text, isCorrect: originalIndex === q.correctIndex }))
+      q.options.map((text, originalIndex) => ({
+        text,
+        isCorrect: originalIndex === q.correctIndex
+      }))
     );
 
     session.currentChoices.forEach((choice, index) => {
       const button = document.createElement("button");
       button.className = "option-btn";
-      button.textContent = `${String.fromCharCode(65 + index)}. ${choice.text}`;
-      button.dataset.correct = choice.isCorrect ? "true" : "false";
-      button.addEventListener("click", () => answerQuestion(choice, button));
+      button.textContent =
+        `${String.fromCharCode(65 + index)}. ${choice.text}`;
+
+      button.dataset.correct =
+        choice.isCorrect ? "true" : "false";
+
+      button.addEventListener(
+        "click",
+        () => answerQuestion(choice, button)
+      );
+
       optionsEl.appendChild(button);
     });
   }
 
   function answerQuestion(choice, selectedButton) {
     if (session.answered) return;
+
     session.answered = true;
 
     const q = session.questions[session.currentIndex];
-    const buttons = [...optionsEl.querySelectorAll(".option-btn")];
+    const buttons = [
+      ...optionsEl.querySelectorAll(".option-btn")
+    ];
 
     buttons.forEach(btn => {
       btn.disabled = true;
-      if (btn.dataset.correct === "true") btn.classList.add("correct");
+
+      if (btn.dataset.correct === "true") {
+        btn.classList.add("correct");
+      }
     });
 
     if (choice.isCorrect) {
       session.correctCount += 1;
-      feedbackTitle.textContent = "✅ Rätt! Bra jobbat!";
+
+      // Ett rätt svar betyder att frågan inte längre
+      // behöver ligga kvar för särskild repetition.
+      storage.removeReviewQuestion(q.id);
+
+      feedbackTitle.textContent =
+        "✅ Rätt! Bra jobbat!";
     } else {
       session.wrongQuestionIds.push(q.id);
+
+      // Ett felaktigt svar lägger frågan i
+      // repetitionslistan.
+      storage.addReviewQuestion(q.id);
+
       selectedButton.classList.add("wrong");
-      feedbackTitle.textContent = "❌ Inte riktigt.";
+
+      feedbackTitle.textContent =
+        "❌ Inte riktigt.";
     }
 
     feedbackText.textContent = q.explanationSv;
+
     sourceLink.textContent = q.sourcePage
       ? `Läs mer: Kapitel ${q.chapter} – ${q.section}, sida ${q.sourcePage}`
       : `Läs mer: ${q.section}`;
+
     sourceLink.classList.remove("hidden");
     feedback.classList.remove("hidden");
   }
 
   function nextQuestion() {
-    if (session.currentIndex < session.questions.length - 1) {
+    if (
+      session.currentIndex <
+      session.questions.length - 1
+    ) {
       session.currentIndex += 1;
       renderQuestion();
     } else {
@@ -186,7 +230,10 @@
 
   function finishQuiz() {
     const count = session.questions.length;
-    const percentage = Math.round((session.correctCount / count) * 100);
+    const percentage = Math.round(
+      (session.correctCount / count) * 100
+    );
+
     const result = {
       resultId: storage.makeId("r"),
       sessionId: session.sessionId,
@@ -196,10 +243,15 @@
       correctCount: session.correctCount,
       percentage,
       wrongQuestionIds: session.wrongQuestionIds,
-      questionBankVersion: "2026-1-corr-2026-08-10-v1.4"
+      questionBankVersion:
+        "2026-1-corr-2026-08-10-v1.4"
     };
+
     storage.saveResult(result);
-    resultScore.textContent = `${result.correctCount} av ${count} rätt – ${percentage} %`;
+
+    resultScore.textContent =
+      `${result.correctCount} av ${count} rätt – ${percentage} %`;
+
     session = null;
     refreshHome();
     showScreen("result");
@@ -207,136 +259,235 @@
 
   function refreshHome() {
     renderProfile();
+
     const results = storage.getResults();
+
     if (!results.length) {
-      latestResult.textContent = "Inga resultat ännu.";
+      latestResult.textContent =
+        "Inga resultat ännu.";
       return;
     }
+
     const r = results[0];
-    latestResult.textContent = `${r.correctCount}/${r.questionCount} – ${r.percentage} %`;
+
+    latestResult.textContent =
+      `${r.correctCount}/${r.questionCount} – ${r.percentage} %`;
   }
 
   function renderHistory() {
     const results = storage.getResults();
+
     historyList.innerHTML = "";
+
     if (!results.length) {
-      historyList.textContent = "Inga resultat ännu.";
+      historyList.textContent =
+        "Inga resultat ännu.";
       return;
     }
+
     results.slice(0, 10).forEach(r => {
       const row = document.createElement("div");
       row.className = "history-item";
-      const date = new Date(r.date).toLocaleDateString("sv-SE");
-      row.innerHTML = `<span>${date}</span><strong>${r.correctCount}/${r.questionCount} – ${r.percentage} %</strong>`;
+
+      const date = new Date(
+        r.date
+      ).toLocaleDateString("sv-SE");
+
+      row.innerHTML =
+        `<span>${date}</span>` +
+        `<strong>${r.correctCount}/${r.questionCount} – ${r.percentage} %</strong>`;
+
       historyList.appendChild(row);
     });
   }
 
- document.getElementById("study-first").addEventListener("click", () => {
-  if (!session) return;
+  document
+    .getElementById("study-first")
+    .addEventListener("click", () => {
+      if (!session) return;
 
-  const q = session.questions[session.currentIndex];
+      const q =
+        session.questions[session.currentIndex];
 
-  if (q.studyText) {
-    studyReference.innerHTML =
-      "<strong>" + (q.studyTitle || q.section) + "</strong><br><br>" +
-      q.studyText +
-      (q.studyRemember ? "<br><br><strong>Kom ihåg:</strong><br>" + q.studyRemember : "") +
-      "<br><br><small>Källa: Sverige i fokus – " + q.section +
-      (q.sourcePage ? ", sida " + q.sourcePage : "") + "</small>";  } else {
-    studyReference.textContent = q.sourcePage
-      ? `Läs i Sverige i fokus: Kapitel ${q.chapter} – ${q.section}, sida ${q.sourcePage}.`
-      : `Läs i Sverige i fokus: ${q.section}.`;
-  }
+      if (q.studyText) {
+        studyReference.innerHTML =
+          "<strong>" +
+          (q.studyTitle || q.section) +
+          "</strong><br><br>" +
+          q.studyText +
+          (
+            q.studyRemember
+              ? "<br><br><strong>Kom ihåg:</strong><br>" +
+                q.studyRemember
+              : ""
+          ) +
+          "<br><br><small>Källa: Sverige i fokus – " +
+          q.section +
+          (
+            q.sourcePage
+              ? ", sida " + q.sourcePage
+              : ""
+          ) +
+          "</small>";
+      } else {
+        studyReference.textContent =
+          q.sourcePage
+            ? `Läs i Sverige i fokus: Kapitel ${q.chapter} – ${q.section}, sida ${q.sourcePage}.`
+            : `Läs i Sverige i fokus: ${q.section}.`;
+      }
 
-  studyBox.classList.toggle("hidden");
-});
-  document.getElementById("close-study").addEventListener("click", () => {
-    studyBox.classList.add("hidden");
-  });
+      studyBox.classList.toggle("hidden");
+    });
+
+  document
+    .getElementById("close-study")
+    .addEventListener("click", () => {
+      studyBox.classList.add("hidden");
+    });
 
   function getSwedishVoice() {
-  if (!("speechSynthesis" in window)) return null;
+    if (!("speechSynthesis" in window)) {
+      return null;
+    }
 
-  const voices = window.speechSynthesis.getVoices();
+    const voices =
+      window.speechSynthesis.getVoices();
 
-  const swedishVoices = voices.filter(v =>
-    (v.lang || "").toLowerCase().startsWith("sv")
-  );
+    const swedishVoices = voices.filter(v =>
+      (v.lang || "")
+        .toLowerCase()
+        .startsWith("sv")
+    );
 
-  if (!swedishVoices.length) return null;
+    if (!swedishVoices.length) {
+      return null;
+    }
 
-  return (
-    swedishVoices.find(v =>
-      (v.lang || "").toLowerCase() === "sv-se"
-    ) || swedishVoices[0]
-  );
-}
-  // Android/Chrome laddar ibland röstlistan först efter att sidan har startat.
+    return (
+      swedishVoices.find(v =>
+        (v.lang || "").toLowerCase() === "sv-se"
+      ) || swedishVoices[0]
+    );
+  }
+
+  // Android/Chrome laddar ibland röstlistan
+  // först efter att sidan har startat.
   if ("speechSynthesis" in window) {
     window.speechSynthesis.getVoices();
-    window.speechSynthesis.addEventListener("voiceschanged", () => {
-      window.speechSynthesis.getVoices();
+
+    window.speechSynthesis.addEventListener(
+      "voiceschanged",
+      () => {
+        window.speechSynthesis.getVoices();
+      }
+    );
+  }
+
+  document
+    .getElementById("listen-question")
+    .addEventListener("click", () => {
+      if (
+        !session ||
+        !("speechSynthesis" in window)
+      ) {
+        alert(
+          "Uppläsning stöds inte av den här webbläsaren."
+        );
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+
+      const q =
+        session.questions[session.currentIndex];
+
+      const swedishVoice = getSwedishVoice();
+
+      const utterance =
+        new SpeechSynthesisUtterance(q.question);
+
+      utterance.lang = "sv-SE";
+      utterance.rate = 0.9;
+
+      if (swedishVoice) {
+        utterance.voice = swedishVoice;
+      }
+
+      window.speechSynthesis.speak(utterance);
     });
-  }
 
-document.getElementById("listen-question").addEventListener("click", () => {
-  if (!session || !("speechSynthesis" in window)) {
-    alert("Uppläsning stöds inte av den här webbläsaren.");
-    return;
-  }
+  document
+    .getElementById("save-profile")
+    .addEventListener("click", () => {
+      storage.saveProfile(displayName.value);
+      refreshHome();
+    });
 
-  window.speechSynthesis.cancel();
+  document
+    .getElementById("edit-profile")
+    .addEventListener("click", () => {
+      const profile = storage.getProfile();
 
-  const q = session.questions[session.currentIndex];
-  const swedishVoice = getSwedishVoice();
+      if (profile) {
+        displayName.value =
+          profile.displayName || "";
+      }
 
-  const utterance = new SpeechSynthesisUtterance(q.question);
-  utterance.lang = "sv-SE";
-  utterance.rate = 0.9;
+      profileSaved.classList.add("hidden");
+      profileSetup.classList.remove("hidden");
+      displayName.focus();
+    });
 
-  if (swedishVoice) {
-    utterance.voice = swedishVoice;
-  }
+  document
+    .getElementById("start-quiz")
+    .addEventListener("click", startQuiz);
 
-  window.speechSynthesis.speak(utterance);
-}); 
-  document.getElementById("save-profile").addEventListener("click", () => {
-    storage.saveProfile(displayName.value);
-    refreshHome();
+  document
+    .getElementById("restart-quiz")
+    .addEventListener("click", startQuiz);
+
+  document
+    .getElementById("next-question")
+    .addEventListener("click", nextQuestion);
+
+  document
+    .getElementById("show-history")
+    .addEventListener("click", () => {
+      renderHistory();
+      showScreen("history");
+    });
+
+  document
+    .getElementById("result-history")
+    .addEventListener("click", () => {
+      renderHistory();
+      showScreen("history");
+    });
+
+  document
+    .getElementById("back-home")
+    .addEventListener("click", () => {
+      refreshHome();
+      showScreen("home");
+    });
+
+  document
+    .getElementById("quit-quiz")
+    .addEventListener("click", () => {
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      session = null;
+      showScreen("home");
+    });
+
+  sourceLink.addEventListener("click", () => {
+    window.open(
+      "https://www.uhr.se/globalassets/_uhr.se/medborgarskapsprovet/utbildningsmaterial/sverige-i-fokus_.pdf",
+      "_blank"
+    );
   });
 
-  document.getElementById("edit-profile").addEventListener("click", () => {
-    const profile = storage.getProfile();
-    if (profile) displayName.value = profile.displayName || "";
-    profileSaved.classList.add("hidden");
-    profileSetup.classList.remove("hidden");
-    displayName.focus();
-  });
-
-  document.getElementById("start-quiz").addEventListener("click", startQuiz);
-  document.getElementById("restart-quiz").addEventListener("click", startQuiz);
-  document.getElementById("next-question").addEventListener("click", nextQuestion);
-
-  document.getElementById("show-history").addEventListener("click", () => {
-    renderHistory(); showScreen("history");
-  });
-  document.getElementById("result-history").addEventListener("click", () => {
-    renderHistory(); showScreen("history");
-  });
-  document.getElementById("back-home").addEventListener("click", () => {
-    refreshHome(); showScreen("home");
-  });
-  document.getElementById("quit-quiz").addEventListener("click", () => {
-    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-    session = null; showScreen("home");
-  });
-
-sourceLink.addEventListener("click", () => {
-  window.open(
-    "https://www.uhr.se/globalassets/_uhr.se/medborgarskapsprovet/utbildningsmaterial/sverige-i-fokus_.pdf",
-    "_blank"
-  );
-});
   refreshHome();
 })();
